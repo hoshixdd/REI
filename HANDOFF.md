@@ -71,3 +71,7 @@ The user created https://github.com/hoshixdd/REI and authorized pushing this pro
 - Academy resume panel returns to the exact lesson step. Optional validated `resume: { lesson, step }` is saved in `rrh-v2` and included in JSON backups; older backups remain supported.
 - Lesson flow tabs show saved word counts and whether the answer has been checked correctly.
 - `continuity.js` implements search and resume presentation. Regression: `tests/continuity-qa.cjs`.
+
+## Latest visual refinement
+- Research Fieldnotes lesson identity: editorial numbered reading sections, contrasting example spreads, a light writing studio, and split-screen knowledge checks with live particle graphics. Responsive layouts retain keyboard-accessible answer controls and existing motion preferences.
+- Verified all 36 lesson routes, draft and quiz workflow, back/forward navigation, and five enlarged-text layouts; inspected settled desktop and mobile views.

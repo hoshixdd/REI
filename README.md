@@ -62,3 +62,6 @@ Validated all 36 lesson routes, 36 responsive route/viewport combinations, brows
 
 ## Search and lesson resumption
 Use **Explore hub** or **Ctrl/Cmd + K** to search lessons, resources, workshops, and workspace pages. The academy offers a resume link to your last lesson step. Lesson tabs show saved word counts and checked-answer status. Search supports arrow keys, Enter, and Escape. Resume information is included in JSON backups; earlier backups still load.
+
+## Lesson visual design
+- Research Fieldnotes lesson identity: editorial numbered reading sections, contrasting example spreads, a light writing studio, and split-screen knowledge checks with live particle graphics. Responsive layouts retain keyboard-accessible answer controls and existing motion preferences.
