@@ -65,3 +65,8 @@ Use **Explore hub** or **Ctrl/Cmd + K** to search lessons, resources, workshops,
 
 ## Lesson visual design
 - Research Fieldnotes lesson identity: editorial numbered reading sections, contrasting example spreads, a light writing studio, and split-screen knowledge checks with live particle graphics. Responsive layouts retain keyboard-accessible answer controls and existing motion preferences.
+
+## Research studio
+Open `#research` to create local research projects, save paper details, record citation links, compare evidence, and write source-linked proposals. Research projects use IndexedDB and have their own JSON backup/restore; the existing lesson workspace uses its original local storage and backup format. Export both when moving browsers or site addresses.
+
+Live paper search, accounts, and cloud synchronization are not connected. See FREE_SETUP.md for the prepared free-service setup and remaining integration work. RELEASE_NOTES.md lists this release's visual changes, working features, tests, and limitations.

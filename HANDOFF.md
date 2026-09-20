@@ -90,3 +90,12 @@ The user created https://github.com/hoshixdd/REI and authorized commits and push
 3. Prefer purposeful interactive graphics and connected transitions over adding decorative cards or indiscriminate motion. Keep reduced-motion controls, keyboard access, mobile usability, and draft saving intact.
 4. Verify the affected workflows and responsive layouts, update the runnable ZIP when website files change, and commit/push authorized changes to hoshixdd/REI. Report tested behavior and remaining limitations accurately.
 5. Before a real public launch, complete cross-browser/performance/accessibility checks and agree on hosting and any backend requirements. GitHub source backup and localhost preview are the current delivery state.
+
+## Spatial studio implementation checkpoint
+The user's latest correction explicitly allows improving the strongest homepage graphic too. Do not preserve it unchanged. This release upgrades its sculptural core, all phase graphics, palette, typography, and shared page surfaces.
+
+Local research workflows now exist at `#research` and `#research/<project-id>/<library|map|evidence|proposal>`, implemented in `dist/research.js`. Research data uses IndexedDB `rei-research`, store `projects`; old learning data still uses `rrh-v2`. Both have separate exports. Do not clear either storage system. Paper relationships are manually recorded and are not live provider citations.
+
+Read `RELEASE_NOTES.md` for the full implemented/remaining inventory and `FREE_SETUP.md` for the requested free-account setup. The user has no Supabase/OpenAlex accounts yet and asked for setup files and steps. The SQL migration and Edge Function are prepared, not deployed or integration-tested; cloud sign-in/sync and live search frontend are still unimplemented. Do not claim that credentials alone activate them.
+
+The current local implementation has project and paper editing, notes/status, manual collection labels, a pan/zoom citation map and list, editable evidence with comparison table, source-linked proposal writing, and project backup/restore. More complete collection management, spatial 3D map, cloud workflow, and deeper visual refinement remain. This is a tested local increment, not completion of the entire 70% roadmap.

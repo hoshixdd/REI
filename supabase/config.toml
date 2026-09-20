@@ -1,0 +1,2 @@
+[functions.paper-search]
+verify_jwt = true
