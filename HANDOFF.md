@@ -64,3 +64,10 @@ QA scripts and screenshots remain locally under ignored `work/`; key portable sc
 
 ## GitHub handoff
 The user created https://github.com/hoshixdd/REI and authorized pushing this project there. The repository was empty when checked. The website, tests, README, downloadable bundle, and this handoff are committed locally. The current task is configuring origin and pushing master. Verify origin/master before assuming the upload succeeded. Continue from this repository and preserve saved-work compatibility.
+
+## Search and resume update
+- Explore hub now searches 26 real destinations: eight spaces, nine lessons, six resources, and three workshops. Empty search shows the original spatial directory.
+- Keyboard: Ctrl/Cmd+K opens navigation and focuses search; Arrow Down enters results, arrows navigate, Enter opens a result, Escape closes the dialog.
+- Academy resume panel returns to the exact lesson step. Optional validated `resume: { lesson, step }` is saved in `rrh-v2` and included in JSON backups; older backups remain supported.
+- Lesson flow tabs show saved word counts and whether the answer has been checked correctly.
+- `continuity.js` implements search and resume presentation. Regression: `tests/continuity-qa.cjs`.

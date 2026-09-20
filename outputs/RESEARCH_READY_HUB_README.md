@@ -59,3 +59,6 @@ The latest visual pass also checked keyboard phase selection, a pixel-stable pau
 
 Validated all 36 lesson routes, 36 responsive route/viewport combinations, browser Back/Forward, missing-draft completion guard, resource download, quiz completion, draft persistence across pages, inner-page WebGL, directory keyboard controls, focus mode, and enlarged text. This remains a local browser application; no headset/camera AR or WebXR session is implemented.
 
+
+## Search and lesson resumption
+Use **Explore hub** or **Ctrl/Cmd + K** to search lessons, resources, workshops, and workspace pages. The academy offers a resume link to your last lesson step. Lesson tabs show saved word counts and checked-answer status. Search supports arrow keys, Enter, and Escape. Resume information is included in JSON backups; earlier backups still load.
