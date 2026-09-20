@@ -62,5 +62,5 @@ QA scripts and screenshots remain locally under ignored `work/`; key portable sc
 - Deployment remains separate. A previous Sites source upload was denied by automatic approval review; do not bypass that block. The user's current explicit request is to push to THEIR GitHub repository, whose URL is still needed.
 - Do not upload `work/`, browser profiles, local test backups, credentials, or private user data.
 
-## Immediate handoff task
-The user is running low on usage and asked to push to GitHub and provide this handoff. Git has no remote configured; GitHub CLI was not found. The repository URL has been requested. Once supplied, add the remote, authenticate using an available supported flow, and push the current branch WITHOUT force. Do not invent a repository destination or publish the website as part of this push.
+## GitHub handoff
+The user created https://github.com/hoshixdd/REI and authorized pushing this project there. The repository was empty when checked. The website, tests, README, downloadable bundle, and this handoff are committed locally. The current task is configuring origin and pushing master. Verify origin/master before assuming the upload succeeded. Continue from this repository and preserve saved-work compatibility.
