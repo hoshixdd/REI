@@ -1,0 +1,29 @@
+/* Original REI sculptures. One shared WebGL context paints visible illustrations.
+   The semantic UI does not depend on WebGL. Motion follows the user's preference. */
+(async()=>{
+ let T;try{T=await import('./vendor/three.module.js')}catch{return}
+ let renderer;try{renderer=new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'})}catch{return}
+ renderer.setPixelRatio(1);renderer.setClearColor(0,0);renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.3;
+ // A locally drawn studio environment supplies broad reflections, without network assets.
+ const env=document.createElement('canvas');env.width=1024;env.height=512;const ec=env.getContext('2d');ec.fillStyle='#121a31';ec.fillRect(0,0,1024,512);
+ const bands=[[80,100,'#d6f4ff'],[360,70,'#90a8ff'],[600,130,'#ffffff'],[890,40,'#ffcfb0']];bands.forEach(([x,w,c])=>{const g=ec.createLinearGradient(x,0,x+w,0);g.addColorStop(0,'#121a31');g.addColorStop(.5,c);g.addColorStop(1,'#121a31');ec.fillStyle=g;ec.fillRect(x,30,w,450)});
+ const texture=new T.CanvasTexture(env);texture.mapping=T.EquirectangularReflectionMapping;texture.colorSpace=T.SRGBColorSpace;const pmrem=new T.PMREMGenerator(renderer),environment=pmrem.fromEquirectangular(texture).texture;texture.dispose();pmrem.dispose();
+ const models=new Map();
+ function model(kind){if(models.has(kind))return models.get(kind);const scene=new T.Scene();scene.environment=environment;const camera=new T.PerspectiveCamera(36,1,.1,50);camera.position.z=7.5;const object=new T.Group();scene.add(object);scene.add(new T.HemisphereLight(0xddeeff,0x1e2340,2));const light=new T.DirectionalLight(0xffffff,4);light.position.set(3,4,5);scene.add(light);const rim=new T.DirectionalLight(0xb3a2ff,3);rim.position.set(-3,-2,2);scene.add(rim);
+ const color=['#b5e7ff','#bbb2ff','#e3bfaa'][Number(kind)||0];const material=new T.MeshPhysicalMaterial({color,metalness:.72,roughness:.13,clearcoat:1,iridescence:.65,envMapIntensity:1.8});const glass=new T.MeshPhysicalMaterial({color:0xdcecff,metalness:.12,roughness:.08,transmission:.65,thickness:.65,ior:1.45,clearcoat:1,envMapIntensity:2});
+ const add=(g,m=material)=>{const mesh=new T.Mesh(g,m);object.add(mesh);return mesh};
+ if(kind==='logo'){add(new T.TorusKnotGeometry(1,.36,128,24,2,3),glass);const inner=add(new T.TorusKnotGeometry(.98,.12,100,16,2,3));inner.rotation.z=.1;camera.position.z=5.7;}
+ else if(kind==='0'){const knot=add(new T.TorusKnotGeometry(.95,.28,160,28,2,3));knot.rotation.x=.45;const lens=add(new T.TorusGeometry(1.65,.095,20,100),glass);lens.rotation.x=.9;lens.rotation.y=.4;}
+ else if(kind==='1'){for(let i=0;i<9;i++){const torus=add(new T.TorusGeometry(.82,.115,18,80),i%3===0?glass:material);torus.position.y=(i-4)*.28;torus.rotation.set(Math.PI/2,.18*Math.sin(i),i*.18);torus.scale.setScalar(.7+Math.sin(i/8*Math.PI)*.4)}const sphere=add(new T.SphereGeometry(.36,28,24),glass);sphere.position.y=.1;}
+ else{const shape=new T.Shape();shape.moveTo(-.65,-.82);shape.lineTo(.65,-.82);shape.quadraticCurveTo(.82,-.82,.82,-.65);shape.lineTo(.82,.65);shape.quadraticCurveTo(.82,.82,.65,.82);shape.lineTo(-.65,.82);shape.quadraticCurveTo(-.82,.82,-.82,.65);shape.lineTo(-.82,-.65);shape.quadraticCurveTo(-.82,-.82,-.65,-.82);const plate=new T.ExtrudeGeometry(shape,{depth:.075,bevelEnabled:true,bevelSegments:3,steps:1,bevelSize:.05,bevelThickness:.04,curveSegments:10});plate.center();plate.rotateX(Math.PI/2);for(let i=0;i<6;i++){const slab=add(plate,i%2?glass:material);slab.position.y=(i-2.5)*.38;slab.rotation.y=i*.19;}object.rotation.x=.3;}
+ const data={scene,camera,object};models.set(kind,data);return data;}
+ let pointer={x:-1,y:-1};addEventListener('pointermove',e=>{pointer={x:e.clientX,y:e.clientY}},{passive:true});
+ let hosts=[],dirty=true,last=0,time=0;const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ const paused=()=>reduced.matches||document.documentElement.dataset.motion==='off';
+ const scan=()=>{hosts=[...document.querySelectorAll('[data-sculpture]')].map(el=>({el,canvas:el.querySelector('canvas'),kind:el.dataset.sculpture})).filter(h=>h.canvas);dirty=true;};
+ const observer=new MutationObserver(scan);observer.observe(document.querySelector('#main'),{childList:true,subtree:true});scan();
+ addEventListener('resize',()=>dirty=true);addEventListener('scroll',()=>dirty=true,{passive:true});addEventListener('rrh:motion',()=>dirty=true);reduced.addEventListener('change',()=>dirty=true);
+ function frame(now){requestAnimationFrame(frame);if(document.hidden||now-last<50||paused()&&!dirty)return;const dt=Math.min((now-last)/1000,.1);last=now;if(!paused())time+=dt;
+ for(const h of hosts){if(!h.el.isConnected)continue;const r=h.el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight||!r.width||!r.height)continue;const size=h.kind==='logo'?96:Math.min(520,Math.round(r.width*devicePixelRatio));const height=Math.max(1,Math.round(size*r.height/r.width));const m=model(h.kind);m.camera.aspect=size/height;m.camera.updateProjectionMatrix();m.object.rotation.y=h.kind==='logo'?.35+Math.sin(time*.3)*.35:time*.18+.35;const over=pointer.x>=r.left&&pointer.x<=r.right&&pointer.y>=r.top&&pointer.y<=r.bottom;const targetX=over&&!paused()?(pointer.y-r.top-r.height/2)/r.height*.3:0;const targetY=over&&!paused()?(pointer.x-r.left-r.width/2)/r.width*.4:0;h.tiltX=(h.tiltX||0)+(targetX-(h.tiltX||0))*.12;h.tiltY=(h.tiltY||0)+(targetY-(h.tiltY||0))*.12;m.object.rotation.x=(h.kind==='2'?.3:0)+h.tiltX;m.object.rotation.y+=h.tiltY;m.object.rotation.z=Math.sin(time*.3)*.06;m.object.position.y=Math.sin(time*.6)*.055;renderer.setSize(size,height,false);renderer.render(m.scene,m.camera);if(h.canvas.width!==size||h.canvas.height!==height){h.canvas.width=size;h.canvas.height=height}const ctx=h.canvas.getContext('2d');ctx.clearRect(0,0,size,height);ctx.drawImage(renderer.domElement,0,0);h.el.classList.add('sculpture-ready');}
+ dirty=false;}requestAnimationFrame(frame);
+})();

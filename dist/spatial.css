@@ -40,3 +40,29 @@ body{background:var(--paper);color:var(--ink)}body:before{opacity:.12}.ambient-f
 .phase-art svg,.lesson-cover{filter:none}.pathway-tile .phase-art svg{transform:none}.final-portal h2 span{color:#b5c5f2}.motion-toggle,.space-launcher{background:#132039ec;border-color:#a7bce040}.academy-list>a>span,.academy-list small{color:#bbc9e2}.research-content summary:focus-visible{outline:2px solid #65dbff;outline-offset:-3px}.research-map{touch-action:none;cursor:grab}.research-map:active{cursor:grabbing}.research-map svg g[data-node]{cursor:pointer}.research-map svg g[data-node][data-selected=true]>circle:first-child{stroke:#fff;stroke-width:3}.paper-note{margin-top:20px}.paper-note textarea{display:block;width:100%;box-sizing:border-box;background:#0b1425;color:#edf3ff;border:1px solid #a6b9de40;padding:14px;border-radius:8px;margin-top:9px;font:inherit;line-height:1.7}.map-detail{margin-top:15px;padding:20px;background:#17243d;border-left:2px solid #65dbff}.map-detail p{color:#c0cde3}.project-edit{margin:20px 0}
 .research-shell [hidden]{display:none!important}.research-backup label.button{position:relative}.research-backup input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;padding:0;border:0}.research-backup label.button:focus-within{outline:2px solid #65dbff;outline-offset:4px}
 .evidence-table-wrap{max-width:100%;overflow:auto;margin-top:30px;border:1px solid var(--line);border-radius:12px}.evidence-table{border-collapse:collapse;width:100%;min-width:640px;text-align:left;font-size:.9rem}.evidence-table caption{text-align:left;padding:20px;font-weight:700;background:#17243b}.evidence-table th,.evidence-table td{padding:20px;vertical-align:top;border-bottom:1px solid var(--line);min-width:150px;max-width:350px;overflow-wrap:anywhere;line-height:1.7}.evidence-table thead{color:#a9d7f4;background:#121f34}.evidence-table td{color:#bdcbe2}.explore-trigger{background:#132039ec;border-color:#a7bce040}.explore-trigger:hover{border-color:#65dbff}.research-map:focus-visible,.evidence-table-wrap:focus-visible{outline:2px solid #65dbff;outline-offset:4px}
+
+/* Spatial navigation: shared cards, stable chapter headers, click-origin reveals. */
+html[data-transit]::view-transition{pointer-events:none}
+html[data-transit]::view-transition-old(root){animation:cinema-depart .36s cubic-bezier(.4,0,.7,.2) both;mix-blend-mode:normal}
+html[data-transit]::view-transition-new(root){animation:cinema-arrive .7s cubic-bezier(.16,1,.3,1) both;mix-blend-mode:normal}
+html[data-transit=portal]::view-transition-new(root){animation:cinema-aperture .7s cubic-bezier(.16,1,.3,1) both}
+html[data-transit=chapter]::view-transition-old(root){animation:chapter-out .28s ease both}
+html[data-transit=chapter]::view-transition-new(root){animation:chapter-in .45s cubic-bezier(.16,1,.3,1) both}
+::view-transition-group(research-surface),::view-transition-group(research-title){animation-duration:.7s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+::view-transition-old(research-surface){animation:surface-out .3s ease both}
+::view-transition-new(research-surface){animation:surface-in .6s ease both}
+::view-transition-old(research-title){animation:surface-out .2s ease both}
+::view-transition-new(research-title){animation:surface-in .45s ease both}
+::view-transition-group(research-heading),::view-transition-group(research-chapters){animation-duration:.45s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+::view-transition-old(research-heading),::view-transition-new(research-heading),::view-transition-old(research-chapters),::view-transition-new(research-chapters){animation:none;mix-blend-mode:normal}
+@keyframes cinema-depart{to{opacity:0;transform:perspective(1200px) translateZ(-45px);filter:blur(2px)}}
+@keyframes cinema-arrive{from{opacity:0;transform:translateY(25px) scale(1.025);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+@keyframes cinema-aperture{from{opacity:.3;clip-path:circle(0 at var(--entry-x,50%) var(--entry-y,40%));transform:scale(1.018)}to{opacity:1;clip-path:circle(150vmax at var(--entry-x,50%) var(--entry-y,40%));transform:none}}
+@keyframes chapter-out{to{opacity:0;transform:translateX(calc(var(--travel,1)*-35px))}}
+@keyframes chapter-in{from{opacity:0;transform:translateX(calc(var(--travel,1)*45px))}to{opacity:1;transform:none}}
+@keyframes surface-out{to{opacity:0}}@keyframes surface-in{from{opacity:0}to{opacity:1}}
+html[data-transit] .transit-field{background:radial-gradient(ellipse at var(--entry-x,50%) var(--entry-y,40%),#8dabff13,transparent 60%)}
+html[data-transit] .transit-field>span{display:none}
+@media(max-width:600px){html[data-transit=portal]::view-transition-new(root){animation:cinema-arrive .5s cubic-bezier(.16,1,.3,1) both}}
+@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+html[data-motion=off]::view-transition-group(*),html[data-motion=off]::view-transition-old(*),html[data-motion=off]::view-transition-new(*){animation:none!important}

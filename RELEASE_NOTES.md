@@ -1,3 +1,31 @@
+# REI graphics and identity update
+
+## REI identity and sculptural graphics — 2026-09-21
+
+- Rebranded header, footer, page titles, about/backup descriptions, directory, transition label, and draft illustration to REI. Existing storage keys and backup schema stay compatible.
+- Added an original animated glass knot logo with a matching SVG fallback/favicon.
+- Replaced phase wire diagrams with real Three.js sculptures: interwoven lens, optical ring stack, beveled proposal layers. Used across homepage pathways, Academy, Journey, Toolkit and destination/lesson headers; Research Studio entrance also has a sculpture.
+- Shared offscreen WebGL renderer paints only visible illustrations at a capped 20 fps. Locally generated environment reflections; no external asset requests. Global pause, reduced-motion preference, hidden-tab checks, and pointer tilt supported. Hero keeps its existing independent interactive renderer.
+- Toolkit is now a numbered editorial catalogue with purpose, output, editable format, exploration link, and download. Search/filter and empty states preserved.
+- Resource links participate in the clicked-surface cinematic transition. Fixed graphic-container sizing, mobile composition, wordmark specificity, and an encoded footer arrow.
+- Manual browser checks: desktop Toolkit/Journey/lesson screenshots; mobile Toolkit/lesson/check at 390px; Toolkit Evidence filter, search and empty states, resource navigation; Academy Creation filter; motion toggle; no console errors in inspected routes; inspected routes had no horizontal page overflow. Syntax and git whitespace checks passed. Full automated regression has NOT been rerun.
+- Taste and Impeccable were requested but not found in installed skill folders; applied installed UI/UX Pro Max plus the user's Studio workflow. No claim those missing skills were used.
+- New source: `dist/sculptures.js`, `dist/rei.css`, `dist/rei-mark.svg`. All geometry and reflection assets are original code; bundled Three.js license remains unchanged.
+- Local preview http://127.0.0.1:4173/ . Vercel has not been updated by this pass.
+
+# Local UI/UX Studio update — 2026-09-20
+
+Unpublished working changes:
+- Open observatory homepage with original Three.js optical geometry, responsive lighting, and instanced satellites.
+- Editorial pathway chapters instead of interchangeable cards; indexed curriculum, continuous roadmap, resource lists, workshop agendas.
+- Larger headings, clearer body text, slate/ice surfaces, quieter lesson and research editing layouts.
+- Click-origin and directional cinematic transitions, async route continuity, reduced-motion handling.
+- Mobile overflow corrected. Targeted browser visual checks and JavaScript syntax checks completed; full regression and deployment remain pending due to the previously reported approval-credit block.
+
+References: https://github.com/mrdoob/three.js/ and https://github.com/pmndrs/react-three-fiber . New geometry is original; no example assets were copied and React Three Fiber was not installed.
+
+---
+
 # REI spatial studio release
 
 ## Visual changes

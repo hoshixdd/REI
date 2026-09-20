@@ -1,7 +1,31 @@
-# Research Ready Hub — continuation handoff
+# REI — continuation handoff
+
+## REI identity and sculptural graphics — 2026-09-21
+
+- Rebranded header, footer, page titles, about/backup descriptions, directory, transition label, and draft illustration to REI. Existing storage keys and backup schema stay compatible.
+- Added an original animated glass knot logo with a matching SVG fallback/favicon.
+- Replaced phase wire diagrams with real Three.js sculptures: interwoven lens, optical ring stack, beveled proposal layers. Used across homepage pathways, Academy, Journey, Toolkit and destination/lesson headers; Research Studio entrance also has a sculpture.
+- Shared offscreen WebGL renderer paints only visible illustrations at a capped 20 fps. Locally generated environment reflections; no external asset requests. Global pause, reduced-motion preference, hidden-tab checks, and pointer tilt supported. Hero keeps its existing independent interactive renderer.
+- Toolkit is now a numbered editorial catalogue with purpose, output, editable format, exploration link, and download. Search/filter and empty states preserved.
+- Resource links participate in the clicked-surface cinematic transition. Fixed graphic-container sizing, mobile composition, wordmark specificity, and an encoded footer arrow.
+- Manual browser checks: desktop Toolkit/Journey/lesson screenshots; mobile Toolkit/lesson/check at 390px; Toolkit Evidence filter, search and empty states, resource navigation; Academy Creation filter; motion toggle; no console errors in inspected routes; inspected routes had no horizontal page overflow. Syntax and git whitespace checks passed. Full automated regression has NOT been rerun.
+- Taste and Impeccable were requested but not found in installed skill folders; applied installed UI/UX Pro Max plus the user's Studio workflow. No claim those missing skills were used.
+- New source: `dist/sculptures.js`, `dist/rei.css`, `dist/rei-mark.svg`. All geometry and reflection assets are original code; bundled Three.js license remains unchanged.
+- Local preview http://127.0.0.1:4173/ . Vercel has not been updated by this pass.
+
 
 ## Start here
-The user previously approved the homepage direction. Preserve that foundation, but do not assume the latest overall design has been accepted: their most recent design feedback was that the UI still lacked a distinctive identity. Continue improving the INNER pages toward a polished, cinematic learning hub inspired by Alche Studio and the public GetLayers Vesper preview. They want spatial depth, connected page transitions, rich graphics, and clear educational headings/descriptions. Do not claim actual headset AR/VR: this is a browser-based visual experience, with no WebXR or camera integration.
+The user explicitly requested the UI/UX Studio workflow and a full-product spatial redesign using Three.js and React Three Fiber as references. No homepage artwork is protected from improvement. Avoid repeated card grids; prioritize clear learning workflows, editorial composition, purposeful motion, and responsive accessibility. This is a browser-based spatial interface, not a headset AR/VR application.
+
+## Current local Studio pass — 2026-09-20
+- New `dist/studio.css` owns the final layout layer: open homepage, editorial pathway chapters, indexed Academy, continuous Journey, resource lists, workshop agendas, quieter lesson surfaces, and research/editor layouts.
+- `dist/universe.js` now uses original intersecting physical-material rings, a faceted core, edge cage, and instanced satellites with the existing interactive particle field. No external model assets or React dependency added. Bundled Three.js licensing remains in place.
+- Cinematic routing work is local: clicked-surface transitions, directional lesson/project steps, async research mounting, rapid-navigation cleanup, and reduced-motion fallback.
+- Latest published version remains `f1f0232` at https://rei-pink.vercel.app/. This Studio pass is NOT committed or deployed.
+- Validation this pass: JavaScript syntax checks passed for app, universe, spatial, motion. Desktop Academy/workshop and mobile home/writing-page screenshots inspected; mobile width checked at 390px; workshop and mobile routes showed no horizontal page overflow. This is targeted visual inspection, not a full regression pass.
+- The cinematic QA test passed before this Studio pass. A subsequent elevated research QA command was blocked by automatic approval review because workspace credits were exhausted. Do not represent that rerun as passed or bypass the blocked approval. Full interaction regression and publishing remain pending.
+- Next: complete route-wide visual/interaction QA when approval access is restored, review final visuals with the user, then commit and push to the existing GitHub remote. Keep current local user data intact.
+
 
 ## Project and preview
 - Source: `dist/` — vanilla HTML/CSS/JavaScript, no build step.
