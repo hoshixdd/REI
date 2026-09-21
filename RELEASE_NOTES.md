@@ -1,5 +1,13 @@
 # REI graphics and identity update
 
+## Free research workbench — 2026-09-22
+
+- Added reference import preview/deduplication, local PDF reader and source-linked passages, claim/evidence relationships, methods planning, coverage/comparison tools, and an expandable project model.
+- Added rehearsal answers, decision/search logs, draft milestones, review exports, storage feedback, and complete project backups including PDFs.
+- All core workflows run locally without paid services. PDF.js is bundled with its license. Live discovery, accounts/sync, AI, OCR, and full AR/VR remain future work.
+- Core regression tests passed. Browser checks covered import → PDF passage → claim → proposal, design fields, rehearsal/history, complete backup/restore with PDF, and mobile Reader layout. Remaining QA is detailed in HANDOFF.md; the full mobile/browser regression suite is not claimed as passed.
+
+
 ## Motion and particle tuning - 2026-09-21
 
 - Shortened page arrivals to 300ms and chapter transitions to 220ms, removed full-screen blur and the two-frame route delay, and paused decorative rendering during navigation.

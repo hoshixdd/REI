@@ -1,5 +1,68 @@
 # REI — continuation handoff
 
+## Current handoff — 2026-09-22: free research workbench
+
+This section is the current source of truth; older sections below describe historical releases. The user requested immediate publication of the current version and a continuation handoff. The broader innovation roadmap is not complete.
+
+### Product and cost constraints
+
+- Product name: REI. Repository: https://github.com/hoshixdd/REI (master). Production: https://rei-pink.vercel.app/.
+- Stay on the free/local-first path. No required paid APIs, AI subscriptions, or cloud accounts were added. No keys or credentials are needed for the new workbench.
+- Preserve the interactive particle direction, glass logo, and recently shortened transitions. The user rejected solid decorative sculptures and crowded/high-force particles.
+- Existing learning lessons, notebook, toolkit, and research functionality remain. Research data is separate from the learning notebook.
+
+### What this version adds
+
+Project navigation now includes Library, Reader, Evidence table, Claims, Research design, Literature map, Proposal studio, and Review & history.
+
+1. CSV, RIS, and basic BibTeX imports with preview, selection, duplicate DOI/title exclusion, and library/bibliography exports. Complex BibTeX macros are not expanded.
+2. Local PDF attachment and rendering using vendored Mozilla PDF.js 6.3.289. Page navigation, extracted selectable text, and passage capture with a PDF page locator. Exact quotations remain separate from researcher interpretations. No OCR; scanned PDFs may have no extractable text. Selection operates in the extracted text panel, not an overlay on the PDF image.
+3. Claims with supporting/challenging/mixed/uncertain evidence links, editing, review state, and insertion into the proposal with source details and stable evidence IDs. Linked evidence cannot be removed until unlinked from claims/comparisons.
+4. Objectives, measures, collection methods, analysis plans, and alignment rationales. Transparent completeness checks; these do not assess scientific validity.
+5. Collection coverage table and manually authored comparisons of two evidence notes. These cannot establish that a gap exists in the entire literature.
+6. Expandable question/claim/evidence/source outline above the existing citation map. This is an accessible project model, not a full spatial/VR digital twin.
+7. Defense rehearsal prompts, decision journal, search log, and the latest 20 proposal/question snapshots. Changing the research question creates a snapshot and requests a design review. Draft restoration saves the current draft first.
+8. Markdown review package, standalone readable HTML review, storage estimates, optional persistent-storage request, and complete JSON backup/restore including PDFs.
+
+### Files and storage
+
+- `dist/workbench-core.js`: pure import parsing, duplicate planning, workbench normalization/validation, completeness checks, bibliography.
+- `dist/workbench.js`: feature views and event handling, PDF lifecycle, attachment storage, exports, and integration API.
+- `dist/workbench.css`: responsive workbench layouts using existing REI styling.
+- `dist/research.js`: original project store and routes; calls the workbench extension. `persist` clones the selected project before asynchronous writes.
+- `dist/index.html`: loads core and workbench before research/app; asset token `rei-workbench-20260922`.
+- `dist/vendor/pdfjs/`: local PDF.js module/worker, CMaps, fonts, WASM, and license. Lazy loaded when a PDF is opened. No runtime CDN needed.
+- IndexedDB `rei-research` / `projects`: project records. `project.workbench.version = 1` holds new records.
+- IndexedDB `rei-documents` / `files`: PDF blobs keyed by project ID and paper ID. Normal project JSON backups exclude PDFs; Review & history offers complete backups.
+- Limits: 5 projects, 200 sources/project, 2 MB reference imports, 20 MB/PDF, 60 MB attachments/project, 100 MB backup restore input. Browser storage can still be cleared; keep external backups.
+- Localhost and Vercel use different browser storage. Restoring creates a separate project; existing projects are not overwritten.
+
+### Validation actually completed
+
+- `tests/workbench-core.cjs` passed: quoted/multiline CSV, RIS authors/year, nested BibTeX, malformed imports, duplicate planning, broken evidence-link validation, PDF attachment validation, and missing design fields.
+- Browser QA on a fictional local test project: imported two distinct sources while excluding a duplicate; rendered a locally generated PDF; extracted text; saved passage/page/finding; created a claim; linked evidence; inserted it into a proposal; saved a complete objective and methods plan; saved rehearsal answer and milestone; checked storage feedback.
+- Exported complete JSON backup to Downloads, validated its contents with the core validator (2 sources, 1 evidence note, 1 claim, 1 objective, 2 snapshots, 1 PDF), restored as a separate project, and reopened the restored PDF successfully.
+- Reader layout at 390px: one-column layout and no horizontal overflow. Console error checks passed on the inspected workflow.
+- All-section mobile QA was interrupted after a browser-control timeout while moving from Evidence to Claims. Do not describe the entire mobile suite as passed. No full end-to-end automated browser suite was run in this pass.
+- The readable HTML review export was implemented after the backup check and still needs a dedicated visual/export check. PDF text-selection capture button, comparisons, deletion guards, draft restore, reduced-motion traversal, and large/complex PDF cases need further dedicated QA.
+
+### Continue here next
+
+1. Resume QA with a local server and a fictional test project. Test remaining mobile sections, import variants, evidence unlink/remove guards, two-note comparisons, snapshot restore, and both review exports. Check keyboard navigation and reduced motion.
+2. Improve recovery of partially completed forms when switching views; most forms currently save on explicit submission. Proposal and paper reading notes retain existing autosave behavior.
+3. Strengthen attachment lifecycle/concurrency tests (switching sources/routes while reading, replacement, quota failures, malformed backups) and large-project performance checks before increasing limits.
+4. Build on this working evidence-to-proposal foundation. Live discovery, Supabase accounts/sync, collaboration, AI extraction/chat, OCR, formal citation-style formatting, automatic contradiction detection, and full AR/VR/presentation modes are NOT implemented. Existing free setup scaffolding does not mean a backend is connected.
+5. Keep the handoff truthful about what is implemented versus the broader roadmap. Never label completeness checks as a scientific quality score or claim reviewed-collection gaps prove novelty.
+
+### Run and deploy
+
+Static vanilla JS application; no build or npm installation is required. Serve `dist` locally on port 4173 with Python. Run `node tests/workbench-core.cjs` and `node --check` on changed scripts. `vercel.json` deploys `dist` directly; pushing master triggers the existing Vercel integration. Verify live asset contents after deployment rather than assuming a successful push means the site updated.
+
+The tracked `outputs/research-ready-hub.zip` is a historical filename for the current distributable and is refreshed with this release. Test fixtures and scratch scripts under `work/` are ignored and are not shipped.
+
+---
+
+
 ## Motion and particle tuning - 2026-09-21
 
 - Shortened page arrivals to 300ms and chapter transitions to 220ms, removed full-screen blur and the two-frame route delay, and paused decorative rendering during navigation.

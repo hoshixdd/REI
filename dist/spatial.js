@@ -21,7 +21,7 @@
   const lessonStep=from[0]==='#lesson'&&to[0]==='#lesson'&&from[1]===to[1];
   const projectStep=from[0]==='#research'&&to[0]==='#research'&&from[1]&&from[1]===to[1];
   const isStep=lessonStep||projectStep;
-  const order=['library','map','evidence','proposal'];
+  const order=['library','reader','evidence','claims','design','map','proposal','review'];
   const direction=lessonStep?Math.sign(stepIndex(nextHash)-stepIndex(lastHash)):projectStep?Math.sign(order.indexOf(to[2])-order.indexOf(from[2])):1;
   root.dataset.transit=isStep?'chapter':clicked?.element?'card':'portal';
   root.style.setProperty('--travel',String(direction<0?-1:1));

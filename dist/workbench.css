@@ -1,0 +1,35 @@
+/* Research tools inherit REI's identity; long-form work gets a quieter surface. */
+.research-tabs{display:flex;flex-wrap:wrap;gap:6px;overflow:visible}
+.research-tabs a{min-height:44px;display:flex;align-items:center;white-space:normal}
+.wb-tools,.wb-section{margin:36px 0;padding:28px 0;border-top:1px solid #39465c}
+.wb-tools h3,.wb-section h3,.wb-record h3{font-size:1.4rem;line-height:1.35;margin:8px 0 14px;letter-spacing:-.025em}
+.wb-tools p,.wb-section p,.wb-record p,.wb-reader p{max-width:80ch;color:#bcc9de;line-height:1.65}
+.wb-hint{font-size:.88rem;line-height:1.6;color:#b1bfd5;margin:14px 0}
+.wb-tools input[type=file],.wb-reader-controls input[type=file]{display:block;max-width:100%;font-size:.85rem;margin-top:8px}
+.wb-tools label.button,.wb-reader-controls label.button{display:block;width:fit-content;max-width:100%;white-space:normal;border-radius:14px;padding:14px 18px}
+.wb-record{border-top:1px solid #334258;padding:24px 0;overflow-wrap:anywhere}
+.wb-record dl{display:grid;grid-template-columns:140px minmax(0,1fr);gap:12px;margin:20px 0}
+.wb-record dt{text-transform:capitalize;color:#a5d9ee}.wb-record dd{margin:0;white-space:pre-wrap;color:#d4dceb}
+.wb-record time{font-size:.85rem;color:#a2b5d1}.wb-record pre{white-space:pre-wrap;max-height:320px;overflow:auto;font:inherit;line-height:1.7}
+.wb-record label,.wb-inline label,.wb-reader-controls label,.wb-reader label{display:grid;gap:8px;color:#d4dceb;font-size:.95rem}
+.wb-record textarea,.wb-reader textarea,.wb-reader input,.wb-reader select,.wb-reader-controls select,.wb-inline select{width:100%;min-width:0;color:#ecf3ff;background:#0e1729;border:1px solid #526078;border-radius:10px;padding:12px;font:inherit}
+.wb-record textarea{width:100%;min-height:110px;padding:14px;background:#0e1729;color:#ecf3ff;border:1px solid #526078;border-radius:10px;font:inherit;line-height:1.65;resize:vertical}
+.wb-record .button{margin-top:12px}.wb-links{padding-left:24px}.wb-links li{padding:12px 0;line-height:1.6}.wb-links strong{text-transform:capitalize;color:#a9ddf2}.wb-links p{font-size:.9rem}
+.wb-inline{display:grid;grid-template-columns:minmax(0,2fr) minmax(130px,1fr) auto;gap:14px;align-items:end;margin:20px 0}
+.wb-checks{background:#16233a;border-left:3px solid #9ce5ed;padding:24px 30px;margin:24px 0}.wb-checks li{margin:10px 0;color:#d7e4f4;line-height:1.5}
+.wb-columns{display:grid;grid-template-columns:1fr 1fr;gap:30px}.wb-columns>div{min-width:0}
+.wb-reader-controls{display:flex;flex-wrap:wrap;align-items:end;gap:16px;margin:24px 0}.wb-reader-controls>label:first-child{flex:1;min-width:180px}
+.wb-reader{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,1fr);gap:30px;align-items:start}
+.wb-reader>section{min-width:0}.wb-reader .actions{gap:8px;align-items:end}.wb-reader .actions label{width:76px}
+#wb-pdf-canvas{max-width:100%;height:auto;background:white;border-radius:4px;display:block;margin:20px 0}
+#wb-pdf-canvas[width="0"]{display:none}.wb-page-text{white-space:pre-wrap;line-height:1.8;color:#e8edf6;padding:20px;background:#101a2c;max-height:400px;overflow:auto;user-select:text;cursor:text}
+.wb-page-text::selection{background:#80d8ea;color:#071421}.wb-reader blockquote,.wb-model blockquote{margin:15px 0;padding:10px 16px;border-left:2px solid #90d8ef;color:#d8e4f4;white-space:pre-wrap}
+.wb-import-list{max-height:380px;overflow:auto;margin:18px 0;border-block:1px solid #39465c}
+.wb-import-list label{display:flex;align-items:start;gap:14px;padding:14px;border-bottom:1px solid #27354c;cursor:pointer}.wb-import-list input{margin:6px 0;width:20px;height:20px;flex-shrink:0}.wb-import-list small{display:block;color:#b8c6dc;margin-top:6px}
+.wb-model{position:relative;margin:30px 0 50px;padding:32px;background:radial-gradient(ellipse at top,#163d57 0,transparent 65%),#0b1425;border:1px solid #375269;border-radius:22px}
+.wb-question{max-width:780px;margin:0 auto 30px;text-align:center}.wb-question h3{font-size:clamp(1.3rem,3vw,2rem);line-height:1.45}.wb-model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:22px}
+.wb-model-node{padding:22px;border:1px solid #4c6880;border-radius:14px;background:#101f33}.wb-model-node summary{line-height:1.6;font-weight:600;cursor:pointer;overflow-wrap:anywhere}.wb-model-node summary span{display:block;letter-spacing:.12em;font-size:.75rem;color:#a3dce9;margin-bottom:12px}
+.wb-model-evidence{border-top:1px solid #3e546a;margin-top:20px;padding-top:18px;overflow-wrap:anywhere}.wb-model-methods{margin-top:30px;border-top:1px solid #405b6e;padding-top:24px}.wb-model-methods details{margin:16px 0}
+.research-content :is(button,a,input,textarea,select,summary):focus-visible{outline:2px solid #a4e6fa;outline-offset:4px}.research-content summary{min-height:44px;align-content:center}
+@media(max-width:760px){.wb-reader,.wb-columns,.wb-inline{grid-template-columns:1fr}.wb-model{padding:20px}.wb-record dl{grid-template-columns:1fr;gap:8px}.wb-record dd{margin-bottom:14px}.research-tabs a{font-size:.85rem;padding:9px 12px}.wb-checks{padding:20px}.wb-tools .actions,.wb-record .actions{align-items:stretch}.wb-reader-controls{align-items:stretch}.wb-reader-controls .button{width:100%}.wb-reader .research-form{padding:18px}}
+@media(prefers-reduced-motion:no-preference){.wb-model-node{transition:border-color .18s ease,background .18s ease}.wb-model-node[open]{border-color:#96dcea;background:#142a40}}
