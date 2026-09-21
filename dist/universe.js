@@ -6,7 +6,7 @@
  window.startUniverse=async()=>{
  const host=document.querySelector('#universe')||document.querySelector('.lesson-visual')||document.querySelector('.destination-scene');if(!host||host===activeHost)return;
  window.stopUniverse();activeHost=host;const ticket=generation,hero=host.id==='universe';let canvas=host.querySelector('canvas');if(!canvas){canvas=document.createElement('canvas');canvas.setAttribute('aria-hidden','true');host.append(canvas)}
- if(!hero){if(!host.querySelector('.sculpture-fallback'))host.insertAdjacentHTML('beforeend','<img class="sculpture-fallback" src="rei-mark.svg" alt="">');host.classList.add('sculpture');host.dataset.sculpture=String(({academy:0,journey:1,toolkit:2,notebook:2,seminars:1,resource:2,workshop:1})[document.body.dataset.page]??Math.floor(Number(location.hash.split('/')[1]||0)/3));return}
+ if(!hero){if(!host.querySelector('.sculpture-fallback'))host.insertAdjacentHTML('beforeend','<img class="sculpture-fallback" src="particle-fallback.svg" alt="">');host.classList.add('sculpture');host.dataset.sculpture=String(({academy:48,journey:49,toolkit:51,notebook:57,seminars:53,resource:55,workshop:58})[document.body.dataset.page]??(40+Number(location.hash.split('/')[1]||0)));const page=document.body.dataset.page,part=location.hash.split('/')[1];if(page==='resource')host.dataset.sculpture=String(60+Math.max(0,['proposal','matrix','search','framework','methods','checklist'].indexOf(part)));if(page==='workshop')host.dataset.sculpture=String(70+Number(part||0));if(page==='notebook')host.dataset.sculpture=String(80+Math.max(0,['notes','draft','readiness'].indexOf(part||'notes')));return}
  let T;try{T=await library}catch{if(ticket===generation)fallback(host,canvas);return}if(ticket!==generation||!host.isConnected)return;
  let renderer;try{renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:false,powerPreference:'low-power'})}catch{fallback(host,canvas);return}
  canvas.dataset.renderer='webgl';renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<700?1.35:1.65));renderer.setClearColor(0,0);
@@ -14,9 +14,9 @@
  const count=hero?(innerWidth<700?14000:26000):10000,geometry=new T.BufferGeometry(),positions=new Float32Array(count*3),seeds=new Float32Array(count*3);let seed=91;const rand=()=>{seed=seed*16807%2147483647;return(seed-1)/2147483646};
  for(let i=0;i<count;i++){seeds[i*3]=i/count;seeds[i*3+1]=rand();seeds[i*3+2]=rand()}
  geometry.setAttribute('position',new T.BufferAttribute(positions,3));geometry.setAttribute('aSeed',new T.BufferAttribute(seeds,3));
- const uniforms={uTime:{value:0},uPhase:{value:0},uPointer:{value:new T.Vector2()},uPixel:{value:renderer.getPixelRatio()},uScroll:{value:0}};
+ const uniforms={uTime:{value:0},uPhase:{value:0},uPointer:{value:new T.Vector2()},uPixel:{value:renderer.getPixelRatio()},uScroll:{value:0},uBurst:{value:0}};
  const material=new T.ShaderMaterial({uniforms,transparent:true,depthWrite:false,blending:T.AdditiveBlending,vertexShader:`
- attribute vec3 aSeed;uniform float uTime,uPhase,uPixel,uScroll;uniform vec2 uPointer;varying vec3 vColor;varying float vAlpha;
+ attribute vec3 aSeed;uniform float uTime,uPhase,uPixel,uScroll,uBurst;uniform vec2 uPointer;varying vec3 vColor;varying float vAlpha;
  #define PI 3.14159265
  void main(){
  float t=uTime;float u=aSeed.x;float v=aSeed.y;float w=aSeed.z;
@@ -32,7 +32,7 @@
  vec3 terrain=vec3((u-.5)*5.0,0.0,(v-.5)*4.0);terrain.y=sin(terrain.x*2.0+t*.35)*.3+cos(terrain.z*2.2+t*.25)*.4+sin(terrain.x+terrain.z+t*.2)*.4;terrain.yz=mat2(.85,-.53,.53,.85)*terrain.yz;p=mix(p,terrain,clamp(uPhase-2.0,0.0,1.0));
  vec3 lattice=vec3((floor(u*30.0)/29.0-.5)*3.4,(floor(v*30.0)/29.0-.5)*3.4,(floor(w*30.0)/29.0-.5)*3.4);lattice*=.9+.05*sin(length(lattice)*3.0-t);lattice.xy=mat2(.94,-.34,.34,.94)*lattice.xy;p=mix(p,lattice,clamp(uPhase-3.0,0.0,1.0));
  float rot=t*.065+uPointer.x*.22+uScroll*.28;p.xz=mat2(cos(rot),-sin(rot),sin(rot),cos(rot))*p.xz;
- float dist=length(p.xy-uPointer*2.5);p.xy+=(p.xy-uPointer*2.5)*exp(-dist*dist*2.5)*.13;
+ float dist=length(p.xy-uPointer*2.5);p.xy+=(p.xy-uPointer*2.5)*exp(-dist*dist*2.5)*(.7+uBurst);
  p.y+=sin(t*.35)*.045;p.yz=mat2(cos(uPointer.y*.1),-sin(uPointer.y*.1),sin(uPointer.y*.1),cos(uPointer.y*.1))*p.yz;
  vec3 mint=vec3(.39,.86,1.0),violet=vec3(.54,.35,1.0),cyan=vec3(.25,.72,1.0),gold=vec3(1.0,.66,.38);
  vColor=mix(violet,mint,smoothstep(-1.4,1.3,p.y));vColor=mix(vColor,mix(cyan,mint,w),clamp(uPhase,0.0,1.0));vColor=mix(vColor,mix(gold,vec3(.92,.9,.8),u),clamp(uPhase-1.0,0.0,1.0));
@@ -54,17 +54,17 @@
  const core=new T.Mesh(new T.TorusKnotGeometry(.55,.2,128,24,2,3),ceramic);core.rotation.set(.4,.2,.3);nucleus.add(core);
  const cage=new T.LineSegments(new T.EdgesGeometry(new T.IcosahedronGeometry(.88,1)),new T.LineBasicMaterial({color:0xc3edff,transparent:true,opacity:.5}));nucleus.add(cage);
  const satellites=new T.InstancedMesh(new T.OctahedronGeometry(.06),ceramic,24);const matrix=new T.Matrix4();for(let i=0;i<24;i++){const angle=i/24*Math.PI*2;matrix.makeTranslation(Math.cos(angle)*1.85,Math.sin(angle)*1.85,Math.sin(angle*3)*.22);satellites.setMatrixAt(i,matrix)}nucleus.add(satellites);
- nucleus.visible=true;if(!hero)nucleus.scale.setScalar(1.35);
+ nucleus.visible=false;if(!hero)nucleus.scale.setScalar(1.35);
  const rings=new T.Group();scene.add(rings);for(let j=0;j<3;j++){const pts=[];for(let i=0;i<=200;i++){const a=i/200*Math.PI*2;pts.push(new T.Vector3(Math.cos(a)*(2.5+j*.12),Math.sin(a)*(2.5+j*.12),0))}const line=new T.Line(new T.BufferGeometry().setFromPoints(pts),new T.LineBasicMaterial({color:[0xa4ffd5,0x6d7ad9,0x8bc1d8][j],transparent:true,opacity:.10}));line.rotation.set(.8+j*.35,.3+j*.2,j*.6);rings.add(line)}
  const starGeo=new T.BufferGeometry(),stars=new Float32Array(600*3);for(let i=0;i<600;i++){stars[i*3]=(rand()-.5)*13;stars[i*3+1]=(rand()-.5)*9;stars[i*3+2]=-rand()*5}starGeo.setAttribute('position',new T.BufferAttribute(stars,3));const starfield=new T.Points(starGeo,new T.PointsMaterial({color:0xb3cde6,size:.011,transparent:true,opacity:.48,depthWrite:false}));scene.add(starfield);if(!hero)starfield.visible=false;
  let raf=0,time=0,last=performance.now(),visible=true,dirty=true,tx=0,ty=0,px=0,py=0,targetPhase=hero?0:Math.floor(Number(location.hash.split('/')[1]||0)/3),phase=targetPhase,scroll=0;targetPhase=host.dataset.scene?Number(host.dataset.scene):targetPhase;phase=targetPhase;
  const resize=()=>{const r=host.getBoundingClientRect();if(!r.width||!r.height)return;renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();dirty=true};const ro=new ResizeObserver(resize);ro.observe(host);resize();
  const io=new IntersectionObserver(e=>{visible=e[0].isIntersecting;dirty=true});io.observe(host);
- const move=e=>{const r=host.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=-((e.clientY-r.top)/r.height-.5)*2;dirty=true},leave=()=>{tx=ty=0;dirty=true};const surface=host.closest('.discovery-stage')||host;surface.addEventListener('pointermove',move,{passive:true});surface.addEventListener('pointerleave',leave);
+ const move=e=>{const r=host.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=-((e.clientY-r.top)/r.height-.5)*2;dirty=true},leave=()=>{tx=ty=0;dirty=true};const surface=host.closest('.discovery-stage')||host;surface.addEventListener('pointermove',move,{passive:true});surface.addEventListener('pointerleave',leave);const burst=()=>{if(!paused()){uniforms.uBurst.value=1.2;dirty=true}};surface.addEventListener('pointerdown',burst);
  const change=()=>{dirty=true},select=e=>{targetPhase=e.detail.phase;dirty=true},onScroll=()=>{scroll=Math.max(-1,Math.min(1,host.getBoundingClientRect().top/innerHeight));dirty=true};window.addEventListener('rrh:motion',change);window.addEventListener('rrh:phase',select);window.addEventListener('scroll',onScroll,{passive:true});
  const frame=now=>{raf=requestAnimationFrame(frame);const dt=Math.min((now-last)/1000,.04);last=now;if(!visible||document.hidden)return;if(paused()&&!dirty)return;if(!paused()){time+=dt;px+=(tx-px)*.035;py+=(ty-py)*.035;phase+=(targetPhase-phase)*Math.min(1,dt*2.5)}else phase=targetPhase;
- nucleus.rotation.set(time*.12, time*.18+px*.3,phase*.3);nucleus.scale.setScalar((hero?1:1.35)*(1-.10*Math.min(phase,2)));core.rotation.y=-time*.12;cage.rotation.z=time*.08;satellites.rotation.z=-time*.06;uniforms.uTime.value=time;uniforms.uPhase.value=phase;uniforms.uPointer.value.set(px,py);uniforms.uScroll.value=paused()?0:scroll;rings.rotation.y=time*.035;rings.rotation.z=phase*.25;renderer.render(scene,camera);dirty=false};raf=requestAnimationFrame(frame);
- cleanup=()=>{cancelAnimationFrame(raf);ro.disconnect();io.disconnect();surface.removeEventListener('pointermove',move);surface.removeEventListener('pointerleave',leave);window.removeEventListener('rrh:motion',change);window.removeEventListener('rrh:phase',select);window.removeEventListener('scroll',onScroll);scene.traverse(o=>{o.geometry?.dispose();o.material?.dispose()});renderer.dispose();renderer.forceContextLoss()};
+ nucleus.rotation.set(time*.12, time*.18+px*.3,phase*.3);nucleus.scale.setScalar((hero?1:1.35)*(1-.10*Math.min(phase,2)));core.rotation.y=-time*.12;cage.rotation.z=time*.08;satellites.rotation.z=-time*.06;uniforms.uBurst.value=paused()?0:uniforms.uBurst.value*.9;uniforms.uTime.value=time;uniforms.uPhase.value=phase;uniforms.uPointer.value.set(px,py);uniforms.uScroll.value=paused()?0:scroll;rings.rotation.y=time*.035;rings.rotation.z=phase*.25;renderer.render(scene,camera);dirty=false};raf=requestAnimationFrame(frame);
+ cleanup=()=>{cancelAnimationFrame(raf);ro.disconnect();io.disconnect();surface.removeEventListener('pointermove',move);surface.removeEventListener('pointerleave',leave);surface.removeEventListener('pointerdown',burst);window.removeEventListener('rrh:motion',change);window.removeEventListener('rrh:phase',select);window.removeEventListener('scroll',onScroll);scene.traverse(o=>{o.geometry?.dispose();o.material?.dispose()});renderer.dispose();renderer.forceContextLoss()};
  };
  function fallback(host,canvas){canvas.remove();host.classList.add('atlas-fallback');host.insertAdjacentHTML('beforeend','<div class="fallback-orb" aria-hidden="true"></div>');cleanup=()=>host.querySelector('.fallback-orb')?.remove()}
  window.addEventListener('rrh:route',()=>window.startUniverse());window.startUniverse();

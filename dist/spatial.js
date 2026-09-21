@@ -3,7 +3,7 @@
  const root=document.documentElement;
  let active=null,serial=0,pending=null,lastHash=location.hash,tagged=[],fallbackAnimation=null;
  const reduced=()=>root.dataset.motion==='off'||matchMedia('(prefers-reduced-motion:reduce)').matches;
- const veil=document.createElement('div');veil.className='transit-field';veil.setAttribute('aria-hidden','true');veil.innerHTML='<i></i><i></i><i></i><span>REI / EXPLORING</span>';document.body.append(veil);
+ const veil=document.createElement('div');veil.className='transit-field';veil.setAttribute('aria-hidden','true');veil.innerHTML='<svg viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true"><path d="M-100 350C180 20 340 620 610 310S1000 100 1300 350"/><path d="M-100 370C180 60 340 640 610 330S1000 120 1300 370"/><path d="M-100 330C180 0 340 600 610 290S1000 80 1300 330"/></svg>';document.body.append(veil);
  const clearNames=()=>{tagged.forEach(el=>el.style.removeProperty('view-transition-name'));tagged=[]};
  const name=(el,value)=>{if(el){el.style.viewTransitionName=value;tagged.push(el)}};
  const stepIndex=hash=>['learn','example','write','check'].indexOf(hash.split('/')[2]||'learn');
@@ -28,14 +28,14 @@
   root.style.setProperty('--entry-x',Math.max(0,Math.min(innerWidth,clicked?.x??innerWidth*.5))+'px');
   root.style.setProperty('--entry-y',Math.max(0,Math.min(innerHeight,clicked?.y??innerHeight*.4))+'px');
   lastHash=nextHash;
-  const update=async()=>{await render();if(ticket!==serial)return;
+  const update=async()=>{await render();if(!reduced())await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));if(ticket!==serial)return;
    if(!reduced()&&document.startViewTransition){if(isStep){name(document.querySelector('.lesson-title,.research-project-heading'),'research-heading');name(document.querySelector('.lesson-flow,.research-tabs'),'research-chapters')}
-   else if(clicked?.element){const target=document.querySelector('.lesson-title,.page-heading,.research-project-heading,.research-heading');name(target,'research-surface');name(titleOf(target),'research-title')}}
+   else if(clicked?.element){const target=document.querySelector('.lesson-title,.page-heading,.research-project-heading,.research-heading');name(target,'research-surface');name(titleOf(target),'research-title');if(clicked.element.querySelector('.phase-art'))name(target?.querySelector('.sculpture'),'research-field')}}
    document.querySelector('#main').focus({preventScroll:true});
   };
   if(reduced()){update();delete root.dataset.transit;return}
   if(isStep){name(document.querySelector('.lesson-title,.research-project-heading'),'research-heading');name(document.querySelector('.lesson-flow,.research-tabs'),'research-chapters')}
-  else if(clicked?.element?.isConnected){name(clicked.element,'research-surface');name(titleOf(clicked.element),'research-title')}
+  else if(clicked?.element?.isConnected){name(clicked.element,'research-surface');name(titleOf(clicked.element),'research-title');name(clicked.element.querySelector('.phase-art'),'research-field')}
   if(document.startViewTransition){
    active=document.startViewTransition(update);active.ready.catch(()=>{});active.updateCallbackDone.catch(()=>{});active.finished.catch(()=>{}).finally(()=>{if(ticket===serial){active=null;clearNames();delete root.dataset.transit}});
   }else{

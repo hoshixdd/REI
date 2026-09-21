@@ -1,5 +1,17 @@
 # REI graphics and identity update
 
+## Particle revision — 2026-09-21
+
+The user rejected the solid illustrative sculptures. Keep the REI glass logo but use original particle graphics throughout the product. References are luminous flowing wave images, not assets to copy.
+
+- Replaced solid illustrations with a shared 16,000-point shader: twelve form families including ribbons, galaxies, wave terrain, helixes, vortices, braided loops, fountains and constellations. Major components get distinct numeric variants: homepage 0–2, Journey 3–5, Academy lessons 10–18, Toolkit resources 20–25, separate destination/workspace/detail variants.
+- Cursor proximity repels points in the screen plane. Press produces an additional dispersal burst; movement eases back. Touch pointer events retain normal scrolling. Reduced motion and global pause suppress interaction animation.
+- Hero's solid nucleus is hidden and its particle repulsion is stronger. Glass brand mark stays separate. Added a locally generated particle SVG fallback.
+- Fixed legacy selector specificity that shrank destination artwork into a fraction of its intended width. Preserved the improved layouts.
+- Navigation uses a flowing dotted wake and softer camera arrival. Resource/lesson entry can share the particle illustration between surfaces; route mounting waits two frames before capture. Reduced-motion path remains immediate.
+- Checked desktop shader rendering, visible press dispersal, unique Academy/Toolkit/Journey variant assignments, resource transition cleanup (zero leftover names), motion toggle, 390px mobile layout (no horizontal overflow), and console logs (no errors in inspected routes). JavaScript syntax/whitespace checks passed. Full automated regression was not rerun. No deployment in this pass.
+
+
 ## REI identity and sculptural graphics — 2026-09-21
 
 - Rebranded header, footer, page titles, about/backup descriptions, directory, transition label, and draft illustration to REI. Existing storage keys and backup schema stay compatible.
