@@ -28,7 +28,7 @@
   root.style.setProperty('--entry-x',Math.max(0,Math.min(innerWidth,clicked?.x??innerWidth*.5))+'px');
   root.style.setProperty('--entry-y',Math.max(0,Math.min(innerHeight,clicked?.y??innerHeight*.4))+'px');
   lastHash=nextHash;
-  const update=async()=>{await render();if(!reduced())await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));if(ticket!==serial)return;
+  const update=async()=>{await render();if(ticket!==serial)return;
    if(!reduced()&&document.startViewTransition){if(isStep){name(document.querySelector('.lesson-title,.research-project-heading'),'research-heading');name(document.querySelector('.lesson-flow,.research-tabs'),'research-chapters')}
    else if(clicked?.element){const target=document.querySelector('.lesson-title,.page-heading,.research-project-heading,.research-heading');name(target,'research-surface');name(titleOf(target),'research-title');if(clicked.element.querySelector('.phase-art'))name(target?.querySelector('.sculpture'),'research-field')}}
    document.querySelector('#main').focus({preventScroll:true});
@@ -39,9 +39,9 @@
   if(document.startViewTransition){
    active=document.startViewTransition(update);active.ready.catch(()=>{});active.updateCallbackDone.catch(()=>{});active.finished.catch(()=>{}).finally(()=>{if(ticket===serial){active=null;clearNames();delete root.dataset.transit}});
   }else{
-   update().then(()=>{if(ticket!==serial||reduced())return;fallbackAnimation=document.querySelector('#main').animate([{opacity:0,transform:isStep?`translateX(${direction*32}px)`:'translateY(22px) scale(.99)'},{opacity:1,transform:'none'}],{duration:isStep?360:520,easing:'cubic-bezier(.16,1,.3,1)'});fallbackAnimation.finished.catch(()=>{}).finally(()=>{if(ticket===serial){clearNames();delete root.dataset.transit}})});
+   update().then(()=>{if(ticket!==serial||reduced())return;fallbackAnimation=document.querySelector('#main').animate([{opacity:0,transform:isStep?`translateX(${direction*32}px)`:'translateY(22px) scale(.99)'},{opacity:1,transform:'none'}],{duration:isStep?220:300,easing:'cubic-bezier(.16,1,.3,1)'});fallbackAnimation.finished.catch(()=>{}).finally(()=>{if(ticket===serial){clearNames();delete root.dataset.transit}})});
   }
-  if(!isStep)veil.animate([{opacity:0,transform:'scale(.9)'},{opacity:.45,offset:.35},{opacity:0,transform:'scale(1.15)'}],{duration:700,easing:'cubic-bezier(.16,1,.3,1)'});
+  if(!isStep)veil.animate([{opacity:0,transform:'scale(.9)'},{opacity:.45,offset:.35},{opacity:0,transform:'scale(1.15)'}],{duration:320,easing:'cubic-bezier(.16,1,.3,1)'});
  };
  addEventListener('rrh:motion',()=>{if(reduced()){active?.skipTransition?.();fallbackAnimation?.cancel();veil.getAnimations().forEach(a=>a.cancel());clearNames();delete root.dataset.transit}});
  const descriptions={academy:['Research academy','Learn the process, one milestone at a time.','Choose a lesson. Read the concept, compare an example, write your own draft, and check your understanding.'],toolkit:['Research toolkit','Choose a tool for the task ahead.','Open a resource guide to see when to use it, what it contains, and how to download an editable copy.'],seminars:['Guided workshops','Give one research task your full attention.','Choose a self-guided session. Each workshop has a timed agenda, linked activities, and a clear next step.']};

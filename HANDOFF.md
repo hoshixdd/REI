@@ -1,5 +1,13 @@
 # REI — continuation handoff
 
+## Motion and particle tuning - 2026-09-21
+
+- Shortened page arrivals to 300ms and chapter transitions to 220ms, removed full-screen blur and the two-frame route delay, and paused decorative rendering during navigation.
+- Reduced shared particle fields from 16,000 to 8,000 points, lowered hero rendering density, pulled the illustration camera back, and reduced point size for more breathing room.
+- Narrowed cursor influence and softened hover/press displacement. Distinct forms, pause controls, and reduced-motion support remain.
+- Verified JavaScript syntax, whitespace, Journey graphics, Academy/Toolkit navigation cleanup, no desktop horizontal overflow, and no console errors on inspected routes. Device-wide performance benchmarks were not run.
+
+
 ## Particle revision — 2026-09-21
 
 The user rejected the solid illustrative sculptures. Keep the REI glass logo but use original particle graphics throughout the product. References are luminous flowing wave images, not assets to copy.
