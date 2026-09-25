@@ -1,5 +1,42 @@
 # REI — continuation handoff
 
+## Current continuation update — 2026-09-25: research depth pass
+
+The latest work is pushed to `master` through commit `ddb11e7`. The repository is clean and synchronized with `https://github.com/hoshixdd/REI`.
+
+### Implemented since the previous handoff
+
+- Research form drafts survive switching between project sections and restore with a visible local-draft message. Successful submission clears the draft.
+- PDF restore validates attachment ownership, data URL format, PDF signatures, and stages records before IndexedDB writes.
+- The PDF reader remembers the last page separately for each project and paper.
+- Mobile research navigation remains visible while scrolling.
+- Research progress feedback shows the four foundational areas: sources, evidence, proposal, and research design.
+- The research argument debugger adds transparent prompts for unsupported claims, one-note claims, unlinked evidence, unresolved challenging evidence, incomplete comparisons, proposal text without claims, and missing design fields. These are prompts, not scientific scores.
+- Evidence notes now support researcher-authored source-quality context: study type, sample or material, transferability or boundaries, conflicts or funding, and confidence in the interpretation.
+- Research Design includes a separate readiness map for question clarity, source coverage, evidence traceability, method alignment, ethics planning, feasibility, proposal coherence, and review readiness.
+
+### Current validation
+
+- `tests/workbench-core.cjs` passes after the research-depth changes.
+- `node --check` passes for the changed research and workbench modules.
+- The repository is clean and pushed to GitHub.
+- Full Playwright browser suites remain environment-blocked because browser automation hangs in the current restricted runtime. Do not claim those suites passed.
+
+### Next implementation order
+
+1. Cross-project local search across papers, passages, findings, claims, decisions, proposals, notes, and lesson drafts.
+2. Synthesis matrix and thematic coding tools.
+3. Review modes with unresolved actions for evidence, methods, ethics, and supervisor feedback.
+4. Rich exports: evidence matrix, claim graph, source audit, decision journal, and supervisor packet.
+5. Toolkit resource progress tracking.
+6. Broader mobile, accessibility, and cross-browser QA.
+
+### Product direction
+
+REI should compete through transparent research reasoning rather than paid discovery or automatic scoring. Keep the evidence chain visible: question → claim → evidence note → exact passage → source → limitation. Preserve researcher control, fictional or non-personal test data, explicit consent, teacher or supervisor review, and no automatic scientific judgment.
+
+Cloud accounts, sync, live provider discovery, AI extraction, OCR, collaboration, citation services, and AR/VR remain future work requiring external service or plan decisions.
+
 ## Current handoff — 2026-09-22: free research workbench
 
 This section is the current source of truth; older sections below describe historical releases. The user requested immediate publication of the current version and a continuation handoff. The broader innovation roadmap is not complete.
