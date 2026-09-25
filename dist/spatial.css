@@ -69,3 +69,5 @@ html[data-motion=off]::view-transition-group(*),html[data-motion=off]::view-tran
 
 .research-progress{display:inline-flex;width:max-content;padding:7px 11px;border:1px solid #65dbff35;border-radius:999px;color:#9ee4ff;font-size:.78rem;letter-spacing:.04em}
 @media(max-width:500px){.research-progress{font-size:.7rem}}
+
+@media(max-width:800px){.research-tabs{position:sticky;top:0;z-index:5;background:#0d1729f2;padding:6px;border-radius:10px;backdrop-filter:blur(12px)}}
