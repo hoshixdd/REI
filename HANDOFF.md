@@ -243,9 +243,3 @@ Local research workflows now exist at `#research` and `#research/<project-id>/<l
 Read `RELEASE_NOTES.md` for the full implemented/remaining inventory and `FREE_SETUP.md` for the requested free-account setup. The user has no Supabase/OpenAlex accounts yet and asked for setup files and steps. The SQL migration and Edge Function are prepared, not deployed or integration-tested; cloud sign-in/sync and live search frontend are still unimplemented. Do not claim that credentials alone activate them.
 
 The current local implementation has project and paper editing, notes/status, manual collection labels, a pan/zoom citation map and list, editable evidence with comparison table, source-linked proposal writing, and project backup/restore. More complete collection management, spatial 3D map, cloud workflow, and deeper visual refinement remain. This is a tested local increment, not completion of the entire 70% roadmap.
-## Current visual checkpoint — 25 September 2026
-- A visible editorial direction pass is implemented in `dist/award-pass.css`, loaded after the existing UI polish layer from `dist/index.html`.
-- Homepage: enlarged cover typography, oversized field index marker, intentional grid labels, glass atlas panel, stronger discovery-stage framing, elevated workspace entry, and responsive mobile composition.
-- Research Studio: publication-style heading, project index rows, project creation panel, rounded source tabs, and stronger paper/evidence/proposal surfaces. Existing research actions and local-first storage are unchanged.
-- Previewed locally at `http://127.0.0.1:4173/?rei=20260925&pass=award3#home` and `#research` with the current browser. Settled homepage, discovery stage, project index, existing project, and library tab were visually inspected; browser error/warning logs were empty.
-- Full route-wide regression, accessibility certification, cross-browser testing, and deployment verification were not rerun for this CSS-only pass.
