@@ -78,5 +78,5 @@ ei-pdf-page--,String(pageNumber));el.textContent=`Page ${pageNumber} of ${pdfDoc
   if(action==='persist-storage'){const granted=await navigator.storage?.persist?.();document.querySelector('#wb-storage').textContent=granted?'Persistent storage granted. External backups are still recommended.':'Persistent storage was not granted. Export backups regularly.';return}
   await commit();
  }catch(err){toast(err.message||'The operation failed. Your export tools remain available.')}});
- window.REIWorkbench={connect:x=>api=x,render:t=>({reader,claims,design,review})[t](),libraryTools,proposalTools,graph,afterRender,backup,restoreAttachments,removeFiles,history,normalize:C.normalize,validate:C.validateWorkbench,canRemoveEvidence:id=>!state().claims.some(c=>c.links.some(l=>l.evidenceId===id))&&!state().comparisons.some(c=>c.left===id||c.right===id)};
+ window.REIWorkbench={getProject:()=>get(),saveProject:()=>api?.save(),connect:x=>api=x,render:t=>({reader,claims,design,review})[t](),libraryTools,proposalTools,graph,afterRender,backup,restoreAttachments,removeFiles,history,normalize:C.normalize,validate:C.validateWorkbench,canRemoveEvidence:id=>!state().claims.some(c=>c.links.some(l=>l.evidenceId===id))&&!state().comparisons.some(c=>c.left===id||c.right===id)};
 })();
