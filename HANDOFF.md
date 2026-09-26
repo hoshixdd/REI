@@ -255,3 +255,12 @@ The current local implementation has project and paper editing, notes/status, ma
 - Evidence removal now also respects synthesis coding links. A note must be unlinked from claims, comparisons, and themes before removal.
 - Validation: `tests/workbench-core.cjs` passed; `node --check` passed for `dist/research.js`, `dist/workbench-core.js`, and `dist/workbench.js`; `git diff --check` passed. Browser inspection covered the existing project, Synthesis matrix, Review & history, method alignment, starter-template controls, and empty/error prompts. Browser console logs were empty on the inspected routes.
 - Full all-route Playwright regression, formal accessibility certification, cross-browser testing, and Vercel production verification remain incomplete. These features are researcher-authored prompts and organization tools, not automatic scientific judgments.
+
+## GitHub and Vercel release checkpoint — 26 September 2026
+- GitHub `master` is synchronized at commit `36b9767` (`Add research synthesis and review tools`) on `https://github.com/hoshixdd/REI`.
+- The current build was deployed with the authenticated Vercel CLI to the existing `probablecause/rei` project on the Hobby plan.
+- Production alias: `https://rei-pink.vercel.app`.
+- Deployment inspection: `https://vercel.com/probablecause/rei/32swGBoT7ptj7kVkmmz8qdjQXRB9`.
+- Verification completed after deployment: the production alias returned HTTP 200; the root page served the REI app; the public `workbench.js?v=rei-research-depth-20260926` asset returned HTTP 200 and contained the supervisor packet and synthesis export implementations.
+- Vercel created local `.vercel` and `.env*` ignore rules. No credentials or generated environment files were committed.
+- Vercel production is updated for this release. Full all-route regression, formal accessibility certification, cross-browser testing, and performance testing are still pending.
