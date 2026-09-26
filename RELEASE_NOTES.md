@@ -56,6 +56,17 @@ References: https://github.com/mrdoob/three.js/ and https://github.com/pmndrs/re
 
 # REI spatial studio release
 
+## Research depth checkpoint — 2026-09-26
+
+- Added a local synthesis matrix with researcher-defined themes, coding memos, multi-theme evidence rows, and CSV export.
+- Added a review action queue with generated gaps, manual supervisor actions, completion state, and source-audit CSV export.
+- Added source-audit checks for metadata, evidence locations, limitations, confidence, and claim traceability.
+- Expanded the method worksheet with population, sample, ethics, feasibility, expected output, and per-objective alignment prompts.
+- Added blank, literature review, survey, interview, and experiment/evaluation starter templates.
+- Added a supervisor review packet export containing actions, audit results, alignment details, synthesis, comparisons, claims, evidence, reflection, and bibliography.
+- All features remain local-first and researcher-authored. They do not score scientific quality, require paid services, or connect cloud accounts.
+- Validation: core tests, JavaScript syntax checks, whitespace checks, and targeted browser route inspection passed. Full all-route regression, accessibility certification, cross-browser testing, and production verification remain pending.
+
 ## Visual changes
 - Upgraded the leading homepage scene too: a rotating sculptural knot and wire contour inside the morphing particle field, with pointer response and phase-linked movement.
 - Replaced all three phase illustrations with denser coordinated discovery, evidence, and proposal geometry. Updated Academy and Journey artwork through the shared component.

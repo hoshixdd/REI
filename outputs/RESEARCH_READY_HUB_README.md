@@ -70,3 +70,16 @@ Use **Explore hub** or **Ctrl/Cmd + K** to search lessons, resources, workshops,
 Open `#research` to create local research projects, save paper details, record citation links, compare evidence, and write source-linked proposals. Research projects use IndexedDB and have their own JSON backup/restore; the existing lesson workspace uses its original local storage and backup format. Export both when moving browsers or site addresses.
 
 Live paper search, accounts, and cloud synchronization are not connected. See FREE_SETUP.md for the prepared free-service setup and remaining integration work. RELEASE_NOTES.md lists this release's visual changes, working features, tests, and limitations.
+
+## Research depth tools
+
+The local Research Studio now includes:
+
+- A researcher-defined synthesis matrix with thematic codes, coding memos, and CSV export.
+- A review action queue that turns missing evidence, method, ethics, and feasibility details into explicit next steps.
+- A source audit for incomplete metadata, missing locations, limitations, confidence, and claim traceability.
+- A method alignment worksheet covering objective, measure, population, sample, collection, analysis, ethics, feasibility, expected output, and rationale.
+- Starter templates for literature reviews, surveys, interviews, and experiments/evaluations when creating a project.
+- A supervisor review packet export containing the question, actions, source audit, method alignment, synthesis themes, comparisons, claims, evidence, reflection, and bibliography.
+
+These additions remain local-first and researcher-authored. They provide prompts and organization; they do not score scientific quality or replace supervisor review.
