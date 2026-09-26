@@ -257,7 +257,7 @@ The current local implementation has project and paper editing, notes/status, ma
 - Full all-route Playwright regression, formal accessibility certification, cross-browser testing, and Vercel production verification remain incomplete. These features are researcher-authored prompts and organization tools, not automatic scientific judgments.
 
 ## GitHub and Vercel release checkpoint — 26 September 2026
-- GitHub `master` is synchronized at commit `36b9767` (`Add research synthesis and review tools`) on `https://github.com/hoshixdd/REI`.
+- GitHub `master` is synchronized with the research-depth release and this deployment checkpoint on `https://github.com/hoshixdd/REI` (feature commit `36b9767`; the handoff metadata was committed immediately after it).
 - The current build was deployed with the authenticated Vercel CLI to the existing `probablecause/rei` project on the Hobby plan.
 - Production alias: `https://rei-pink.vercel.app`.
 - Deployment inspection: `https://vercel.com/probablecause/rei/32swGBoT7ptj7kVkmmz8qdjQXRB9`.
