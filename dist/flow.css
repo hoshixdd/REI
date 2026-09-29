@@ -1,0 +1,188 @@
+/* Continuity. The field, the type, and the next section are one scroll. */
+
+html{scroll-behavior:smooth}
+
+/* One atmosphere. The color shifts with the room, it does not restart. */
+body{
+  background:
+    radial-gradient(1200px 700px at 80% -10%, #1a2748 0%, transparent 55%),
+    radial-gradient(900px 600px at -10% 20%, #142033 0%, transparent 50%),
+    #070910 !important;
+}
+body[data-page="academy"],
+body[data-page="lesson"]{
+  background:
+    radial-gradient(1000px 640px at 90% 0%, #1c2438 0%, transparent 60%),
+    radial-gradient(800px 500px at 0% 30%, #10241f 0%, transparent 55%),
+    #070910 !important;
+}
+body[data-page="research"]{
+  background:
+    radial-gradient(1100px 680px at 100% 0%, #1a2040 0%, transparent 58%),
+    radial-gradient(700px 480px at 0% 40%, #241820 0%, transparent 52%),
+    #070910 !important;
+}
+.ambient-field{display:block !important;opacity:.9}
+.ambient-field i{filter:blur(90px)}
+
+/* The particle field dissolves into the page instead of sitting in a frame. */
+.discovery-stage{
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+}
+.discovery-stage .universe{
+  -webkit-mask-image:radial-gradient(ellipse at 58% 46%, #000 46%, transparent 74%);
+  mask-image:radial-gradient(ellipse at 58% 46%, #000 46%, transparent 74%);
+}
+.atlas-panel{background:transparent}
+
+/* Headlines stay large. The second line is the same voice, not a different color trick. */
+.observatory-intro h1{
+  font-size:clamp(3.1rem, 5.2vw, 5.2rem) !important;
+  line-height:.94 !important;
+  letter-spacing:-.06em !important;
+  max-width:10.5ch !important;
+}
+.observatory-intro h1 span{
+  display:inline !important;
+  color:inherit !important;
+  background:none !important;
+  -webkit-text-fill-color:currentColor !important;
+}
+
+/* Guides are pauses in the scroll, not cards dropped on top of it. */
+.study-guide,
+.studio-search{
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  margin:22px 0 0 !important;
+  padding:18px 0 0 !important;
+  border-top:1px solid #d5deff24 !important;
+}
+.observatory .study-guide{max-width:440px}
+
+/* The next band begins while the field is still fading. */
+.research-entry,
+.journey-dock{
+  border:0 !important;
+  background:transparent !important;
+}
+.research-entry{margin-top:72px !important;padding-top:8px !important}
+.journey-dock{margin-top:8px !important}
+.pathways-section{
+  position:relative;
+  margin-top:-36px !important;
+  padding-top:92px !important;
+  background:linear-gradient(180deg, transparent, #070910 24%) !important;
+  overflow:hidden;
+}
+.pathways-section:before{
+  content:"Foundations   ·   Discovery   ·   Creation   ·   Question   ·   Evidence   ·   Method   ·   Proposal   ·   Foundations   ·   Discovery   ·   Creation   ·   Question   ·   Evidence   ·   Method   ·   Proposal   ·";
+  position:absolute;
+  top:28px;
+  left:0;
+  width:max-content;
+  white-space:nowrap;
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#c9d4ea66;
+  pointer-events:none;
+  animation:rei-flow 42s linear infinite;
+}
+@keyframes rei-flow{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* Inner pages: the sculpture returns as a wash behind the title, not a second poster. */
+body:not([data-page="home"]) .page-heading,
+body:not([data-page="home"]) .page-heading.page-heading-row{
+  position:relative !important;
+  overflow:visible !important;
+  background:none !important;
+  border:0 !important;
+  border-bottom:0 !important;
+}
+body:not([data-page="home"]) .page-heading .destination-scene{
+  display:block !important;
+  position:absolute !important;
+  right:-6% !important;
+  top:-30px !important;
+  width:min(460px, 46%) !important;
+  height:280px !important;
+  opacity:.7 !important;
+  pointer-events:none !important;
+  z-index:0 !important;
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 24%, #000 70%, transparent);
+  mask-image:linear-gradient(90deg, transparent, #000 24%, #000 70%, transparent);
+}
+body:not([data-page="home"]) .page-heading h1,
+body:not([data-page="home"]) .page-heading p,
+body:not([data-page="home"]) .page-heading .eyebrow{
+  position:relative;
+  z-index:1;
+}
+body:not([data-page="home"]) .page-heading h1{
+  font-size:clamp(2.6rem, 4.4vw, 4.2rem) !important;
+  max-width:14ch !important;
+  letter-spacing:-.055em !important;
+  line-height:.98 !important;
+}
+
+/* Lesson steps read as one line of travel. */
+.lesson-flow{
+  position:relative;
+}
+.lesson-flow a{
+  background:transparent !important;
+}
+.reading-intro{
+  background:transparent !important;
+  border:0 !important;
+  border-left:1px solid #c9d4ea55 !important;
+  border-radius:0 !important;
+  padding-left:18px !important;
+}
+
+/* Pathway tiles share one surface and step down the page. */
+.pathway-editorial{align-items:start !important}
+.pathway-tile{
+  background:transparent !important;
+  border:0 !important;
+  border-top:1px solid #d5deff22 !important;
+  border-radius:0 !important;
+  transform:none !important;
+}
+.pathway-1{margin-top:0 !important}
+.pathway-2{margin-top:48px !important}
+.pathway-editorial>.pathway-tile:nth-child(3){margin-top:96px !important}
+
+.research-form{
+  background:linear-gradient(180deg, #10182acc, #10182a66) !important;
+  border:1px solid #c9d4ea22 !important;
+  border-radius:18px !important;
+  box-shadow:none !important;
+}
+.research-heading h1 span{
+  color:#d5def5 !important;
+  background:none !important;
+  -webkit-text-fill-color:currentColor !important;
+}
+.research-heading:after{opacity:.45}
+
+@media (prefers-reduced-motion:reduce){
+  .pathways-section:before{animation:none}
+}
+@media (max-width:900px){
+  .observatory-intro h1{font-size:clamp(2.6rem, 11vw, 3.4rem) !important;max-width:11ch !important}
+  .pathway-tile,.pathway-2,.pathway-editorial>.pathway-tile:nth-child(3){margin-top:0 !important}
+  .pathways-section:before{display:none}
+  body:not([data-page="home"]) .page-heading .destination-scene{display:none !important}
+  .discovery-stage{overflow:hidden !important}
+}
