@@ -1,7 +1,25 @@
 /* Composition — last layer. Keeps the particle field, drops the poster gap. */
 
-main{padding-bottom:28px}
+main{padding-bottom:96px}
 .explore-trigger,.motion-toggle{z-index:30}
+
+.study-guide{
+  margin:14px 0 18px;
+  padding:16px 18px 14px;
+  border:1px solid #a9c4ef2e;
+  border-radius:16px;
+  background:#10192bcc;
+}
+.study-guide h2{font-size:1.2rem;letter-spacing:-.03em;line-height:1.25;max-width:36ch}
+.study-guide p:not(.eyebrow){margin-top:6px;color:#c5d2e6;font-size:.95rem;line-height:1.55;max-width:68ch}
+.study-guide .row{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-top:12px}
+.study-guide .row>span{color:#9aadc8;font-size:.85rem}
+.study-guide label{display:grid;gap:4px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#9eb0cb}
+.study-guide select{
+  min-width:220px;min-height:44px;border-radius:10px;border:1px solid #a6b9de40;
+  background:#0b1424;color:#edf3ff;padding:8px 12px;font-size:1rem;letter-spacing:0;text-transform:none;
+}
+.observatory>.study-guide{grid-column:1;margin-top:18px;max-width:420px}
 
 /* Home is one screen: argument on the left, field on the right. */
 .observatory.container{
@@ -47,7 +65,7 @@ main{padding-bottom:28px}
 }
 .discovery-stage:after{display:none !important}
 .atlas-panel{top:54px !important;left:22px !important;width:min(300px,48%) !important}
-.atlas-panel h2{font-size:1.85rem !important;letter-spacing:-.04em}
+.atlas-panel h2{font-size:1.85rem !important;letter-spacing:-.04em;line-height:1.12 !important}
 .stage-coordinate{left:22px !important;right:22px !important;top:16px}
 .atlas-bottom{left:22px !important;right:22px !important;bottom:16px !important;display:flex;align-items:center}
 .atlas-bottom>span:last-child,.orb-tag{display:none !important}
@@ -62,7 +80,7 @@ main{padding-bottom:28px}
 .research-entry h2{font-size:clamp(1.6rem,2.4vw,2.15rem) !important;letter-spacing:-.04em}
 .journey-dock{
   display:flex;align-items:center;gap:22px;flex-wrap:wrap;
-  margin-top:36px !important;
+  margin-top:96px !important;
   padding:18px 0 8px;border-top:1px solid #243349;
 }
 .pathways-section{padding-top:28px !important;padding-bottom:72px !important}
@@ -191,9 +209,13 @@ body:not([data-page="home"]) .page-heading p:not(.eyebrow){
   .observatory.container{grid-template-columns:1fr;min-height:0;gap:8px}
   .observatory-intro,.discovery-stage,.research-entry,.journey-dock{grid-column:1;grid-row:auto}
   .observatory-intro h1{max-width:12ch !important;font-size:clamp(2.5rem,10vw,3.4rem) !important}
-  .discovery-stage{height:500px !important;min-height:0}
-  .atlas-panel{top:auto !important;bottom:18px !important;left:16px !important;right:16px !important;width:auto !important}
-  .atlas-panel h2{font-size:1.65rem !important;line-height:1.15 !important;letter-spacing:-.03em !important;max-width:11ch}
+  .discovery-stage{height:430px !important;min-height:0}
+  .stage-coordinate{display:none !important}
+  .atlas-panel{top:18px !important;bottom:auto !important;left:16px !important;right:16px !important;width:auto !important}
+  .atlas-panel h2{font-size:1.65rem !important;line-height:1.2 !important;letter-spacing:-.03em !important;max-width:16rem !important;display:block !important}
+  .atlas-panel h2 br{display:inline !important}
+  .atlas-panel h2 br::before{content:' '}
+  .atlas-panel>p:not(.eyebrow){display:none !important}
   .atlas-bottom{display:none !important}
   .floating-evidence{display:none !important}
   .research-entry{flex-direction:column;align-items:flex-start}
