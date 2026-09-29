@@ -1,0 +1,95 @@
+/* A different room. Bone type on black, the field in copper, headlines in serif. */
+@font-face{font-family:'Instrument Serif';src:url('fonts/instrument-serif-italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+
+body{
+  background:#070608 !important;
+  color:#f6f1e8 !important;
+}
+.ambient-field{opacity:.7 !important}
+.ambient-field i:nth-child(1){background:#c4622a !important}
+.ambient-field i:nth-child(2){background:#24160f !important}
+.ambient-field i:nth-child(3){background:#3a2218 !important}
+body[data-light="1"] .ambient-field i:nth-child(1){background:#7f96b0 !important}
+body[data-light="2"] .ambient-field i:nth-child(1){background:#c25062 !important}
+
+h1,h2,.filmstrip a.here strong,.study-guide h2,.chapter-follow .study-guide h2,.lesson-flow a[aria-current="page"] strong{
+  font-family:'Instrument Serif',Georgia,serif !important;
+  font-weight:400 !important;
+  font-style:italic !important;
+  letter-spacing:-.03em !important;
+}
+.site-header{
+  background:linear-gradient(#070608, #07060800) !important;
+  border-bottom:0 !important;
+  backdrop-filter:none !important;
+}
+.button.light,.button.primary{
+  background:#f3ead7 !important;
+  color:#1a120c !important;
+  border-color:#f3ead7 !important;
+}
+body[data-page="home"] .explore-trigger,
+body[data-page="home"] .motion-toggle{opacity:.22}
+body[data-page="home"] .explore-trigger{bottom:18px !important}
+
+/* The opening is one picture. The sentence sits on the field. */
+.scroll-story .observatory.container{
+  display:block !important;
+  height:100vh !important;
+  overflow:hidden !important;
+}
+.scroll-story .discovery-stage{
+  position:absolute !important;
+  inset:0 !important;
+  width:auto !important;
+  height:100% !important;
+  min-height:0 !important;
+}
+.scroll-story .observatory:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(90deg,#070608 0%,#070608d4 26%,#07060800 58%);
+}
+.scroll-story .observatory-intro{
+  position:relative;
+  z-index:2;
+  width:min(760px,54vw);
+  padding-top:11vh !important;
+}
+.scroll-story .observatory-intro h1{
+  font-size:clamp(4rem,7vw,6.8rem) !important;
+  line-height:.86 !important;
+  max-width:9ch !important;
+  color:#f6f1e8 !important;
+}
+.scroll-story .observatory-intro .intro-bottom p{color:#f6f1e8c4 !important;font-size:1.12rem !important;max-width:34ch !important}
+.scroll-story .stage-grid,.scroll-story .atlas-bottom{display:none !important}
+.scroll-story .atlas-panel{
+  z-index:2;
+  left:auto !important;
+  right:5vw !important;
+  bottom:7vh !important;
+  top:auto !important;
+}
+.scroll-story .atlas-selector button{font-size:.78rem !important;letter-spacing:.2em !important}
+.scroll-story .atlas-selector button[aria-pressed="true"]{color:#f3ead7 !important}
+.scroll-story .universe{
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+}
+
+.chapter-follow .study-guide h2,.study-guide h2{font-size:clamp(3rem,6vw,5.6rem) !important;line-height:.9 !important}
+.page-heading h1{font-size:clamp(3.4rem,6vw,5.8rem) !important;line-height:.9 !important;max-width:12ch}
+.filmstrip a.here strong{font-size:clamp(2.2rem,3.4vw,3.2rem) !important;line-height:.95}
+.research-heading h1{font-size:clamp(3.6rem,7vw,6.4rem) !important;line-height:.88 !important;color:#f6f1e8 !important}
+.research-heading h1 span{color:#f6f1e8 !important;-webkit-text-fill-color:#f6f1e8 !important}
+
+@media (max-width:900px){
+  .scroll-story .observatory:before{background:linear-gradient(180deg,#07060899 0%,#07060844 38%,#07060818 72%)}
+  .scroll-story .observatory-intro{width:auto;padding-top:8vh !important}
+  .scroll-story .observatory-intro h1{font-size:clamp(3.3rem,14vw,4.6rem) !important;max-width:10ch !important}
+  .scroll-story .atlas-panel{right:16px !important;bottom:18px !important}
+}
