@@ -1,0 +1,206 @@
+/* Composition — last layer. Keeps the particle field, drops the poster gap. */
+
+main{padding-bottom:28px}
+.explore-trigger,.motion-toggle{z-index:30}
+
+/* Home is one screen: argument on the left, field on the right. */
+.observatory.container{
+  display:grid;
+  grid-template-columns:minmax(280px,.86fr) minmax(0,1.14fr);
+  gap:18px 36px;
+  align-items:center;
+  min-height:0;
+  padding-top:18px;
+  padding-bottom:28px;
+}
+.observatory-intro{grid-column:1;grid-row:1;padding:8px 0 0 !important;max-width:none}
+.discovery-stage{grid-column:2;grid-row:1}
+.observatory-intro h1{
+  font-size:clamp(2.7rem,4.5vw,4.35rem) !important;
+  line-height:.98 !important;
+  letter-spacing:-.055em !important;
+  max-width:11ch !important;
+}
+.observatory-intro .intro-bottom{
+  margin-top:18px !important;
+  max-width:420px;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:16px;
+}
+.observatory-intro .intro-bottom p{
+  font-size:1rem !important;
+  max-width:36ch !important;
+  color:#c5d0e4;
+}
+.discovery-stage{
+  height:560px !important;
+  min-height:0;
+  margin:0 !important;
+  border-radius:22px !important;
+  overflow:hidden !important;
+  border:1px solid #9eb6de28 !important;
+  background:
+    radial-gradient(ellipse at 62% 42%,#2a45741f,transparent 58%),
+    linear-gradient(160deg,#10192c,#090e1c) !important;
+  box-shadow:inset 0 1px #ffffff10 !important;
+}
+.discovery-stage:after{display:none !important}
+.atlas-panel{top:54px !important;left:22px !important;width:min(300px,48%) !important}
+.atlas-panel h2{font-size:1.85rem !important;letter-spacing:-.04em}
+.stage-coordinate{left:22px !important;right:22px !important;top:16px}
+.atlas-bottom{left:22px !important;right:22px !important;bottom:16px !important;display:flex;align-items:center}
+.atlas-bottom>span:last-child,.orb-tag{display:none !important}
+.discovery-stage .scene-pause{top:auto !important;bottom:14px !important;right:14px !important}
+.atlas-bottom{padding-right:56px}
+.floating-evidence{top:auto !important;bottom:52px !important;right:16px !important;max-width:210px}
+.research-entry,.journey-dock{grid-column:1 / -1;position:relative !important;margin:0 !important}
+.research-entry{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:22px 0 8px;border-top:1px solid #243349;
+}
+.research-entry h2{font-size:clamp(1.6rem,2.4vw,2.15rem) !important;letter-spacing:-.04em}
+.journey-dock{
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  margin-top:36px !important;
+  padding:18px 0 8px;border-top:1px solid #243349;
+}
+.pathways-section{padding-top:28px !important;padding-bottom:72px !important}
+.pathway-editorial{margin-top:22px !important;align-items:stretch !important}
+.pathway-tile{margin-top:0 !important;min-height:0 !important;border-radius:16px}
+.section-top h2{font-size:clamp(2rem,3vw,2.8rem) !important}
+
+/* Inner pages open on the work, not a 400px sculpture. */
+body:not([data-page="home"]) .page-heading.page-heading-row{
+  display:block !important;
+  min-height:0 !important;
+  height:auto !important;
+  padding:32px 0 16px !important;
+  background:none !important;
+  border:0 !important;
+  border-bottom:1px solid #243349 !important;
+  border-radius:0 !important;
+}
+body:not([data-page="home"]) .page-heading .destination-scene,
+body:not([data-page="home"]) .page-heading .heading-grid{display:none !important}
+body:not([data-page="home"]) .page-heading h1{
+  font-size:clamp(2.15rem,3.6vw,3.35rem) !important;
+  max-width:16ch !important;
+  letter-spacing:-.048em !important;
+  line-height:1.02 !important;
+}
+body:not([data-page="home"]) .page-heading p:not(.eyebrow){
+  margin-top:10px !important;
+  max-width:52ch !important;
+  font-size:1rem !important;
+}
+.page-body{padding-top:18px !important;min-height:0 !important}
+.destination-caption{margin:14px 0 6px !important;padding-block:0 !important}
+
+.toolkit-progress{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:8px 16px;
+  margin:4px 0 18px;
+  padding:12px 0;
+  border-top:1px solid #a9c4ef22;
+  border-bottom:1px solid #a9c4ef22;
+}
+.toolkit-progress strong{font-weight:600;letter-spacing:-.02em;color:#eef3fb}
+.toolkit-progress span{color:#9aadc8}
+
+.journey-summary{
+  background:#10192b !important;
+  border:1px solid #a9c4ef22 !important;
+  border-radius:16px !important;
+  color:#e7eef8;
+  margin-bottom:18px !important;
+}
+.roadmap{gap:16px !important}
+.roadmap-column{
+  background:#10192b !important;
+  border:1px solid #a9c4ef22 !important;
+  border-radius:16px !important;
+  padding:18px 18px 8px !important;
+}
+.roadmap-column>.phase-art,.roadmap-column>.sculpture{height:92px !important;margin-bottom:8px !important}
+
+/* Studio landing: question and form on the first screen. */
+.research-heading{
+  min-height:0 !important;
+  padding:28px 0 8px !important;
+  display:block !important;
+}
+.research-sculpture{display:none !important}
+.research-heading h1{
+  font-size:clamp(2rem,3.2vw,2.7rem) !important;
+  max-width:16ch;
+  line-height:1.02 !important;
+}
+.research-project-layout{margin-top:8px !important;align-items:start}
+.research-project-heading{padding-top:28px !important;padding-bottom:20px !important}
+.research-project-heading h1{font-size:clamp(2.1rem,3.5vw,3.1rem) !important;max-width:20ch}
+
+.studio-search{
+  margin:22px 0 8px;
+  padding:14px 16px 10px;
+  border:1px solid #a9c4ef28;
+  border-radius:16px;
+  background:#0e182acc;
+}
+.studio-search label{
+  display:grid;
+  gap:6px;
+  font-size:.72rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#9eb0cb;
+}
+.studio-search input{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid #a6b9de40;
+  background:#0b1424;
+  color:#edf3ff;
+  border-radius:10px;
+  padding:12px 14px;
+  font-size:1rem;
+  letter-spacing:0;
+  text-transform:none;
+}
+.studio-search input:focus{border-color:#65dbff;box-shadow:0 0 0 3px #65dbff1c;outline:none}
+.studio-results{list-style:none;margin:10px 0 4px;padding:0;display:grid;gap:6px}
+.studio-results a{
+  display:grid;
+  grid-template-columns:112px minmax(0,1fr);
+  gap:8px 14px;
+  padding:10px 8px;
+  border-top:1px solid #a9c4ef18;
+  border-radius:8px;
+}
+.studio-results a:hover{background:#65dbff0c}
+.studio-results .kind{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#8fd8ff}
+.studio-results strong{display:block;font-size:.95rem;letter-spacing:-.02em}
+.studio-results p{margin:2px 0 0;color:#b7c6dc;font-size:.85rem;line-height:1.45}
+.studio-results mark{background:#65dbff33;color:#f4fbff;border-radius:3px;padding:0 2px}
+.studio-search .empty{color:#9aadc8;font-size:.9rem;letter-spacing:0;text-transform:none;margin:8px 0 4px}
+.studio-bridge{margin-top:12px}
+
+@media(max-width:900px){
+  .observatory.container{grid-template-columns:1fr;min-height:0;gap:8px}
+  .observatory-intro,.discovery-stage,.research-entry,.journey-dock{grid-column:1;grid-row:auto}
+  .observatory-intro h1{max-width:12ch !important;font-size:clamp(2.5rem,10vw,3.4rem) !important}
+  .discovery-stage{height:500px !important;min-height:0}
+  .atlas-panel{top:auto !important;bottom:18px !important;left:16px !important;right:16px !important;width:auto !important}
+  .atlas-panel h2{font-size:1.65rem !important;line-height:1.15 !important;letter-spacing:-.03em !important;max-width:11ch}
+  .atlas-bottom{display:none !important}
+  .floating-evidence{display:none !important}
+  .research-entry{flex-direction:column;align-items:flex-start}
+  .studio-results a{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .journey-summary{flex-wrap:wrap}
+  .journey-summary>.button{margin-left:0 !important;width:100%}
+  .roadmap{grid-template-columns:1fr !important}
+}
