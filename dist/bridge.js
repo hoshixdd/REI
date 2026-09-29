@@ -68,7 +68,7 @@
  }
  function paintNext(projects){
   const page=document.body.dataset.page;
-  if(!['home','journey','academy'].includes(page)||document.querySelector('.study-guide[data-slot="next"]'))return;
+  if(page!=='home'||document.querySelector('.study-guide[data-slot="next"]'))return;
   const next=nextStep(projects);
   const node=guide('next',next.title,next.detail,{html:'<div class="row"><a class="button primary" href="'+esc(next.href)+'">Continue</a><span>'+esc(next.meta)+'</span></div>'});
   if(page==='home')document.querySelector('.intro-bottom')?.after(node);

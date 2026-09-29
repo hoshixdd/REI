@@ -63,6 +63,20 @@
   head.after(strip(next<0?0:next));
  }
 
+ function stageAcademy(){
+  const head=document.querySelector('.page-heading');
+  if(!head||document.querySelector('.filmstrip'))return;
+  const next=course.findIndex((_,i)=>!state.completed.includes(i));
+  head.after(strip(next<0?0:next));
+ }
+ function dockChrome(){
+  const header=document.querySelector('.site-header');
+  const hub=document.querySelector('.explore-trigger');
+  const motion=document.querySelector('.motion-toggle');
+  const note=header?.querySelector('.header-notebook');
+  if(!header||!hub||!motion||header.contains(hub))return;
+  if(note)note.before(hub,motion);else header.append(hub,motion);
+ }
  function stageLesson(){
   const layout=document.querySelector('.lesson-layout');
   if(!layout||document.querySelector('.filmstrip'))return;
@@ -89,10 +103,12 @@
 
  function boot(){
   const page=document.body.dataset.page;
+  dockChrome();
   if(page!=='home'){shown=-1;document.body.removeAttribute('data-light')}
   if(page==='home')stageHome();
   else if(page==='journey')stageJourney();
   else if(page==='lesson')stageLesson();
+  else if(page==='academy')stageAcademy();
   else if(page==='research')stageStudio();
  }
 
@@ -112,4 +128,5 @@
  },{passive:true});
  new MutationObserver(schedule).observe(document.getElementById('main'),{childList:true,subtree:true});
  if(document.body.dataset.page)boot();
+ dockChrome();
 })();
