@@ -75,6 +75,10 @@
   const motion=document.querySelector('.motion-toggle');
   const note=header?.querySelector('.header-notebook');
   if(!header||!hub||!motion||header.contains(hub))return;
+  const hubLabel=hub.querySelector('span');
+  const motionLabel=motion.querySelector('span');
+  if(hubLabel)hubLabel.textContent='Explore';
+  if(motionLabel)motionLabel.textContent='Motion';
   if(note)note.before(hub,motion);else header.append(hub,motion);
  }
  function stageLesson(){
