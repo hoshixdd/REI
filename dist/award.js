@@ -142,17 +142,6 @@
   addEventListener("scroll", paintBar, { passive: true });
   paintBar();
 
-  if (!reduced && !sessionStorage.getItem("rei-award-veil")) {
-    sessionStorage.setItem("rei-award-veil", "1");
-    const veil = document.createElement("div");
-    veil.id = "award-veil";
-    veil.setAttribute("aria-hidden", "true");
-    veil.innerHTML = "<span>rei</span>";
-    document.body.append(veil);
-    requestAnimationFrame(() => requestAnimationFrame(() => veil.classList.add("is-leave")));
-    setTimeout(() => veil.remove(), 1300);
-  }
-
   if (reduced) return;
   document.documentElement.classList.add("award-motion");
   const seen = new WeakSet();
@@ -179,4 +168,96 @@
   setTimeout(() => {
     document.querySelectorAll(".award-reveal:not(.is-in)").forEach((node) => node.classList.add("is-in"));
   }, 1600);
+})();
+
+/* Grouped glass navigation and a page entrance that wakes the 3D field. */
+(() => {
+  const nav = document.getElementById("navigation");
+  if (!nav || nav.dataset.drops) return;
+  nav.dataset.drops = "1";
+  const groups = [
+    ["Learn", "drop-learn", [
+      ["#academy", "Academy", "Nine lessons, from a question to a proposal."],
+      ["#journey", "Research journey", "Your milestones, and the one that is next."],
+      ["#seminars", "Workshops", "A focused hour for one part of the work."]
+    ]],
+    ["Workspace", "drop-workspace", [
+      ["#notebook", "Idea notebook", "Capture observations and questions."],
+      ["#notebook/draft", "Proposal draft", "The outline built from your exercises."],
+      ["#notebook/readiness", "Readiness check", "A 27-point review before you submit."]
+    ]],
+    ["Studio", "drop-studio", [
+      ["#research", "Research studio", "Papers, evidence, claims, and the proposal."],
+      ["#toolkit", "Toolkit", "Templates and checklists for the next step."]
+    ]]
+  ];
+  nav.innerHTML = groups.map(([label, id, items]) => `<div class="nav-drop"><button type="button" aria-expanded="false" aria-controls="${id}">${label}<i aria-hidden="true"></i></button><div id="${id}" class="nav-panel" hidden>${items.map(([href, title, text]) => `<a href="${href}"><strong>${title}</strong><small>${text}</small></a>`).join("")}</div></div>`).join("");
+
+  const fine = matchMedia("(hover: hover) and (pointer: fine)");
+  function closeAll(except) {
+    nav.querySelectorAll(".nav-drop").forEach((drop) => {
+      if (drop === except) return;
+      drop.querySelector("button").setAttribute("aria-expanded", "false");
+      drop.querySelector(".nav-panel").hidden = true;
+    });
+  }
+  function mark() {
+    const page = location.hash.slice(1).split("/")[0] || "home";
+    const step = location.hash.slice(1);
+    nav.querySelectorAll(".nav-panel a").forEach((link) => {
+      const href = link.getAttribute("href").slice(1);
+      const on = href === step || (href === "academy" && page === "lesson") || (href === "seminars" && page === "workshop") || (href === "toolkit" && page === "resource") || (href === "research" && page === "research") || (href === "notebook" && step === "notebook") || (href === "journey" && page === "journey");
+      if (on) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+    nav.querySelectorAll(".nav-drop > button").forEach((button) => {
+      button.classList.toggle("is-current", !!button.parentElement.querySelector('a[aria-current="page"]'));
+    });
+  }
+  nav.addEventListener("click", (event) => {
+    const button = event.target.closest(".nav-drop > button");
+    if (!button) return;
+    const drop = button.parentElement;
+    const open = button.getAttribute("aria-expanded") === "true";
+    closeAll(open ? null : drop);
+    button.setAttribute("aria-expanded", String(!open));
+    drop.querySelector(".nav-panel").hidden = open;
+  });
+  document.addEventListener("click", (event) => {
+    if (!nav.contains(event.target)) closeAll();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeAll();
+  });
+  nav.querySelectorAll(".nav-drop").forEach((drop) => {
+    drop.addEventListener("pointerenter", () => {
+      if (!fine.matches || nav.classList.contains("open")) return;
+      closeAll(drop);
+      drop.querySelector("button").setAttribute("aria-expanded", "true");
+      drop.querySelector(".nav-panel").hidden = false;
+    });
+    drop.addEventListener("pointerleave", () => {
+      if (!fine.matches || nav.classList.contains("open")) return;
+      drop.querySelector("button").setAttribute("aria-expanded", "false");
+      drop.querySelector(".nav-panel").hidden = true;
+    });
+  });
+
+  function entrance() {
+    document.body.classList.remove("award-enter");
+    void document.body.offsetWidth;
+    document.body.classList.add("award-enter");
+    window.dispatchEvent(new Event("award:field"));
+    mark();
+  }
+  addEventListener("rrh:route", () => {
+    closeAll();
+    setTimeout(entrance, 30);
+  });
+  document.addEventListener("pointerenter", (event) => {
+    if (event.target.closest?.(".button, .nav-drop > button, .header-notebook, .nav-panel a, .explore-trigger, .motion-toggle")) {
+      window.dispatchEvent(new Event("award:field"));
+    }
+  }, true);
+  entrance();
 })();
