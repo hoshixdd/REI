@@ -477,6 +477,197 @@ html[data-motion="off"] #award-cursor-trail {
   }
 }
 
+/* Visible room openings. The previous pass left these scenes hidden. */
+#award-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 70;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: #c9e3ff;
+  pointer-events: none;
+}
+
+#award-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: #070608;
+  pointer-events: none;
+}
+
+#award-veil span {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(4.5rem, 14vw, 10rem);
+  letter-spacing: -0.05em;
+  color: #e8eef6;
+}
+
+#award-veil.is-leave {
+  animation: award-veil 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes award-veil {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.observatory-intro {
+  position: relative;
+}
+
+.observatory-intro::before,
+body:not([data-page="home"]) .page-heading::before,
+.research-heading::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(7rem, 16vw, 14rem);
+  line-height: 0.75;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201, 227, 255, 0.34);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.observatory-intro::before { content: "01"; }
+body[data-page="journey"] .page-heading::before { content: "02"; }
+body[data-page="academy"] .page-heading::before { content: "03"; }
+body[data-page="toolkit"] .page-heading::before { content: "04"; }
+body[data-page="notebook"] .page-heading::before { content: "05"; }
+body[data-page="seminars"] .page-heading::before,
+body[data-page="workshop"] .page-heading::before { content: "06"; }
+body[data-page="research"] .research-heading::before { content: "07"; }
+body[data-page="lesson"] .lesson-title::before { content: "08"; }
+
+.observatory-intro > *,
+body:not([data-page="home"]) .page-heading > *,
+.research-heading > * {
+  position: relative;
+  z-index: 1;
+}
+
+body:not([data-page="home"]) .page-heading.page-heading-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.9fr) !important;
+  align-items: end !important;
+  gap: 28px !important;
+  min-height: 78vh !important;
+  height: auto !important;
+  padding: 12vh 0 56px !important;
+  overflow: hidden !important;
+  border-bottom: 0 !important;
+  background: none !important;
+}
+
+body:not([data-page="home"]) .page-heading > div:not(.heading-grid):not(.destination-scene):not(.destination-art):not(.actions) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+body:not([data-page="home"]) .page-heading .destination-scene {
+  display: block !important;
+  position: relative !important;
+  inset: auto !important;
+  grid-column: 2;
+  grid-row: 1;
+  width: 100% !important;
+  height: min(56vh, 540px) !important;
+  opacity: 1 !important;
+  mask-image: none !important;
+  z-index: 1 !important;
+}
+
+body:not([data-page="home"]) .page-heading > .actions {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+body:not([data-page="home"]) .page-heading h1 {
+  font-size: clamp(3.5rem, 6.2vw, 6.2rem) !important;
+  max-width: 11ch !important;
+  line-height: 0.94 !important;
+}
+
+.research-heading {
+  min-height: 78vh !important;
+  overflow: hidden;
+}
+
+.research-sculpture {
+  width: min(44%, 560px) !important;
+  height: min(56vh, 540px) !important;
+}
+
+.lesson-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.lesson-main .lesson-title {
+  min-height: 52vh !important;
+}
+
+.lesson-main .lesson-title > .lesson-visual,
+.lesson-main .lesson-title > .lesson-visual.sculpture {
+  width: 48% !important;
+  height: 90% !important;
+  opacity: 1 !important;
+  mask-image: none !important;
+}
+
+html.award-motion .award-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+html.award-motion .award-reveal.is-in {
+  animation: award-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (max-width: 800px) {
+  .observatory-intro::before,
+  body:not([data-page="home"]) .page-heading::before,
+  .research-heading::before,
+  .lesson-title::before {
+    font-size: 6.5rem;
+  }
+
+  body:not([data-page="home"]) .page-heading.page-heading-row {
+    display: block !important;
+    min-height: 0 !important;
+    padding: 36px 0 16px !important;
+  }
+
+  body:not([data-page="home"]) .page-heading .destination-scene {
+    height: 220px !important;
+    margin-top: 8px;
+  }
+
+  body:not([data-page="home"]) .page-heading h1 {
+    font-size: clamp(2.7rem, 12vw, 3.6rem) !important;
+  }
+
+  .research-heading {
+    min-height: 0 !important;
+  }
+
+  .lesson-main .lesson-title {
+    min-height: 0 !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   #award-field,
   #award-cursor,

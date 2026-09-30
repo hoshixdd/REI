@@ -126,3 +126,57 @@
 
   addEventListener("pagehide", () => cancelAnimationFrame(frame));
 })();
+
+/* A second, visible layer: opening veil, scroll bar, and section rises. */
+(() => {
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const bar = document.createElement("div");
+  bar.id = "award-progress";
+  bar.setAttribute("aria-hidden", "true");
+  document.body.append(bar);
+
+  function paintBar() {
+    const height = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${height > 0 ? Math.min(1, scrollY / height) : 0})`;
+  }
+  addEventListener("scroll", paintBar, { passive: true });
+  paintBar();
+
+  if (!reduced && !sessionStorage.getItem("rei-award-veil")) {
+    sessionStorage.setItem("rei-award-veil", "1");
+    const veil = document.createElement("div");
+    veil.id = "award-veil";
+    veil.setAttribute("aria-hidden", "true");
+    veil.innerHTML = "<span>rei</span>";
+    document.body.append(veil);
+    requestAnimationFrame(() => requestAnimationFrame(() => veil.classList.add("is-leave")));
+    setTimeout(() => veil.remove(), 1300);
+  }
+
+  if (reduced) return;
+  document.documentElement.classList.add("award-motion");
+  const seen = new WeakSet();
+  const io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add("is-in");
+      io.unobserve(entry.target);
+    }
+  }, { threshold: 0.18 });
+
+  function watch() {
+    const nodes = document.querySelectorAll(".page-body > *, .roadmap-column, .filmstrip, .journey-summary, .lesson-card, .resource-instrument, .workshop, .pathway-tile, .workspace-grid > *, .lesson-layout, .research-shell > *");
+    nodes.forEach((node) => {
+      if (seen.has(node)) return;
+      seen.add(node);
+      node.classList.add("award-reveal");
+      if (node.getBoundingClientRect().top < innerHeight * 0.92) node.classList.add("is-in");
+      else io.observe(node);
+    });
+  }
+  addEventListener("rrh:route", () => setTimeout(watch, 80));
+  setTimeout(watch, 80);
+  setTimeout(() => {
+    document.querySelectorAll(".award-reveal:not(.is-in)").forEach((node) => node.classList.add("is-in"));
+  }, 1600);
+})();
