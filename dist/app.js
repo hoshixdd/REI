@@ -20,10 +20,9 @@ function home(){
   const startHref = '#lesson/' + nextLesson();
   const startLabel = state.completed.length ? 'Continue' : 'Start researching';
   const mark = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><g transform="rotate(-30 12 12)"><circle cx="7.3" cy="3.2" r="1.45"/><rect x="5.5" y="4.7" width="3.6" height="14.6" rx="1.8"/><rect x="14.9" y="4.7" width="3.6" height="14.6" rx="1.8"/><circle cx="16.7" cy="20.8" r="1.45"/></g></svg>`;
-  const chips = phases.map((p, i) => `<button type="button" class="phase-chip${i === 0 ? ' is-on' : ''}" role="tab" aria-selected="${i === 0 ? 'true' : 'false'}" id="phase-tab-${i}" aria-controls="phase-note" data-phase="${i}" data-name="${p.name.replace(/"/g, '"')}" data-desc="${p.desc.replace(/"/g, '"')}">${p.label[0] + p.label.slice(1).toLowerCase()}</button>`).join('');
   return `<div class="frame">
 <div class="grain" aria-hidden="true"></div>
-<div class="glass-light" aria-hidden="true"></div>
+<div class="hero-photo" aria-hidden="true"><video autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4"></video></div>
 <div class="page">
 <header class="header">
 <a class="logo appear appear--scale" href="#home" aria-label="REI" style="--d:0.08s">${mark}<span>rei</span></a>
@@ -44,8 +43,6 @@ function home(){
 <span class="headline-line appear appear--mask" style="--d:0.62s">notice to a proposal.</span>
 </h1>
 <p class="lede appear appear--soft" style="--d:0.82s">Nine lessons, a notebook, and a studio for evidence. Your work stays in this browser.</p>
-<div class="phase-rail" role="tablist" aria-label="The method">${chips}</div>
-<p class="phase-note" id="phase-note" role="tabpanel">${phases[0].name}. ${phases[0].desc}</p>
 <div class="hero-actions">
 <a class="btn btn-solid appear appear--btn" href="${startHref}" style="--d:0.96s">${startLabel}</a>
 <a class="btn btn-ghost appear appear--side" href="#journey" style="--d:1.10s">See the method</a>
@@ -53,9 +50,9 @@ function home(){
 </div>
 </div>
 <footer class="stats">
-<a class="stat appear appear--stat" href="#journey" style="--d:1.12s"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="pillL" x1="3" y1="2" x2="14" y2="22"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset="1" stop-color="#3a3a3a" stop-opacity=".62"/></linearGradient><linearGradient id="pillR" x1="14" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#3a3a3a" stop-opacity=".38"/><stop offset="1" stop-color="#fff" stop-opacity=".62"/></linearGradient></defs><rect x="3.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#pillL)"/><rect x="13.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#pillR)"/><rect x="9.2" y="10.9" width="5.6" height="2.2" rx="1.1" fill="#4a4a4a"/></svg>Nine lessons, one method</a>
-<a class="stat appear appear--stat" href="#notebook" style="--d:1.28s"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.4" y="2.4" width="19.2" height="19.2" rx="6.2" fill="#fff"/><path d="M12 7.1v7.4M8.15 12.35L12 16.2l3.85-3.85" fill="none" stroke="#111" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/></svg>Saved in this browser</a>
-<a class="stat appear appear--stat" href="#academy" style="--d:1.44s"><svg class="stat-icon-wide" viewBox="0 0 40 22" aria-hidden="true"><circle cx="10.2" cy="11" r="9.2" fill="#2b2b2b"/><ellipse cx="10.2" cy="12.1" rx="4.15" ry="3.7" fill="#f4f4f4"/><path d="M4.2 8.2 7.2 4.6 8.4 8.8zM12 8.6 13.4 4.8 16.4 8.4z" fill="#f4f4f4"/><circle cx="8.6" cy="12.2" r="0.7" fill="#1a1a1a"/><circle cx="11.8" cy="12.2" r="0.7" fill="#1a1a1a"/><circle cx="20.2" cy="11" r="9.2" fill="#fff"/><circle cx="17.6" cy="10.2" r="1.7" fill="#111"/><circle cx="22.8" cy="10.2" r="1.7" fill="#111"/><ellipse cx="20.2" cy="13.2" rx="1.1" ry="0.7" fill="#111"/><path d="M17.2 15.2c.9 1.1 2.1 1.6 3 1.6s2.1-.5 3-1.6" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><circle cx="30.2" cy="11" r="9.2" fill="#f26b1d"/><text x="30.2" y="15.1" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#fff">e</text></svg>Question, evidence, proposal</a>
+<p class="stat appear appear--stat" style="--d:1.12s"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="pillL" x1="3" y1="2" x2="14" y2="22"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset="1" stop-color="#3a3a3a" stop-opacity=".62"/></linearGradient><linearGradient id="pillR" x1="14" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#3a3a3a" stop-opacity=".38"/><stop offset="1" stop-color="#fff" stop-opacity=".62"/></linearGradient></defs><rect x="3.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#pillL)"/><rect x="13.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#pillR)"/><rect x="9.2" y="10.9" width="5.6" height="2.2" rx="1.1" fill="#4a4a4a"/></svg>Nine lessons, one method</p>
+<p class="stat appear appear--stat" style="--d:1.28s"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.4" y="2.4" width="19.2" height="19.2" rx="6.2" fill="#fff"/><path d="M12 7.1v7.4M8.15 12.35L12 16.2l3.85-3.85" fill="none" stroke="#111" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/></svg>Saved in this browser</p>
+<p class="stat appear appear--stat" style="--d:1.44s"><svg class="stat-icon-wide" viewBox="0 0 40 22" aria-hidden="true"><circle cx="10.2" cy="11" r="9.2" fill="#2b2b2b"/><ellipse cx="10.2" cy="12.1" rx="4.15" ry="3.7" fill="#f4f4f4"/><path d="M4.2 8.2 7.2 4.6 8.4 8.8zM12 8.6 13.4 4.8 16.4 8.4z" fill="#f4f4f4"/><circle cx="8.6" cy="12.2" r="0.7" fill="#1a1a1a"/><circle cx="11.8" cy="12.2" r="0.7" fill="#1a1a1a"/><circle cx="20.2" cy="11" r="9.2" fill="#fff"/><circle cx="17.6" cy="10.2" r="1.7" fill="#111"/><circle cx="22.8" cy="10.2" r="1.7" fill="#111"/><ellipse cx="20.2" cy="13.2" rx="1.1" ry="0.7" fill="#111"/><path d="M17.2 15.2c.9 1.1 2.1 1.6 3 1.6s2.1-.5 3-1.6" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><circle cx="30.2" cy="11" r="9.2" fill="#f26b1d"/><text x="30.2" y="15.1" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#fff">e</text></svg>Question, evidence, proposal</p>
 </footer>
 </div>
 <div class="menu-backdrop"></div>
