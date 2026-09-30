@@ -1,0 +1,493 @@
+/* Whole-app moonlight craft. The header stays a quiet strip.
+   Motion is shared by every room: journey, academy, lessons,
+   toolkit, studio, notebook, workshops, and dialogs. */
+
+#award-field,
+#award-grain,
+#award-vignette {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#award-field {
+  z-index: 0;
+}
+
+#award-grain {
+  z-index: 0;
+  opacity: 0.07;
+  background-image: radial-gradient(rgba(201, 227, 255, 0.7) 0.5px, transparent 0.55px);
+  background-size: 5px 5px;
+  mix-blend-mode: soft-light;
+}
+
+.research-heading {
+  position: relative;
+}
+
+.research-sculpture {
+  display: block !important;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: min(36%, 460px);
+  height: 340px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.research-heading > :not(.research-sculpture) {
+  position: relative;
+  z-index: 1;
+}
+
+#award-vignette {
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 35%, transparent 52%, rgba(7, 6, 8, 0.72) 100%);
+}
+
+.site-header {
+  z-index: 30 !important;
+}
+
+.site-header.is-scrolled {
+  background: linear-gradient(#070608f2, #070608c4 70%, #07060800) !important;
+  box-shadow: inset 0 -1px rgba(232, 238, 246, 0.16);
+}
+
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #c9e3ff !important;
+  outline-offset: 3px !important;
+}
+
+::selection {
+  background: #d5e6f6;
+  color: #12161c;
+}
+
+/* Pointer ring. Native cursor remains on text fields. */
+@media (hover: hover) and (pointer: fine) {
+  body.award-cursor:not(.reading-focus),
+  body.award-cursor:not(.reading-focus) a,
+  body.award-cursor:not(.reading-focus) button,
+  body.award-cursor:not(.reading-focus) summary {
+    cursor: none;
+  }
+
+  body.award-cursor input,
+  body.award-cursor textarea,
+  body.award-cursor select,
+  body.award-cursor [contenteditable="true"] {
+    cursor: text;
+  }
+}
+
+#award-cursor,
+#award-cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 1px solid rgba(201, 227, 255, 0.9);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 80;
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+#award-cursor-trail {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-color: rgba(201, 227, 255, 0.35);
+}
+
+#award-cursor.is-on,
+#award-cursor-trail.is-on {
+  opacity: 1;
+}
+
+#award-cursor.is-hot {
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+}
+
+/* Arrivals */
+@keyframes award-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Controls */
+.button.primary,
+.button.light,
+.button.secondary {
+  position: relative;
+  overflow: hidden;
+  transition: letter-spacing 0.45s cubic-bezier(0.16, 1, 0.3, 1), background 0.45s, color 0.45s, border-color 0.45s;
+}
+
+.button.primary::after,
+.button.light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+
+.button.primary:hover::after,
+.button.light:hover::after {
+  transform: translateX(130%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.button.primary:hover,
+.button.light:hover,
+.button.secondary:hover {
+  letter-spacing: 0.04em;
+}
+
+.site-header nav a,
+.header-notebook,
+.text-button,
+.text-link,
+.research-tabs a {
+  position: relative;
+}
+
+.site-header nav a::after,
+.research-tabs a::after,
+.filmstrip a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1px;
+  background: #c9e3ff;
+  transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header nav a:hover::after,
+.site-header nav a[aria-current="page"]::after,
+.research-tabs a:hover::after,
+.research-tabs a[aria-current="page"]::after,
+.filmstrip a:hover::after,
+.filmstrip a.here::after {
+  right: 0;
+}
+
+.site-header nav a:hover,
+.header-notebook:hover,
+.text-button:hover,
+.text-link:hover,
+.research-tabs a:hover,
+.research-tabs a[aria-current="page"] {
+  color: #c9e3ff !important;
+}
+
+.tabs button,
+.workspace-tabs button {
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tabs button:hover,
+.workspace-tabs button:hover {
+  color: #c9e3ff !important;
+}
+
+/* Shared rows and instruments */
+.lesson-card,
+.roadmap-column,
+.roadmap-step,
+.resource-instrument,
+.note,
+.workshop,
+.project-row,
+.paper-record,
+.draft-section,
+.wb-record,
+.wb-theme,
+.wb-model-node,
+.check-group,
+.lesson-flow a,
+.lesson-sidebar a,
+.draft-outline a,
+.space-grid > a {
+  transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s, color 0.45s, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lesson-card:hover,
+.roadmap-step:hover,
+.note:hover,
+.project-row:hover,
+.paper-record:hover,
+.draft-section:hover,
+.wb-record:hover,
+.draft-outline a:hover,
+.lesson-sidebar a:hover,
+.lesson-flow a:hover {
+  background: rgba(201, 227, 255, 0.045) !important;
+}
+
+.roadmap-column:hover,
+.workshop:hover,
+.resource-instrument:hover,
+.wb-theme:hover,
+.wb-model-node:hover,
+.check-group:hover,
+.space-grid > a:hover {
+  border-color: rgba(201, 227, 255, 0.55) !important;
+}
+
+.lesson-card:hover .phase-art canvas,
+.roadmap-column:hover .phase-art canvas,
+.resource-instrument:hover .phase-art canvas,
+.workshop:hover .sculpture canvas,
+.detail-guide:hover .phase-art canvas,
+.space-grid > a:hover .space-card-art {
+  filter: saturate(0.8) brightness(1.65) hue-rotate(200deg) !important;
+}
+
+.filmstrip a strong,
+.lesson-card h3,
+.roadmap-column h2,
+.note h3,
+.workshop h3,
+.project-row h3,
+.paper-record h3,
+.draft-section h3,
+.wb-record h3,
+.wb-section h3,
+.check-group h3 {
+  transition: color 0.35s;
+}
+
+.filmstrip a:hover strong,
+.lesson-card:hover h3,
+.note:hover h3,
+.project-row:hover h3,
+.paper-record:hover h3,
+.workshop:hover h3 {
+  color: #c9e3ff !important;
+}
+
+.progress-dial {
+  box-shadow: 0 0 0 1px rgba(201, 227, 255, 0.35), 0 0 24px rgba(201, 227, 255, 0.12);
+  border-radius: 50%;
+}
+
+.draft-paper {
+  background-image: linear-gradient(transparent 31px, rgba(201, 227, 255, 0.08) 32px);
+  background-size: 100% 32px;
+  background-position: 0 12px;
+}
+
+.quiz-form label,
+.wb-import-list label,
+.readiness label,
+.check-group label {
+  transition: background 0.35s, color 0.35s;
+}
+
+.quiz-form label:hover,
+.check-group label:hover,
+.readiness label:hover,
+.wb-import-list label:hover {
+  background: rgba(201, 227, 255, 0.06);
+  color: #e8eef6;
+}
+
+/* Research studio uses the same material as the rest of REI. */
+.research-shell input,
+.research-shell textarea,
+.research-shell select,
+.wb-record input,
+.wb-record textarea,
+.wb-record select,
+.wb-reader input,
+.wb-reader textarea,
+.wb-reader select,
+.wb-inline input,
+.wb-inline select,
+.wb-reader-controls input,
+.wb-reader-controls select,
+#exercise-text,
+#note-title,
+#note-body,
+#note-stage,
+#project-proposal {
+  background: transparent !important;
+  color: #e8eef6 !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(232, 238, 246, 0.28) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.wb-model,
+.wb-model-node,
+.wb-theme,
+.wb-checks,
+.wb-synthesis-overview,
+.wb-synthesis-overview > div,
+.research-notice,
+.research-add,
+.proposal-editor {
+  background: transparent !important;
+  border-color: rgba(232, 238, 246, 0.16) !important;
+  box-shadow: none !important;
+}
+
+.wb-synthesis-overview {
+  background: rgba(232, 238, 246, 0.08) !important;
+  border-radius: 0 !important;
+}
+
+.research-map,
+.wb-reader,
+.paper-record,
+.project-row,
+.note,
+.workshop,
+.roadmap-column {
+  border-color: rgba(232, 238, 246, 0.16) !important;
+}
+
+.research-tabs {
+  gap: 18px !important;
+  border-bottom: 1px solid rgba(232, 238, 246, 0.14);
+  padding-bottom: 8px;
+  margin: 18px 0 8px;
+}
+
+.research-tabs a {
+  color: rgba(232, 238, 246, 0.62) !important;
+  min-height: 40px;
+}
+
+.research-progress {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: #c9e3ff !important;
+}
+
+.workshop-agenda section,
+.detail-body section {
+  transition: background 0.4s;
+}
+
+.workshop-agenda section:hover,
+.detail-body section:hover {
+  background: rgba(201, 227, 255, 0.04);
+}
+
+dialog#modal {
+  background: #101820 !important;
+  color: #e8eef6 !important;
+  border: 1px solid rgba(232, 238, 246, 0.2) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45) !important;
+}
+
+dialog#modal::backdrop,
+dialog#space-navigator::backdrop {
+  background: rgba(7, 6, 8, 0.72);
+}
+
+.toast {
+  animation: award-rise 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#space-navigator {
+  border: 1px solid rgba(232, 238, 246, 0.18) !important;
+  background: #0c1018 !important;
+  color: #e8eef6 !important;
+}
+
+.space-grid > a h3 {
+  font-family: "Instrument Serif", Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+
+body.reading-focus #award-field,
+body.reading-focus #award-grain,
+body.reading-focus #award-vignette,
+body.reading-focus #award-cursor,
+body.reading-focus #award-cursor-trail,
+html[data-motion="off"] #award-field,
+html[data-motion="off"] #award-cursor,
+html[data-motion="off"] #award-cursor-trail {
+  opacity: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .research-sculpture {
+    position: relative !important;
+    width: 100% !important;
+    height: 220px !important;
+    top: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  #award-cursor,
+  #award-cursor-trail {
+    display: none !important;
+  }
+
+  body.award-cursor,
+  body.award-cursor a,
+  body.award-cursor button {
+    cursor: auto !important;
+  }
+
+  .lesson-card:hover,
+  .roadmap-step:hover,
+  .note:hover,
+  .project-row:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #award-field,
+  #award-cursor,
+  #award-cursor-trail {
+    display: none !important;
+  }
+
+  .toast,
+  .button.primary::after,
+  .button.light::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
