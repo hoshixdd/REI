@@ -1,5 +1,82 @@
 # REI — continuation handoff
 
+## Holistic roadmap toward an award-level REI — 1 October 2026
+
+This is the next-work roadmap, not a list of implemented features or a claim that REI will win an award. The goal is an original, immersive research experience whose everyday tools feel as deliberate as the landing page. Preserve the optical identity, existing local data, free/local-first operation and working research flows. No required accounts, paid assets, AI services or cloud backend. Deliver in reviewable stages.
+
+### Current baseline and evidence limits
+
+The published Observatory/Atelier direction includes an interactive 3D magnifier, four-chapter optical archive, expressive landing composition, shared glass controls, notebook/proposal writing surfaces, local search and optional Reader/Proposal companion desk. The visual-finish pass completed 164 structural checks and focused interaction tests; production page and representative assets were verified against Git. Those checks establish a useful baseline, not complete accessibility, usability or performance certification. Real devices, Firefox/Safari, screen readers, OS reduced-motion behavior, low-end GPUs and complete backup restoration still need coverage.
+
+Confirmed implementation concern: index.html loads many successive CSS layers, and the last pass found specificity collisions in the notebook title and proposal textarea. Those particular collisions were fixed. Consolidating ownership of component styles will make future polishing safer. Remote alternate visual files and bridge.js remain in Git but are not loaded. Treat them as reference material; do not activate them blindly or combine the alternate art direction with the approved one.
+
+The improvement opportunities below are design proposals and audit targets. Validate them with actual task walkthroughs before describing them as user-reported problems.
+
+### Stage 1 — Make the product journey unmistakable (highest priority)
+
+- Walk through three journeys: a newcomer learns and saves an idea; a returning researcher resumes a source/evidence task; a writer builds a proposal and exports a restorable backup. Document where navigation, terminology or next actions require guessing.
+- Introduce a compact project overview with the working question, last activity, evidence/claim counts and one meaningful next action. Show missing foundations as useful prompts, never as scientific approval or a grade. Returning users should reach their work without replaying the landing spectacle.
+- Make the relationship between the general notebook, lesson drafts and project-specific proposal explicit. Offer an intentional transfer preview with destination and source information. Evaluate the existing bridge.js logic separately; it mutates project data and requires dedicated fixture tests before integration.
+- Keep a clear project/room location, predictable back links and a reachable switcher. On mobile, evaluate a compact room selector instead of a long navigation block before the task. Preserve direct room URLs and browser Back behavior.
+- Improve first-use and empty states with one actionable starting point, short inline explanations and an optional clearly labeled fictional sample. Samples must not mix silently with real research.
+- Audit saving, loading, storage failure, import validation, duplicates, success feedback, destructive actions and recovery. Keep unsaved text visible after failure; show a recovery action rather than a success-looking toast. Add undo only where a reliable recovery model exists.
+
+Acceptance: complete the three journeys with fictional fixtures using desktop and touch layouts; preserve saved work after reload; confirm source links remain attached; successfully export and restore a complete fixture including its PDF. Record task obstacles and fixes, not just screenshots. No automatic overwrite of an existing proposal or silent transfer between workspaces.
+
+### Stage 2 — Give every room a deliberate visual identity
+
+- Turn the existing chrome/charcoal/ivory/warm-accent palette into documented semantic tokens for text, surface, border, focus, selection and status. Define type scales, spacing, icon sizes, radii and button roles. Check disabled, hover, active, focus, selected and error states as one component family.
+- Consolidate shared component rules gradually. Move one component at a time into its owning stylesheet, remove conflicting overrides only after comparison, and verify all routes that use it. Keep the static vanilla architecture; a framework migration is not needed for this goal.
+- Art-direct key layouts independently: an editorial project overview, a readable source library, a precise evidence table, a useful relationship map, an uncluttered reader and a focused writing room. Use spacing and typography to distinguish primary work from tools and metadata. Avoid giving every room the same card grid.
+- Refine headings, line breaks, text measure, navigation density and form grouping at actual content extremes: long titles, long citations, many sources, empty projects and validation messages. Keep ivory writing fields readable in all inherited states.
+- Refine the REI mark, small favicon, loading emblem and icon family as a coherent optical system. Improve the existing identity with original vector work; review small-size legibility before expanding decorative branding.
+- Treat mobile as its own composition: prioritize the task, use progressive disclosure for secondary tools, preserve stable actions above the keyboard and account for safe areas. Any conversion of a table to a stacked presentation must retain comparisons, labels and source navigation.
+
+Acceptance: a component/state inventory with before/after proof; comparison screenshots for representative rooms at 320, 390, 768 and 1440px; no document-wide horizontal overflow, clipped menus or obscured inputs. Existing table panels may scroll internally with an accessible label and keyboard focus. Confirm 200% zoom/reflow and long-content fixtures separately.
+
+### Stage 3 — Elevate the signature optical experience
+
+- Make the hero lens feel manufactured: controlled reflections, coherent metal roughness, readable glass thickness, a convincing handle/bezel and restrained lighting. Tune composition around headline readability and touch reach rather than increasing particle count.
+- Give the Observatory a stronger narrative: one question becomes a source trail, an extracted finding and a connected argument. Coordinate camera movement, object transformations, typography and captions around those four transitions. Keep illustrative sheets explicitly illustrative; a live project visualization must use actual records and clear provenance.
+- Add one original signature interaction, such as inspecting a source sheet to reveal its citation/evidence relationship, with a visible button and keyboard/touch equivalent. Keep it optional and separate from essential navigation. Prototype the interaction before integrating project data.
+- Develop distinct desktop and mobile framing. Use a lightweight static or simplified scene when WebGL is unavailable or quality must be reduced; essential text and controls must render without the 3D scene.
+- Curate subtle texture, diagrams and composition to give REI its own recognizable research language. Treat Alche, Lumen, Motion UI and Getlayers as inspiration for craft and pacing, not templates to reproduce.
+
+Acceptance: a clear four-beat story, readable hero in landscape and portrait, accessible manual controls, working skip behavior and a tested no-WebGL fallback. Compare visuals on physical screens. No essential feature requires hover, dragging or a long scroll sequence.
+
+### Stage 4 — Choreograph motion and immediate feedback
+
+- Create a motion vocabulary: quick press/selection feedback, controlled menu/dialog transitions, modest route continuity and slower cinematic scene changes. Define easing and interruption behavior; use durations appropriate to the interaction rather than one preset everywhere.
+- Improve glass dropdown opening, option focus, selection confirmation and dismissal. Check anchoring during scroll/resize, viewport collisions and virtual keyboards. Preserve native semantics or a fully tested equivalent.
+- Make source-to-evidence and evidence-to-proposal actions feel connected through small contextual transitions and clear saved feedback. Animation must follow the actual successful state change, with a distinct failure path.
+- Keep document and PDF reading steady. Avoid moving text while selecting it, resetting scroll on autosave, delaying form input or running repeated entrances during local edits. Restore meaningful route focus without repeatedly interrupting a screen reader.
+- Respect both the existing motion toggle and OS reduced-motion preference. Replace spatial movement with static state changes where appropriate. Ambient sound remains off by default and optional.
+
+Acceptance: rapid repeated clicks and interrupted navigation do not leave stuck menus, ghost transitions or duplicate controls; keyboard focus returns correctly; saved text and PDF position survive expected navigation. Test OS reduced motion, motion pause and sound settings independently. Document any behavior that differs intentionally.
+
+### Stage 5 — Earn production confidence and presentation quality
+
+- Establish measured performance baselines for home, project library, reader and proposal. Profile loading, input responsiveness, memory and GPU activity under a documented mobile throttling setup. Lazy-load optional scenes, cap pixel density, pause offscreen/background rendering, dispose resources and avoid expensive layered blur on mobile where profiling shows a cost.
+- Target Core Web Vitals LCP <=2.5s, INP <=200ms and CLS <=0.1 at the 75th percentile, segmented by mobile/desktop. These are targets, not current results. Lab tests guide development; insufficient real-user field data must be reported honestly. Do not introduce external analytics or transmit research content merely to collect measurements.
+- Audit WCAG 2.2 AA: contrast, semantic labels, keyboard access, dialog focus, unobscured focus, status announcements and alternatives to dragging. Use 44px primary touch controls as a REI design target; WCAG AA target-size requirements have different minimums and exceptions. Check focus visibility against glass and ivory surfaces.
+- Complete Firefox/Safari and physical iOS/Android tests, keyboard/zoom/reflow checks and at least one screen-reader workflow. Test empty, dense and long-content fixtures; PDF loading/failure, storage failure, backup/import recovery and rapid navigation. Recheck production after deployment.
+- Polish copy and credibility: explain what REI does in one sentence, distinguish illustrative examples from research evidence, state local-storage/backup limits clearly and remove vague claims. Add appropriate share metadata, a coherent social preview and an editorial product walkthrough with genuine screenshots.
+- Prepare an award presentation only after the product and performance gates pass: original concept statement, short interaction recording, responsive screenshots and a case study explaining how the visual idea helps research. Award entry fees or external submissions require a separate user request; winning cannot be guaranteed.
+
+Acceptance: a release report separating passed checks, failures and untested areas; representative public assets matching the release; no critical open data-loss or task-blocking issues; documented accessibility and performance results. Keep a recoverable release checkpoint and truthful HANDOFF.md.
+
+### Recommended next action and implementation order
+
+Start with Stage 1: audit the three real task journeys and prototype a compact project overview/mobile room switcher. Then build the shared component inventory from Stage 2. Run accessibility and performance baselines early, before committing to Stage 3's more ambitious graphics. Ship each stage with its own review and evidence; do not add another broad CSS patch layer or more motion merely to increase visual complexity.
+
+Likely touchpoints: app.js, research.js, workbench.js and local-search.js for task flows; learning.js/research-room.js for room framing; dream-home.js/atelier-home.js for narrative composition; dream.js/sculptures.js/observatory.js for 3D; motion.js/spatial.js/dream-polish.js for interactions; the active CSS layers and visual-finish.css for component consolidation. Check current file ownership before edits. Keep alternate remote scripts inactive until specifically evaluated.
+
+### Reference standards consulted for this roadmap
+
+- [W3C: WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [new accessibility criteria](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/): focus, target size and dragging alternatives.
+- [Google web.dev: Web Vitals](https://web.dev/articles/vitals): performance thresholds and the distinction between lab and field evidence.
+- Local ui-ux-pro-max guidance: task navigation, visible keyboard focus and predictable location. These support the roadmap; they do not replace app-specific user testing.
+
 ## GitHub/Vercel release — 1 October 2026
 
 User requested publishing all completed local redesign work. Committed the verified immersive redesign and visual finish as cbc27d0. Fetched origin/master and discovered 20 newer commits for a separate moonlight direction (through b66f210). Merged that history without a force push. Resolved index.html in favor of the verified local Observatory/Atelier/visual-finish stack and preserved the tested Motion on/off label. Remote-added files/history remain available; the alternate visual and bridge scripts are not loaded by this release. Remote universe color refinements retained.
