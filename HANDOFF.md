@@ -1,5 +1,11 @@
 # REI — continuation handoff
 
+## GitHub/Vercel release — 1 October 2026
+
+User requested publishing all completed local redesign work. Committed the verified immersive redesign and visual finish as cbc27d0. Fetched origin/master and discovered 20 newer commits for a separate moonlight direction (through b66f210). Merged that history without a force push. Resolved index.html in favor of the verified local Observatory/Atelier/visual-finish stack and preserved the tested Motion on/off label. Remote-added files/history remain available; the alternate visual and bridge scripts are not loaded by this release. Remote universe color refinements retained.
+
+Release validation: workbench-core, local-search and reader-regression passed again. Previous responsive verification remains documented below. GitHub push and live Vercel verification will be reported separately after completion; a push alone does not establish deployment success.
+
 ## Consistent visual finish — 1 October 2026
 
 Added visual-finish.css and visual-finish.js, loaded last in index.html. Shared typography, spacing, glass controls, tabs, focus states, forms, empty states, disclosure panels, research tables, dialogs and responsive wrapping now use one final layer. Notebook/proposal writing surfaces use ivory and readable ink; fixed competing legacy title/textarea colors and placeholder contrast. Notebook mobile sculpture shortened. Added polite note status, invalid-field semantics and keyboard-focusable named table regions only when they overflow. Existing storage and save workflows retained.

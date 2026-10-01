@@ -1,0 +1,151 @@
+/* Chapters. One statement on screen. The field changes the light, not the type. */
+
+:root{--chapter-ink:#f4f6fb;--chapter-dim:#f4f6fb73;--chapter-line:#f4f6fb1c}
+
+body{color:var(--chapter-ink)}
+.site-header nav{background:none !important;border:0 !important;box-shadow:none !important}
+.site-header nav a[aria-current="page"]{background:none !important;box-shadow:none !important;color:#fff !important}
+.header-notebook{background:transparent !important;border-color:#ffffff24 !important;color:#fff !important;box-shadow:none !important}
+.live-dot{background:#fff !important;box-shadow:none !important}
+.button.light,.button.primary{background:#f4f6fb !important;color:#0b0b10 !important;border-color:#f4f6fb !important}
+a.text-link,.eyebrow{color:var(--chapter-dim) !important}
+.pill{background:transparent !important;color:var(--chapter-ink) !important;border:0 !important;padding-left:0 !important}
+
+body[data-light="1"] .ambient-field i:first-child{background:#1c4638 !important}
+body[data-light="2"] .ambient-field i:first-child{background:#4a3142 !important}
+body[data-page="home"] .explore-trigger,
+body[data-page="home"] .motion-toggle{opacity:.3}
+body[data-page="home"] .explore-trigger:hover,
+body[data-page="home"] .explore-trigger:focus-visible,
+body[data-page="home"] .motion-toggle:hover,
+body[data-page="home"] .motion-toggle:focus-visible{opacity:1}
+
+/* The opening is a pinned scene. Three phases pass through it. */
+.scroll-story{height:280vh;position:relative}
+.scroll-story .observatory.container{
+  position:sticky;top:0;height:100vh;box-sizing:border-box;
+  padding-top:96px !important;padding-bottom:48px !important;
+  align-content:center;overflow:hidden;
+}
+.scroll-story .observatory-intro h1{
+  font-size:clamp(3.2rem,5.6vw,5.6rem) !important;
+  line-height:.92 !important;letter-spacing:-.06em !important;
+  max-width:11ch !important;color:#f4f6fb !important;
+}
+.scroll-story .observatory-intro .intro-bottom p{color:#f4f6fbb8 !important;font-size:1.05rem !important}
+.scroll-story .eyebrow,
+.scroll-story .stage-coordinate,
+.scroll-story .orb-tag,
+.scroll-story .atlas-bottom,
+.scroll-story .floating-evidence,
+.scroll-story .atlas-panel>.eyebrow,
+.scroll-story .atlas-panel>h2,
+.scroll-story .atlas-panel>p,
+.scroll-story #atlas-link,
+.pathways-section:before{display:none !important}
+.scroll-story .discovery-stage{
+  height:min(70vh,680px) !important;border:0 !important;border-radius:0 !important;
+  background:transparent !important;box-shadow:none !important;
+}
+.scroll-story .atlas-panel{top:auto !important;bottom:8% !important;left:6% !important;width:auto !important}
+.scroll-story .atlas-selector{display:flex;gap:22px;background:none;border:0}
+.scroll-story .atlas-selector button{
+  background:none !important;border:0 !important;box-shadow:none !important;
+  color:var(--chapter-dim) !important;padding:0 !important;min-height:0 !important;
+  letter-spacing:.16em;font-size:.72rem;
+}
+.scroll-story .atlas-selector button[aria-pressed="true"]{color:#fff !important}
+.scroll-story .atlas-selector svg,.scroll-story .atlas-selector .icon{display:none !important}
+
+/* The next thing to do is the following scene, not a card under the hero. */
+.chapter-follow{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:10vh 0 8vh}
+.chapter-follow .study-guide,
+.study-guide{
+  background:transparent !important;border:0 !important;border-radius:0 !important;
+  box-shadow:none !important;padding:0 !important;margin:0 !important;max-width:none !important;
+}
+.chapter-follow .study-guide h2,.study-guide h2{
+  font-size:clamp(2.4rem,4.8vw,4.4rem) !important;line-height:.96 !important;
+  letter-spacing:-.055em !important;max-width:16ch !important;color:#f4f6fb !important;
+}
+.chapter-follow .research-entry{margin-top:72px !important;border:0 !important;padding:0 !important}
+.chapter-follow .research-entry h2{font-size:clamp(1.7rem,3vw,2.6rem) !important;max-width:16ch}
+.chapter-follow .journey-dock{border:0 !important;margin-top:36px !important;padding:0 !important;opacity:.8}
+
+/* Nine milestones, one strip. The current one is the frame. */
+.filmstrip{
+  display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;
+  margin:12px 0 56px;padding-bottom:8px;border-top:1px solid var(--chapter-line);
+  scrollbar-width:none;
+}
+.filmstrip::-webkit-scrollbar{display:none}
+.filmstrip a{
+  flex:0 0 auto;width:148px;padding:22px 20px 28px 0;margin-right:8px;
+  scroll-snap-align:start;color:#f4f6fb;opacity:.38;
+}
+.filmstrip a.here{width:min(440px,72vw);opacity:1}
+.filmstrip a span{display:block;font-size:.68rem;letter-spacing:.18em}
+.filmstrip a strong{display:block;margin-top:10px;font-weight:560;font-size:1rem;letter-spacing:-.02em}
+.filmstrip a.here strong{font-size:clamp(1.7rem,2.8vw,2.5rem);line-height:1.02;letter-spacing:-.045em}
+.filmstrip a small{display:block;margin-top:10px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--chapter-dim)}
+.filmstrip a.done span:after{content:'  ·';}
+
+/* Lesson steps are four beats of one line. */
+.lesson-flow{display:flex !important;gap:32px !important;align-items:flex-end !important;background:none !important;border:0 !important;padding:4px 0 32px !important;margin:0 !important}
+.lesson-flow a{background:none !important;border:0 !important;border-radius:0 !important;opacity:.38;padding:0 !important;box-shadow:none !important}
+.lesson-flow a[aria-current="page"]{opacity:1}
+.lesson-flow a[aria-current="page"] strong{font-size:1.7rem;letter-spacing:-.04em;font-weight:560}
+.lesson-flow a svg{display:none !important}
+.lesson-sidebar a:not(.current){opacity:.4}
+.lesson-sidebar a.current{opacity:1;font-size:1.05rem}
+.roadmap-column .pill{display:none !important}
+.page-heading+.filmstrip{margin-top:28px}
+.journey-summary{background:transparent !important;border:0 !important;box-shadow:none !important;padding:8px 0 0 !important}
+
+.research-shell{display:flex;flex-direction:column}
+.research-shell>*{order:4}
+.research-heading,.research-project-heading{order:1}
+.studio-search{order:2;background:transparent !important;border:0 !important;padding:8px 0 0 !important}
+.research-shell>.study-guide{order:3}
+.studio-search label{letter-spacing:.16em;font-size:.68rem;text-transform:uppercase;color:#f4f6fb80}
+.studio-search input{background:transparent !important;border:0 !important;border-bottom:1px solid #f4f6fb2e !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;font-size:1.2rem}
+
+/* The studio opens on the question. The sections are an index, not a tab bar. */
+.research-heading h1,.research-project-heading h1{
+  color:#f4f6fb !important;letter-spacing:-.055em !important;line-height:.96 !important;
+  max-width:18ch;
+}
+.research-heading h1{font-size:clamp(3rem,6vw,5.4rem) !important}
+.research-project-heading h1{
+  font-size:clamp(1.8rem,3.4vw,3.15rem) !important;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
+}
+.research-heading h1 span,.research-project-heading .chapter-name{color:#f4f6fb !important;background:none !important;-webkit-text-fill-color:#f4f6fb !important}
+.local-badge{color:#f4f6fbb0 !important;border-color:#f4f6fb33 !important;background:transparent !important}
+.research-tabs{
+  background:transparent !important;border:0 !important;box-shadow:none !important;
+  border-radius:0 !important;padding:0 !important;gap:2px 22px !important;
+}
+.research-tabs a{
+  background:none !important;box-shadow:none !important;border:0 !important;border-radius:0 !important;
+  color:var(--chapter-dim) !important;min-height:0 !important;padding:7px 0 !important;opacity:1;
+}
+.research-tabs a[aria-current="page"]{color:#fff !important;background:none !important;box-shadow:none !important}
+
+.page-heading .eyebrow{letter-spacing:.18em}
+
+@media (prefers-reduced-motion:reduce){
+  .scroll-story{height:auto}
+  .scroll-story .observatory.container{position:relative;height:auto;overflow:visible}
+  .scroll-story .observatory:after{display:none}
+}
+@media (max-width:900px){
+  .scroll-story{height:auto}
+  .scroll-story .observatory.container{position:relative;height:auto;min-height:0;overflow:visible;padding-top:24px !important}
+  .scroll-story .observatory:after{display:none}
+  .scroll-story .observatory-intro h1{font-size:clamp(2.5rem,11vw,3.5rem) !important}
+  .chapter-follow{min-height:0;padding:48px 0}
+  .filmstrip a.here{width:78vw}
+  .lesson-flow{flex-wrap:wrap;gap:16px 22px !important}
+  .research-tabs{display:flex !important}
+}

@@ -34,9 +34,9 @@
  float rot=t*.065+uPointer.x*.22+uScroll*.28;p.xz=mat2(cos(rot),-sin(rot),sin(rot),cos(rot))*p.xz;
  float dist=length(p.xy-uPointer*2.5);p.xy+=(p.xy-uPointer*2.5)*exp(-dist*dist*14.0)*(.22+uBurst*.25);
  p.y+=sin(t*.35)*.045;p.yz=mat2(cos(uPointer.y*.1),-sin(uPointer.y*.1),sin(uPointer.y*.1),cos(uPointer.y*.1))*p.yz;
- vec3 mint=vec3(.39,.86,1.0),violet=vec3(.54,.35,1.0),cyan=vec3(.25,.72,1.0),gold=vec3(1.0,.66,.38);
- vColor=mix(violet,mint,smoothstep(-1.4,1.3,p.y));vColor=mix(vColor,mix(cyan,mint,w),clamp(uPhase,0.0,1.0));vColor=mix(vColor,mix(gold,vec3(.92,.9,.8),u),clamp(uPhase-1.0,0.0,1.0));
- vColor=mix(vColor,mix(vec3(.35,.75,1.),vec3(.7,.45,1.),v),clamp(uPhase-2.0,0.0,1.0));
+ vec3 silver=vec3(.72,.84,1.0),mist=vec3(.93,.96,1.0),tide=vec3(.42,.78,.74),dusk=vec3(.70,.64,.96);
+ vColor=mix(silver,mist,smoothstep(-1.2,1.1,p.y));vColor=mix(vColor,mix(tide,mist,w),clamp(uPhase,0.0,1.0));vColor=mix(vColor,mix(dusk,mist,u),clamp(uPhase-1.0,0.0,1.0));
+ vColor=mix(vColor,mix(silver,dusk,v),clamp(uPhase-2.0,0.0,1.0));
  vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;gl_PointSize=clamp((1.9+w*1.4)*uPixel*(7.0/-mv.z),1.0,5.0);vAlpha=(.12+w*.25)*smoothstep(-2.4,.8,p.z);
  }`,fragmentShader:`varying vec3 vColor;varying float vAlpha;void main(){float d=length(gl_PointCoord-.5);if(d>.5)discard;float a=pow(1.0-d*2.0,1.5)*vAlpha;gl_FragColor=vec4(vColor,a);}`});
  const cloud=new T.Points(geometry,material);cloud.frustumCulled=false;scene.add(cloud);if(!hero)cloud.visible=false;
