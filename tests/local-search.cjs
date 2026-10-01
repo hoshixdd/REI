@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict');
+const {index,search}=require('../dist/local-search.js');
+const projects=[{id:'one',title:'Fictional study',question:'Guided practice',papers:[{id:'s',title:'Practice results',authors:'A. Example',notes:'Confidence increased'}],evidence:[{paperId:'s',passage:'Fictional exact passage',findings:'Confidence improves'}],proposal:'Practice proposal',workbench:{claims:[{text:'Guided practice helps'}],decisions:[{date:'2026-10-01',text:'Exclude unreliable measurements'}]}},{id:'two',title:'Other study',papers:[],evidence:[],workbench:{}}];
+const before=JSON.stringify(projects);
+const rows=index(projects,{notes:[{title:'Notebook idea',body:'Practice reflection'}],drafts:{0:'Lesson practice',bad:'Invalid stage'}});
+assert.equal(search(rows,'confidence').length,2);
+assert.equal(search(rows,'GUIDED helps','','Claim').length,1);
+assert.equal(search(rows,'fictional passage','','Evidence').length,1);
+assert.equal(search(rows,'practice','Other study').length,0);
+assert.equal(search(rows,'unreliable','','Decision')[0].href,'#research/one/review');
+assert.equal(search(rows,'lesson','','Lesson draft')[0].href,'#lesson/0/write');
+assert.equal(search(rows,'practice','Learning workspace').length,2);
+assert.equal(search(rows,'   ').length,0);
+assert.equal(search(rows,'missing').length,0);
+assert.equal(JSON.stringify(projects),before,'Search must not mutate research data');
+assert.doesNotThrow(()=>index([{id:'legacy',title:'Legacy'}]));
+console.log('Local search tests passed');

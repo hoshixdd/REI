@@ -1,0 +1,23 @@
+/* Final cross-route consistency and readable local notebook. */
+body[data-page=notebook] .page-heading{padding:55px 0 35px;background:none;border-bottom:1px solid #ffffff25}
+body[data-page=notebook] .page-heading h1{font:500 clamp(40px,5.5vw,76px)/1.08 Manrope,sans-serif;letter-spacing:-.055em}
+body[data-page=notebook] .page-heading p{color:#b9c0cc;line-height:1.7}
+body[data-page=notebook] :is(.editor,.note,.draft-paper,.check-group){background:linear-gradient(135deg,#ffffff08,#ffffff02);border:1px solid #ffffff25;border-radius:20px;box-shadow:none}
+body[data-page=notebook] :is(.editor,.draft-paper){padding:28px}
+body[data-page=notebook] :is(input,textarea,select){font-size:16px;background:#0b0c10;color:#edf0f5;border:1px solid #ffffff30;border-radius:12px;min-height:46px}
+body[data-page=notebook] textarea{line-height:1.8;padding:18px}
+body[data-page=notebook] :is(h2,h3){font-family:Manrope,sans-serif;letter-spacing:-.035em}
+body[data-page=notebook] .workspace-tabs{gap:8px;flex-wrap:wrap}
+body[data-page=notebook] .workspace-tabs button{border:1px solid #ffffff25;border-radius:24px;min-height:46px;background:#ffffff05}
+body[data-page=notebook] .workspace-tabs button[aria-pressed=true]{background:#e9edf4;color:#111318}
+.dream-mode :is(a,button,summary,input,textarea,select):focus-visible{outline:2px solid #ddd1f6;outline-offset:4px}
+.dream-mode :is(.text-button,.text-link){min-height:44px;display:inline-flex;align-items:center}
+.dream-mode button:disabled{opacity:.5;cursor:not-allowed;transform:none!important;translate:none!important}
+.dream-mode :is(.research-empty,.no-results,.archive-empty) p{color:#bfc5d0}
+.dream-mode .button{isolation:isolate}
+.dream-mode .dream-button-pulse{z-index:-1}
+.dream-mode .research-shell .wb-pdf-canvas,.dream-mode #wb-pdf-canvas{max-width:100%;height:auto}
+.dream-mode :is(.evidence-table-wrap,.wb-synthesis-table-wrap):focus-visible{outline:2px solid #ddd1f6;outline-offset:4px}
+@media(max-width:700px){body[data-page=notebook] .workspace-grid{grid-template-columns:1fr}body[data-page=notebook] .page-heading{padding-top:35px}body[data-page=notebook] :is(.editor,.draft-paper){padding:20px}.dream-mode .page-heading-row>.actions{flex-wrap:wrap}.dream-mode .page-heading-row>.actions .button{white-space:normal}.dream-mode .site-note{line-height:1.7}}
+@media(prefers-reduced-motion:reduce){.dream-mode [data-tilt]{transform:none!important}.dream-mode :is(.lesson-card,.roadmap-step,.project-row){transform:none!important;translate:none!important}}
+html[data-motion=off] .dream-mode [data-tilt]{transform:none!important}

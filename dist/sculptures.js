@@ -12,7 +12,7 @@
  function model(kind){if(kind!=='logo')kind='field';if(models.has(kind))return models.get(kind);const scene=new T.Scene();scene.environment=environment;const camera=new T.PerspectiveCamera(36,1,.1,50);camera.position.z=7.5;const object=new T.Group();scene.add(object);scene.add(new T.HemisphereLight(0xddeeff,0x1e2340,2));const light=new T.DirectionalLight(0xffffff,4);light.position.set(3,4,5);scene.add(light);const rim=new T.DirectionalLight(0xb3a2ff,3);rim.position.set(-3,-2,2);scene.add(rim);
  const color=['#b5e7ff','#bbb2ff','#e3bfaa'][Number(kind)||0];const material=new T.MeshPhysicalMaterial({color,metalness:.72,roughness:.13,clearcoat:1,iridescence:.65,envMapIntensity:1.8});const glass=new T.MeshPhysicalMaterial({color:0xdcecff,metalness:.12,roughness:.08,transmission:.65,thickness:.65,ior:1.45,clearcoat:1,envMapIntensity:2});
  const add=(g,m=material)=>{const mesh=new T.Mesh(g,m);object.add(mesh);return mesh};
- if(kind==='logo'){add(new T.TorusKnotGeometry(1,.36,128,24,2,3),glass);const inner=add(new T.TorusKnotGeometry(.98,.12,100,16,2,3));inner.rotation.z=.1;camera.position.z=5.7;}
+ if(kind==='logo'){const lens=add(new T.SphereGeometry(.85,36,24),glass);lens.scale.z=.25;add(new T.TorusGeometry(.9,.055,12,72));const pts=[[-1.15,.65,.15],[1.12,.65,.1],[0,-1.15,.15]];for(const p of pts){const node=add(new T.SphereGeometry(.15,16,12));node.position.set(...p)}const vertices=[];for(const p of pts)vertices.push(...p,0,0,.3);const lines=new T.BufferGeometry();lines.setAttribute('position',new T.Float32BufferAttribute(vertices,3));object.add(new T.LineSegments(lines,new T.LineBasicMaterial({color:0xe1e5ff,transparent:true,opacity:.7})));camera.position.z=5.7;}
  else{
  const count=8000,seeds=new Float32Array(count*3);let seed=91;const random=()=>{seed=seed*16807%2147483647;return(seed-1)/2147483646};for(let i=0;i<count;i++){seeds[i*3]=i/count;seeds[i*3+1]=random();seeds[i*3+2]=random()}
  const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.BufferAttribute(new Float32Array(count*3),3));geometry.setAttribute('aSeed',new T.BufferAttribute(seeds,3));
@@ -33,7 +33,7 @@
  else if(k<10.5){float cluster=floor(u*6.),phi=acos(1.-2.*v),theta=w*PI*2.;vec3 center=vec3(cos(cluster*PI/3.)*1.15,sin(cluster*PI/3.)*1.05,sin(cluster*2.)*.4);p=center+vec3(sin(phi)*cos(theta),cos(phi),sin(phi)*sin(theta))*.35;}
  else{float strand=floor(v*3.),theta=u*PI*3.+strand*2.09;p=vec3(cos(theta)*(1.+u*.3),sin(theta*.7+t*.3)*.6+(strand-1.)*.25,(u-.5)*3.2);}
  p.y+=sin(p.x*2.+t*.4+variation)*.07*variation;
- float shimmer=.8+.2*sin(u*30.+t*.65);vColor=mix(vec3(.17,.48,.86),vec3(.55,1.,1.),smoothstep(-1.6,1.6,p.y));vColor=mix(vColor,vec3(.73,.57,1.),mod(uKind,3.)*.15*w);
+ float shimmer=.8+.2*sin(u*30.+t*.65);vColor=mix(vec3(.52,.55,.62),vec3(.95,.96,1.),smoothstep(-1.6,1.6,p.y));vColor=mix(vColor,vec3(.88,.81,.95),mod(uKind,3.)*.08*w);
  vec4 mv=modelViewMatrix*vec4(p,1.);vec2 delta=mv.xy-uPointer;float d=length(delta);float force=exp(-d*d*16.)*uForce;mv.xy+=normalize(delta+vec2(.001))*(force*.062+uBurst*exp(-d*d*10.)*.28);mv.z+=sin(u*130.+v*41.)*force*.18;mv.xy+=vec2(sin(v*85.),cos(w*91.))*force*.06;
  gl_Position=projectionMatrix*mv;gl_PointSize=clamp((1.4+w*1.0)*(uResolution/440.)*6./-mv.z,1.15,4.);vAlpha=(.55+w*.45)*shimmer*(.65+.35*smoothstep(-1.8,1.8,p.z));
  }`,fragmentShader:`varying vec3 vColor;varying float vAlpha;void main(){float d=length(gl_PointCoord-.5);if(d>.5)discard;gl_FragColor=vec4(vColor,pow(1.-d*2.,1.15)*vAlpha);}`});

@@ -1,5 +1,128 @@
 # REI — continuation handoff
 
+## Consistent visual finish — 1 October 2026
+
+Added visual-finish.css and visual-finish.js, loaded last in index.html. Shared typography, spacing, glass controls, tabs, focus states, forms, empty states, disclosure panels, research tables, dialogs and responsive wrapping now use one final layer. Notebook/proposal writing surfaces use ivory and readable ink; fixed competing legacy title/textarea colors and placeholder contrast. Notebook mobile sculpture shortened. Added polite note status, invalid-field semantics and keyboard-focusable named table regions only when they overflow. Existing storage and save workflows retained.
+
+Verified 164 structural route checks: all 63 routes at 1440x960 and 390x844, plus 19 representative routes at 320x740 and 768x1024. No document horizontal overflow, missing main heading or duplicate IDs found. Visually inspected desktop/mobile notebook, mobile dialog and proposal. Checked required validation, notebook search reset, dropdown ArrowDown/Escape and focus return, Explore Escape/focus return, table keyboard region, saved fictional PDF rendering, mobile companion pane switching and closing. Captured warning/error logs empty. 25 top-level JavaScript syntax checks plus workbench-core, local-search and reader-regression passed; git diff --check passed. User-authored contents were not edited.
+
+Evidence/report/screenshots and runnable rei-visual-finish.zip are in C:/Users/admin/Documents/Codex/2026-10-01/co/outputs. Route checks are structural, not exhaustive interaction tests. Physical devices, Firefox/Safari, full accessibility audit, OS reduced-motion emulation, low-end performance and backup restore remain unverified. No commit/push/deployment in this pass. Preview returned to notebook; viewport override reset. Existing runnable repository bundle refreshed.
+
+## Observatory implementation — 1 October 2026
+
+Implemented the researched direction locally. Replaced the earlier SVG research story with an original, lazy-loaded Three.js optical archive: machined lens, engraved bezel, orbiting source sheets, context-focused evidence view, connected argument assembly, and coordinated chapter captions. Desktop scroll advances four chapters; manual tabs and Arrow/Home/End controls remain available. Mobile uses manual chapters. A skip control preserves normal navigation and transfers focus to the next reading section. Refined hero transmission (opacity 1), dark transmission background, reflections and contextual inspection feedback. Added optical-observatory.css separately from the existing observatory.css; existing foundation stylesheet preserved.
+
+Added optional companion desk in Reader and Proposal. Reader keeps the real local proposal beside the PDF/capture workflow; Proposal shows source-linked findings and allows explicit append into the existing draft. Existing DOM controls are moved, not cloned, preserving handlers and PDF state. Desktop separator supports pointer drag, Left/Right and Home/End, with width preference stored locally. Mobile/tablet has a single-pane switch. Closing restores project navigation. Ivory writing surface and restrained warm accents complement the charcoal/chrome system. No new framework, external asset requests, accounts, schema changes or paid service. Corrected Synthesis ordering in shared project transitions.
+
+Verified: bundled Node syntax checks for new/changed scripts; workbench-core, local-search and reader-regression tests; git diff --check. In-app browser: local PDF opened alongside proposal; fictional companion draft and source-linked insertion persisted after reload; fictional QA draft restored afterward; separator ArrowLeft changed 60 to 58; close restored navigation; chapter click/End keyboard, native scroll progression and inspection feedback worked; motion pause made story non-sticky and was restored. 390px home/story/Reader/Proposal and 768px companion checked without document horizontal overflow; desktop checked at 1440x960. Native browser skip action preserved #home and focused the next reading heading. Browser captured warning/error logs empty at inspected checkpoints. User research was not edited. The original QA fixture remains local.
+
+Limits: Firefox/Safari, screen-reader audit, OS reduced-motion emulation, real touch and low-end GPU testing, field Core Web Vitals, complete-backup download/restore and full all-route regression remain unverified. The story uses clearly labeled illustrative sheets, not live project data. The actual companion desk uses local project data. No commit, push or deployment performed in this pass. Current browser preview is http://127.0.0.1:4187/#home. Runnable bundle refreshed; public Vercel remains the previously deployed version.
+
+
+## Optical Research Atelier enhancement — 1 October 2026
+
+Added atelier-home.js, atelier.js and atelier.css. Original interactive research story transitions between question, sources, evidence and argument, with glass instrument, silver orbit lines and restrained violet accents. Arrow/Home/End tab keyboard behavior and real destination links. Orbit pauses offscreen and honors motion preference. Navigation directory now previews focused/hovered destinations. Research desk gets reversible focus mode and a live Markdown-heading outline with jump-to-heading selection in the proposal editor. Refined hero typography and optical interaction hint. Existing 3D magnifying-glass controls, all routes and local storage preserved.
+
+Validation: syntax checks and existing workbench-core, reader-regression and local-search tests passed; git diff --check passed. Browser optical stage selection and ArrowRight checked. 390px optical story showed no horizontal overflow. Motion pause resulted in animationName none and was restored. Focus room concealed project rail and restored through Show project navigation. Fictional proposal headings appeared in outline; Methods selected the corresponding heading in the editor. Directory preview updated on keyboard focus. No user-authored research changed; existing fictional QA proposal was updated with test headings. Full cross-browser, backup restore and performance benchmarking remain unverified as documented in stage 4. No commit, push or public deployment.
+
+
+## Stage 4 — final polish and targeted regression
+
+# REI final design pass — 1 October 2026
+
+All four design stages are implemented locally. No commit, push or public deployment was performed.
+
+## Final changes
+- Brought the notebook, proposal draft and readiness surfaces into the glass/chrome design system.
+- Unified visible focus outlines, disabled controls, editor typography and mobile form spacing.
+- Removed overlapping learning entrance animations and tilt on large resource rows.
+- Fixed the PDF reader's malformed saved-page key and cleanup failures when reopening documents.
+- Added a targeted PDF regression test for page persistence, bounds, extracted text and cleanup variants.
+
+## Verified
+- Syntax checks for the changed design, application and research scripts.
+- Workbench-core, local-search and reader-regression tests pass; whitespace checks pass.
+- Saved local PDF fixture renders with selectable text and reopens successfully.
+- Keyboard Enter opens the directory; Escape closes it and returns focus to Explore REI.
+- Keyboard motion toggle works and paused preference survives reload; motion restored afterward.
+- At 390px: homepage, academy, journey, toolkit, workshops, notebook, draft, readiness and lesson writing had no document horizontal overflow.
+- Tablet notebook at 768px had no document horizontal overflow.
+- Stage 3 previously checked all nine research routes on desktop/mobile and fictional local source, evidence and proposal persistence.
+- Final captured browser error logs were empty.
+
+## Verification limits
+- Complete-backup export was clicked, but the browser download event timed out. Completed download and restore were not verified.
+- OS reduced-motion emulation, full screen-reader audit, every keyboard/form state, real touch devices, Firefox/Safari and low-end performance benchmarking were not completed. Implemented safeguards are not formal accessibility/performance certification.
+- QA uses the explicitly fictional design project and local PDF fixture; user research was not edited. Local browser storage was preserved.
+
+Preview: http://127.0.0.1:4187/#home
+
+
+
+## Stage 3 — contextual research desk (2026-10-01)
+
+Added research-room.css and research-room.js. Replaced the horizontal project tabs with a numbered, sticky glass sidebar on desktop and a two-column destination menu on mobile. All nine destinations, real routes, forms and storage contracts remain. Applied optical surfaces, typography, readable editors, restrained section entrances and disclosure animations to projects, Library, Reader, Evidence, Claims, Synthesis, Design, Map, Proposal and Review. Corrected inherited content width and heading centering. New animations cancel on motion pause and route changes; editors are not animated.
+
+Verified bundled Node syntax for changed research scripts; existing workbench-core and local-search tests passed; git diff --check passed. Browser opened all nine destinations and confirmed active sidebar destinations. Mobile 390px inspected all nine with no document horizontal overflow. Fictional design QA project saved a source, source note, evidence note and proposal; evidence persisted after reload, source note and proposal survived navigation. Browser captured error logs were empty. QA data is explicitly fictional and remains only in the existing local preview QA project. No user-authored research modified. Reader UI checked; attaching/rendering a PDF, full exports/restores, keyboard, screen reader, cross-browser and performance checks remain for stage 4.
+
+Stages 1-3 implemented as local previews. Stage 4 final polish/regression remains. No commit, push or deployment for this design pass.
+
+
+## Stage 2 — editorial learning rooms (2026-10-01)
+
+Added learning.css and learning.js, scoped to academy, journey, toolkit, workshops, lessons and resource/session guides. Larger sans-serif hierarchy; editorial lesson rows; sequential phase sections; stacked workshops; glass filter/step controls; readable writing surfaces; contextual edition navigation; cancellable scroll entrances. Existing particle illustrations, routes, draft handlers and local storage retained. Motion preferences respected; pause cancels new entrance animations. No new dependency or paid service.
+
+Verified: bundled Node syntax and existing workbench-core/local-search tests passed; git diff --check passed. Browser academy search/phase filter, toolkit Evidence filter, lesson Learn/Example/Write/Check transitions, correct quiz feedback and workshop/resource guide navigation checked. Mobile 390px horizontal overflow absent on inspected academy, journey, seminars, workshop guide, lesson writing, toolkit and resource guide. Motion toggle set off and was restored. Draft textarea present with expected stage binding; full autosave/download/export, all lesson states, keyboard, cross-browser and performance regression remain for stage 4. QA answered lesson 4 check on the local preview origin; no user draft text modified. No commit, push or deployment.
+
+Next: stage 3 research workspace and contextual sidebar. Stage 4 full polish and regression. Stage 1-2 are local previews, not a verified public release.
+
+
+## Stage 1 — realistic optical instrument and richer motion
+
+Rebuilt the hero as a magnifying glass with beveled annular metal housing, curved glass, grip, collar and reflective trim. Added mouse drag plus Rotate/Inspect/Reset controls, enlarged inspection, pointer response and scroll transformations. Added dream-polish.js for menu stagger, button ripples and scroll parallax, alongside hover border sweeps and link movement. Referenced user-approved motion libraries without importing React or copying premium source. Desktop drag and controls and mobile 390px/no-overflow inspected; no console errors observed. Syntax, existing workbench-core/local-search tests and whitespace checks passed. Full cross-browser/performance/accessibility regression remains stage 4. Stages 2–4 remain unimplemented in this pass.
+
+## Stage 1 refinement — lens identity
+
+User approved the overall direction but rejected the knot sculpture and logo. Replaced both with a glass research lens and connected points, including SVG logo fallback and favicon. Retained pointer/scroll response and particles. Syntax/whitespace checks passed; desktop scene inspection showed no console errors. Four total redesign stages remain the agreed structure.
+
+## Design continuation — 2026-10-01: Dream Laboratory, stage 1
+
+Approved direction: original immersive redesign in stages, charcoal/silver/liquid chrome, glass plus evolving particles, oversized clean sans-serif, minimal header and full-screen navigation, expressive motion across the site. Keep REI logo and all working research features/storage. Mobile retains rich visuals within device capacity. Optional ambient sound starts off. Reference direction: Alche and GetLayers; exact MotionUI/Lumen references remain unconfirmed.
+
+Implemented stage 1:
+- New original homepage composition with oversized typography, editorial sections, connected-space links, and existing learning/progress destinations.
+- Locally rendered Three.js chrome form with glass orbital lenses and surrounding particles; responds to pointer and scroll, uses a generated reflection environment and CSS fallback, and disposes resources on route changes.
+- Minimal global header and full-screen glass directory retaining existing destination search and Ctrl/Cmd K navigation.
+- Shared glass buttons, inputs, dropdowns, optical hover highlights, magnetic homepage CTAs, tilted particle illustrations, entrance/reveal animations, and desktop cursor accent.
+- Glass dropdowns preserve underlying native select/form state and existing change handlers. Arrow keys, Enter, Escape, Tab and type-ahead supported.
+- Local synthesized ambient sound with explicit on/off control; starts off each page load and fades when page is hidden. No external audio assets or requests.
+- Motion pause/reduced-motion support, offscreen scene pause, 30fps scene budget and capped rendering resolution.
+
+Validation actually completed:
+- Syntax checks for dream.js, dream-home.js and app.js; existing workbench-core and local-search tests passed; git diff --check passed.
+- In-app-browser desktop and 390x844 mobile homepage inspected, WebGL scene rendered, no horizontal overflow in inspected homepage states.
+- Full-screen menu opened/closed on desktop and mobile; directory search for methods returned three results and concealed the directory grid.
+- Starter-template dropdown opened, ArrowDown + Enter selected Literature review and updated the underlying native selection.
+- Animation pause toggled document motion state. Audio on/off UI toggled and reset to off on reload; audio fidelity was not independently assessed.
+- Fictional project created and reopened in Library with saved-on-device status; local browser error logs were empty in inspected routes.
+- Mobile sculpture/copy overlap fixed during visual review.
+
+Remaining: user review of stage 1; public-page/lesson layout redesign; contextual research sidebar and full reader/evidence/claim/synthesis/design/proposal/review redesign; lower-page full regression; OS reduced-motion emulation, full keyboard/touch, low-end-device performance, Safari/Firefox, audio fidelity and complete storage/export regression. Do not claim the whole website redesign or formal accessibility/performance certification is complete. No commit, push or deployment performed for this design stage.
+
+Files: dist/dream-home.js, dist/dream.js, dist/dream.css, integration in dist/app.js and dist/index.html; approved direction in design-system/rei-dream-laboratory/MASTER.md. Prior local-search changes are retained.
+
+
+## Continuation update — 2026-10-01: local workspace search
+
+Implemented a read-only search panel on the research project overview. It searches project questions, source metadata and reading notes, evidence passages and findings, claims, decisions, proposals, learning notebook notes, and lesson drafts. Workspace and content-type filters, excerpts, section links, empty-state guidance, and a polite result-count announcement are included. Results are capped at 100 visible entries with refinement guidance. Search operates in this browser without accounts or network requests.
+
+Files: `dist/local-search.js`, integration in `dist/research.js` and `dist/index.html`, and `tests/local-search.cjs`.
+
+Validation: local-search tests and existing workbench-core tests passed; syntax checks for both changed scripts and git diff whitespace checks passed. Browser visual, keyboard, mobile, and large-project performance checks have not been completed in this continuation. Links open the relevant section; they do not focus an individual record. Unsaved forms and PDF binary contents are not indexed. Workspace filters currently group projects with identical titles.
+
+Changes are local and have not been committed, pushed, or deployed in this continuation. Next: verify browser interaction and performance, then consider individual-record navigation and project-ID-based filters. Preserve the free/local-first product direction.
+
+
 ## Current continuation update — 2026-09-25: research depth pass
 
 The latest work is pushed to `master` through commit `ddb11e7`. The repository is clean and synchronized with `https://github.com/hoshixdd/REI`.
