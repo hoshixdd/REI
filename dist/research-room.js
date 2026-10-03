@@ -1,6 +1,8 @@
 /* Working-room motion never touches editor text or moves a focused control. */
 (()=>{
  let animations=[],observer;
+ const compactRooms=matchMedia('(max-width:900px)');
+ compactRooms.addEventListener('change',()=>{const menu=document.querySelector('.research-room-menu');if(menu)menu.open=!compactRooms.matches});
  const motion=()=>document.documentElement.dataset.motion!=='off'&&!matchMedia('(prefers-reduced-motion:reduce)').matches;
  function finish(){observer?.disconnect();animations.forEach(a=>a.cancel());animations=[]}
  function enhance(){finish();const host=document.querySelector('.research-shell');if(!host)return;

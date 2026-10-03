@@ -1,0 +1,13 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const source=fs.readFileSync('dist/research.js','utf8');
+const start=source.indexOf(' function nextStep('),end=source.indexOf(' function activity(',start);
+const next=vm.runInNewContext(source.slice(start,end)+';nextStep');
+const blank={question:'',papers:[],evidence:[],proposal:'',workbench:{claims:[]}};
+assert.equal(next(blank).label,'Define your question');
+const question={...blank,question:'A fictional question?'};
+assert.equal(next(question).room,'library');
+const sourceProject={...question,papers:[{}]};assert.equal(next(sourceProject).room,'reader');
+const evidence={...sourceProject,evidence:[{}]};assert.equal(next(evidence).room,'claims');
+const claims={...evidence,workbench:{claims:[{}]}};assert.equal(next(claims).room,'proposal');
+const drafted={...claims,proposal:'A fictional draft'};const before=JSON.stringify(drafted);assert.equal(next(drafted).room,'review');assert.equal(JSON.stringify(drafted),before);
+console.log('PASS: six next-step states and no project mutation');

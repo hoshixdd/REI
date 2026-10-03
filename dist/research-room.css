@@ -1,4 +1,16 @@
 /* Stage three: a quiet working desk inside the optical REI identity. */
+.lesson-transfer-list{border:0;padding:0;margin:24px 0;min-width:0}.lesson-transfer-list legend{font-size:14px;color:#ded4ba;margin-bottom:14px}.lesson-transfer-item{border:1px solid #ffffff26;border-radius:14px;padding:16px;margin:12px 0}.lesson-transfer-item>label{display:flex;gap:12px;align-items:center;font-size:14px;line-height:1.6}.lesson-transfer-item input{width:20px;height:20px;min-height:20px;flex-shrink:0;accent-color:#ded4ba}.lesson-transfer-item summary{font-size:13px;padding:14px 0;cursor:pointer;color:#bec5d0}.lesson-transfer-item pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.8 Manrope,sans-serif;margin:0;max-height:260px;overflow:auto;padding:12px;background:#ffffff07;border-radius:10px}
+.project-overview{margin-top:20px;border:1px solid #ffffff26;border-radius:20px;background:linear-gradient(135deg,#ffffff09,#ffffff02)}
+.project-overview>summary,.research-room-menu>summary,.project-switcher>summary{cursor:pointer;min-height:48px;padding:16px;line-height:1.6;font-size:14px}
+.project-overview>summary span{float:right;color:#bec5d0;font-size:12px}
+.project-overview-body{display:grid;grid-template-columns:1fr 1fr;gap:35px;padding:24px;border-top:1px solid #ffffff26}
+.project-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:24px 0}
+.project-metrics dt{font-size:12px;color:#bec5d0;line-height:1.6}.project-metrics dd{margin:8px 0 0;font:500 32px/1.2 Manrope,sans-serif}
+.project-next h2{font:500 26px/1.2 Manrope,sans-serif;letter-spacing:-.04em}.project-next p{color:#bec5d0;font-size:14px;line-height:1.8}.project-next .button{margin-top:12px}
+.project-switcher{margin:16px 0;border-block:1px solid #ffffff26}.project-switcher nav{display:grid;gap:8px;padding:0 12px 16px}.project-switcher a{font-size:13px;line-height:1.6;overflow-wrap:anywhere;padding:10px;border-radius:12px}.project-switcher [aria-current]{background:#ffffff12}
+.research-room-menu>summary{display:none}.project-row small{display:block;color:#bec5d0;font-size:12px;line-height:1.8;margin-top:12px}
+@media(max-width:900px){.research-room-menu>summary{display:flex;justify-content:space-between;gap:16px;padding-inline:0}.research-room-menu>summary span{color:#ded4ba;font-size:13px}.research-rail .research-rail-note{display:none}.project-overview-body{grid-template-columns:1fr;gap:20px}.project-overview>summary span{float:none;display:block;margin-top:5px}.research-shell .research-rail{padding:16px}.project-switcher{margin:8px 0}.project-switcher>summary{padding:12px 0}.research-shell .project-edit{margin-bottom:20px}}
+@media(max-width:420px){.project-overview-body{padding:20px}.project-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 body[data-page=research] .research-shell{max-width:1440px;padding-bottom:100px}
 .research-shell{--mint:#cfd8e7;--blue:#c2cddd;--lavender:#d0c6e0}
 .research-heading{padding:65px 0 55px;border-bottom:1px solid #ffffff25;background:none}
