@@ -1,5 +1,14 @@
 # REI — continuation handoff
 
+## Connected Claims refinement — 10 October 2026
+
+Claims now show supporting, challenging, mixed and uncertain relationship counts. Each linked evidence note has an expandable trace with exact passage, method, context, limitations, boundaries and location. Links open the original source in Reader or focus the exact Evidence record after navigation. Search includes claim text, linked findings and source titles; filters show unlinked, challenged or reviewed claims. Reviewed remains a researcher-set status. Existing claim records and storage schemas are unchanged.
+
+Validation: workbench-core, reader-regression, lesson-transfer, project-navigation and local-search passed, plus research-flow-save (failed comparison save rolls back its record, retains text and permits successful retry). Script syntax and diff whitespace checks passed. In-app browser with the fictional project verified support/challenge counts, unlinked/challenged/reviewed filters, linked-finding search, passage/limitation disclosures, exact evidence focus, original source selection, reload persistence and 390px no document overflow. Desktop trace screenshot is in the current chat outputs. Existing research-edge browser suite could not run because its Playwright dependency is absent; no claim of that suite passing. Physical touch, Firefox/Safari, screen readers, large collections, actual text-selection capture and passage failure injection remain unverified. No real research data was edited.
+
+Next useful increment: deepen Synthesis with clearer theme coverage, uncoded evidence and navigation back to source records. Keep operation free and local-first, without accounts or a cloud database.
+
+
 ## Connected Library → Reader → Evidence refinement — 10 October 2026
 
 Added dist/research-flow.js, loaded before app initialization so direct room loads receive enhancements. Library combines text search with reading-status filtering, announces matching counts, provides compact spacing and reading-note disclosures, shows evidence counts, and links each source directly to Reader. Reader remembers the selected source per project in sessionStorage, labels capture provenance, exposes an explicit passage PDF page, focuses interpretation after selection capture and links to saved evidence.
@@ -10,7 +19,7 @@ Passage saving validates page bounds and source identity, uses the explicit capt
 
 Validation: all five existing regression suites passed; changed-script syntax and git diff --check passed. In-app browser used a labeled fictional imported fixture only. Verified combined Library filters/empty results, compact control, source-specific Reader entry and reload selection, local PDF rendering, invalid page rejection, successful passage saved to Evidence, evidence search, two-note comparison save and reload persistence in Synthesis. Library, Reader and Evidence inspected at 390px without document overflow; comparison stacks on mobile and uses two columns at 1440px. Final inspected-route browser error log contained no new errors after repairs. Desktop/mobile screenshots are in the current chat outputs. Fictional QA project remains in local preview storage; real user research was not edited.
 
-Limits: physical touch, Firefox/Safari, screen reader, large collections, direct selected-text capture and save-failure injection remain unverified in this slice. Local preview only; no commit, push or deployment. Prior backup slice was pushed as 0f60691 and five live assets matched that commit. Next: review these rooms, then extend connected evidence/claim navigation or deepen synthesis.
+Limits: physical touch, Firefox/Safari, screen reader, large collections, direct selected-text capture and save-failure injection remain unverified in this slice. Published as 0426fce on GitHub master. Production index.html, research.js, workbench.js, research-flow.js and research-room.css returned HTTP 200 and matched that commit. Prior backup slice was pushed as 0f60691. Claims continuation follows below.
 
 
 ## Local save and complete backup workflow — 10 October 2026

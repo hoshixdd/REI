@@ -1,0 +1,28 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const handlers={};
+const project={id:'test',workbench:{comparisons:[]}};
+const panel={dataset:{left:'first',right:'second'}};
+const status={textContent:''};
+const button={disabled:false};
+let rejectSave=true;
+const context={window:{REIWorkbench:{getProject:()=>project,saveProject:async()=>{if(rejectSave)throw Error('Storage full')}}},document:{addEventListener:(name,fn)=>{(handlers[name]??=[]).push(fn)},querySelector:selector=>selector==='#evidence-comparison'?panel:status},addEventListener:()=>{},crypto:{randomUUID:()=> 'comparison-test'},Map,Set,Event};
+vm.runInNewContext(fs.readFileSync(require.resolve('../dist/research-flow.js'),'utf8'),context);
+const form={id:'evidence-compare-form',elements:{explanation:{value:'Two fictional studies differ.',readOnly:false}},querySelector:()=>button};
+const event={target:form,preventDefault(){}};
+(async()=>{
+ await handlers.submit[0](event);
+ assert.equal(project.workbench.comparisons.length,0,'Failed saves must roll back');
+ assert.equal(form.elements.explanation.value,'Two fictional studies differ.','Keep the comparison draft');
+ assert.equal(button.disabled,false,'Allow retry');
+ assert.match(status.textContent,/Could not save/);
+ rejectSave=false;
+ await handlers.submit[0](event);
+ assert.equal(project.workbench.comparisons.length,1);
+ assert.equal(project.workbench.comparisons[0].left,'first');
+ assert.equal(project.workbench.comparisons[0].right,'second');
+ assert.equal(form.elements.explanation.readOnly,true);
+ assert.equal(button.disabled,true,'Prevent duplicate submission');
+ console.log('PASS: failed comparison save retains draft, rolls back record and allows successful retry.');
+})().catch(err=>{console.error(err);process.exitCode=1});
