@@ -115,7 +115,7 @@ Generated locally by REI. This packet is a discussion aid; it is not an automati
  document.addEventListener('submit',async ev=>{const f=ev.target;if(!f.matches('[data-wb-form]')||!get())return;ev.preventDefault();const p=get(),w=state(),data=Object.fromEntries(new FormData(f)),kind=f.dataset.wbForm;try{
   if(kind==='claim'){if(!data.text.trim())return;if(f.dataset.edit)Object.assign(w.claims.find(c=>c.id===f.dataset.edit),{text:data.text});else w.claims.push({id:uid(),text:data.text,status:'Tentative',links:[]})}
   if(kind==='link'){const c=w.claims.find(c=>c.id===data.claimId);if(!p.evidence.some(n=>n.id===data.evidenceId))throw Error('Evidence not found.');const old=c.links.find(l=>l.evidenceId===data.evidenceId);if(old)old.relation=data.relation;else c.links.push({evidenceId:data.evidenceId,relation:data.relation})}
-  if(kind==='design'){if(f.dataset.edit)Object.assign(w.design.find(d=>d.id===f.dataset.edit),data);else w.design.push({id:uid(),...data})}
+  if(kind==='design'){if(!data.objective.trim())throw Error('Describe the objective before saving.');const before=structuredClone(w.design);if(f.dataset.edit)Object.assign(w.design.find(d=>d.id===f.dataset.edit),data);else w.design.push({id:uid(),...data});try{await api.save()}catch(error){w.design=before;throw error}try{sessionStorage.removeItem('rei-research-form-'+p.id+'-design')}catch{}api.render();toast('Saved on this device.');return}
   if(kind==='decision')w.decisions.push({id:uid(),date:now(),...data});
   if(kind==='search')w.searches.push({id:uid(),date:now(),...data});
    if(kind==='comparison'){if(data.left===data.right)throw Error('Choose two different evidence notes.');w.comparisons.push({id:uid(),...data})}

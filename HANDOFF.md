@@ -1,5 +1,15 @@
 # REI — continuation handoff
 
+## Connected Design → Proposal → Review — 11 October 2026
+
+Added `dist/design-flow.js` before app startup. Design and Proposal now offer objective selection, explicit method-text preview and append-to-proposal. Empty selection is rejected, missing fields remain “Not recorded”, exact repeated transfers do not duplicate the plan, and the proposal length limit is enforced. Failed transfer saves roll back proposal text. Existing proposal wording, synthesis and copied plan text remain untouched by later objective edits. Design saves now roll back objective changes on persistence failure and clear the successful form draft.
+
+Alignment rows open the existing objective editor. Review checks link to relevant work, including the exact missing method field, challenged claim, evidence note or source. Source-audit prompts also link back to source records. Proposal and Review have reciprocal navigation and current recorded-work context. All checks remain completeness prompts, not scientific approval. Existing schemas, exports, local storage and account-free behavior are preserved.
+
+Validation: eight suites passed (method-flow, synthesis-depth, workbench-core, research-flow-save, reader-regression, local-search, project-navigation, lesson-transfer), changed-script syntax and diff whitespace checks passed. Browser used the existing explicitly fictional fixture: objective save, empty selection, selected preview, successful transfer, duplicate prevention, preserved synthesis/older copied method wording, missing-sample review link focusing the correct editor field, corrected prompt disappearing after save, exact challenged-claim focus and reload persistence verified. Desktop/mobile method preview and review inspected; mobile review grid clash fixed and confirmed at 390px without document overflow. Inspected-route error logs were empty. Physical devices, Firefox/Safari, screen readers, large collections and full browser-suite coverage remain unverified. Screenshots are in the current chat outputs.
+
+Next: broader immersive and usability refinement across the research rooms, preserving the connected research workflow and local backups.
+
 ## Synthesis depth checkpoint — 10 October 2026
 
 Added `dist/synthesis-flow.js` before app initialization. Synthesis now has an uncoded evidence queue that opens the coding form with the selected note, distinct coded-note counts, per-theme distinct-source coverage, missing-limitations/location prompts, evidence traces and source-specific Reader links. Matrix evidence labels link to the exact focused Evidence record. Coding means thematic relevance, not automatic agreement or quality.
