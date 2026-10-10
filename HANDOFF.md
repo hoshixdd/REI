@@ -1,5 +1,18 @@
 # REI — continuation handoff
 
+## Connected Library → Reader → Evidence refinement — 10 October 2026
+
+Added dist/research-flow.js, loaded before app initialization so direct room loads receive enhancements. Library combines text search with reading-status filtering, announces matching counts, provides compact spacing and reading-note disclosures, shows evidence counts, and links each source directly to Reader. Reader remembers the selected source per project in sessionStorage, labels capture provenance, exposes an explicit passage PDF page, focuses interpretation after selection capture and links to saved evidence.
+
+Evidence combines text/source filtering across both table and detailed records, exposes linked-claim counts and source return links, and supports selecting exactly two notes for an inline side-by-side comparison. Comparison text saves to the existing workbench.comparisons schema; failure rolls back the added record while retaining text. Saved comparisons are visible in Synthesis and existing design/review exports. Existing removal guards apply. Fixed inherited dark Evidence text against the dark room surface. Selections remain stable through room rerenders.
+
+Passage saving validates page bounds and source identity, uses the explicit capture page instead of the currently displayed page, rolls back an added note on persistence failure, and clears the successful session draft. Changing sources retains unfinished quote text with a warning rather than silently attaching it to a different paper. Form draft saving ignores incidental select/hidden defaults and input in unrelated comparison forms. Existing IndexedDB schemas and research data retained; no cloud/account added.
+
+Validation: all five existing regression suites passed; changed-script syntax and git diff --check passed. In-app browser used a labeled fictional imported fixture only. Verified combined Library filters/empty results, compact control, source-specific Reader entry and reload selection, local PDF rendering, invalid page rejection, successful passage saved to Evidence, evidence search, two-note comparison save and reload persistence in Synthesis. Library, Reader and Evidence inspected at 390px without document overflow; comparison stacks on mobile and uses two columns at 1440px. Final inspected-route browser error log contained no new errors after repairs. Desktop/mobile screenshots are in the current chat outputs. Fictional QA project remains in local preview storage; real user research was not edited.
+
+Limits: physical touch, Firefox/Safari, screen reader, large collections, direct selected-text capture and save-failure injection remain unverified in this slice. Local preview only; no commit, push or deployment. Prior backup slice was pushed as 0f60691 and five live assets matched that commit. Next: review these rooms, then extend connected evidence/claim navigation or deepen synthesis.
+
+
 ## Local save and complete backup workflow — 10 October 2026
 
 User clarified that REI serves independent people, with no organization workspace, accounts or cloud database. Existing browser saves remain the continuation mechanism; export/import transfers or restores projects.
