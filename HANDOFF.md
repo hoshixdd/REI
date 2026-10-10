@@ -1,5 +1,18 @@
 # REI — continuation handoff
 
+## Local save and complete backup workflow — 10 October 2026
+
+User clarified that REI serves independent people, with no organization workspace, accounts or cloud database. Existing browser saves remain the continuation mechanism; export/import transfers or restores projects.
+
+Added Continue your projects guidance, timestamped Saved on this device status, complete backup export in every project room, explicit Export without PDFs, and backup-download reminders stored separately in localStorage per project. Reminder records a download request rather than claiming the file was retained. Project backups exclude learning notebook/lesson originals and the UI now says so. Added a 100 MB export guard matching the restore input limit.
+
+Import now validates project records and stages PDF validation before showing a named review dialog with file size, sources, evidence, claims, proposal words and included PDFs. Confirmation creates a separate project; cancel does not mutate storage; the file input resets so the same backup can be selected again. Failure leaves the review open for retry and removes partially restored attachment records. Project-count limit is rechecked at confirmation. Existing schemas and browser data retained.
+
+Validation: all five existing regression suites passed (workbench-core, project-navigation, lesson-transfer, local-search, reader-regression). Changed JavaScript syntax and git diff --check passed. Isolated Edge browser with fictional data verified reload continuation; complete JSON download; identical PDF bytes after import; restored PDF rendering; preserved proposal and reading notes; original project retained; cancel; same-file re-selection; malformed JSON rejection; 390px no document overflow; no captured page errors. Desktop and mobile import previews captured in the current chat outputs. No real user data was used or modified.
+
+Limits: physical touch, Firefox/Safari, screen reader, storage/quota failure injection, large-file performance and full application regression remain unverified. Export/import does not include unfinished form drafts or the separate learning workspace. User requested publishing this slice on 10 October 2026. All five regression suites and changed-script syntax passed again before release; origin/master matched the starting commit. Commit, push and live-asset verification results are reported in the release response. Local preview: http://127.0.0.1:4198/#research.
+
+
 ## Release request — 3 October 2026
 
 Publishing project overview, recent project ordering, compact mobile rooms, project switcher and explicit lesson-transfer preview to the existing master/Vercel integration. Preview archive refreshed. Push and public asset verification results are reported in the release response; publishing does not complete the remaining Stage 1 QA.
