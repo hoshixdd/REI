@@ -56,6 +56,7 @@ ${['measure','population','sample','collection','analysis','ethics','feasibility
 ## Synthesis themes
 ${w.codes.map(c=>`### ${c.label}
 ${c.definition||'No definition recorded.'}
+${[['conclusion','Interpretation'],['agreement','Agreement'],['disagreement','Disagreement / alternative explanations'],['gaps','Open questions / boundaries']].map(([key,label])=>label+': '+(c[key]||'Not recorded')).join('\n')}
 Coded notes: ${w.coding.filter(x=>x.codeId===c.id).map(x=>{const n=p.evidence.find(n=>n.id===x.evidenceId);return 'E'+(p.evidence.indexOf(n)+1)+(x.note?' — '+x.note:'')}).join(', ')||'None'}`).join('\n\n')||'No themes recorded.'}
 
  ## Evidence comparisons
@@ -123,6 +124,7 @@ Generated locally by REI. This packet is a discussion aid; it is not an automati
    if(kind==='review'){for(const form of document.querySelectorAll('[data-wb-form="review"]')){const response=Object.fromEntries(new FormData(form));const old=w.reviews.find(r=>r.prompt===response.prompt);if(old)old.answer=response.answer;else w.reviews.push({id:uid(),...response})}}
    if(kind==='reviewAction'){if(!data.text.trim())throw Error('Describe the action before saving it.');w.reviewActions.push({id:uid(),text:data.text.trim(),area:data.area.trim(),status:'Open',date:now()})}
   if(kind==='passage'){if(!pdfDoc||pdfPaper!==document.querySelector('#wb-reader-source').value)throw Error('Open this source’s PDF before saving a passage.');const capturePage=Number(data.capturePage||pageNumber);if(!Number.isInteger(capturePage)||capturePage<1||capturePage>pdfDoc.numPages)throw Error('Enter a passage page within this PDF.');if((f.dataset.capturePaper&&f.dataset.capturePaper!==pdfPaper)||(data.captureSource&&data.captureSource!==pdfPaper))throw Error('Capture this passage again from the selected source.');const noteId=uid();p.evidence.push({id:noteId,paperId:pdfPaper,purpose:'',method:'',context:'',findings:data.findings,limitations:'',relevance:data.relevance,locator:'PDF page '+capturePage,page:capturePage,quote:data.quote});try{await api.save()}catch(error){p.evidence=p.evidence.filter(n=>n.id!==noteId);throw error}f.reset();delete f.dataset.capturePaper;try{sessionStorage.removeItem('rei-research-form-'+p.id+'-reader')}catch{}readerNotes();const feedback=document.querySelector('#capture-feedback');if(feedback)feedback.textContent='Passage saved with PDF page '+capturePage+'. Review it in Evidence.';toast('Passage saved in your evidence table.');return}
+  if(kind==='code'||kind==='coding'){const list=kind==='code'?'codes':'coding',record=w[list][w[list].length-1];try{await api.save()}catch(error){w[list]=w[list].filter(x=>x.id!==record.id);throw error}try{sessionStorage.removeItem('rei-research-form-'+p.id+'-synthesis')}catch{}api.render();toast('Saved on this device.');return}
   await commit();
  }catch(err){toast(err.message||'Could not save. Export a backup before closing.')}});
  document.addEventListener('mouseup',()=>{const selection=getSelection(),textEl=document.querySelector('#wb-pdf-text');if(textEl&&selection?.anchorNode&&textEl.contains(selection.anchorNode)&&textEl.contains(selection.focusNode))selectedQuote=selection.toString()});
@@ -142,7 +144,7 @@ Generated locally by REI. This packet is a discussion aid; it is not an automati
    if(action==='review-done'){const text=decodeURIComponent(value);if(!w.reviewResolved.includes(text))w.reviewResolved.push(text)}
    if(action==='review-action-done'){const item=w.reviewActions.find(x=>x.id===value);if(item)item.status='Done'}
    if(action==='review-action-remove'){w.reviewActions=w.reviewActions.filter(x=>x.id!==value)}
-   if(action==='code-remove'){if(w.coding.some(x=>x.codeId===value)){if(!confirm('Remove this theme and its coding assignments? The evidence notes will remain.'))return;w.coding=w.coding.filter(x=>x.codeId!==value)}w.codes=w.codes.filter(x=>x.id!==value)}
+   if(action==='code-remove'){if(w.coding.some(x=>x.codeId===value)||['conclusion','agreement','disagreement','gaps'].some(k=>w.codes.find(c=>c.id===value)?.[k]?.trim())){if(!confirm('Remove this theme, its conclusion and coding assignments? The evidence notes and proposal text will remain.'))return;w.coding=w.coding.filter(x=>x.codeId!==value)}w.codes=w.codes.filter(x=>x.id!==value)}
    if(action==='coding-remove'){w.coding=w.coding.filter(x=>x.id!==value)}
   if(action==='unlink'){const [claimId,noteId]=value.split('|');w.claims.find(c=>c.id===claimId).links=w.claims.find(c=>c.id===claimId).links.filter(l=>l.evidenceId!==noteId)}
   if(action==='claim-status'){const c=w.claims.find(c=>c.id===value);c.status=c.status==='Reviewed'?'Tentative':'Reviewed'}

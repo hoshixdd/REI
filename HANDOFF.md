@@ -1,5 +1,15 @@
 # REI — continuation handoff
 
+## Synthesis depth checkpoint — 10 October 2026
+
+Added `dist/synthesis-flow.js` before app initialization. Synthesis now has an uncoded evidence queue that opens the coding form with the selected note, distinct coded-note counts, per-theme distinct-source coverage, missing-limitations/location prompts, evidence traces and source-specific Reader links. Matrix evidence labels link to the exact focused Evidence record. Coding means thematic relevance, not automatic agreement or quality.
+
+Themes have optional interpretation, agreement, disagreement/alternative explanations and open-question/boundary fields. Old backups remain valid; normalization fills missing fields and import validates their types and length. Saved conclusions travel with project backups and supervisor packets. Unfinished text is kept in sessionStorage per project/theme, restored visibly and explicitly excluded from backups until saved. Save failures preserve form text and roll back theme/proposal changes. Proposal transfer appends researcher-authored synthesis with findings, source metadata, locations and limitations; exact repeat additions are suppressed and the 200,000-character proposal limit is enforced. Theme/coding save failures roll back new records, successful saves clear the old form draft, and removal warns when a conclusion or coding would be lost.
+
+Validation: seven suites passed (synthesis-depth, workbench-core, research-flow-save, reader-regression, local-search, project-navigation, lesson-transfer), changed-script syntax and diff whitespace checks passed. Browser used the existing explicitly fictional project only: uncoded queue, correct selected-note label, two-source coding/coverage, unfinished draft reload, successful save/reload, duplicate-free proposal transfer with both sources/locations/limitations, exact E2 focus and contrasting-source Reader entry verified. Desktop and 390px mobile inspected; no document overflow. Screenshots are in the current chat outputs. Real user projects and the IndexedDB schemas were not changed. Physical touch, Firefox/Safari, screen readers, large collections and full browser-suite coverage remain unverified.
+
+Next: connect Research Design, Proposal and Review more closely, then continue the broader immersive room polish. Preserve free/local-first operation and export/import without accounts or a cloud database.
+
 ## Connected Claims refinement — 10 October 2026
 
 Claims now show supporting, challenging, mixed and uncertain relationship counts. Each linked evidence note has an expandable trace with exact passage, method, context, limitations, boundaries and location. Links open the original source in Reader or focus the exact Evidence record after navigation. Search includes claim text, linked findings and source titles; filters show unlinked, challenged or reviewed claims. Reviewed remains a researcher-set status. Existing claim records and storage schemas are unchanged.
