@@ -1,5 +1,15 @@
 # REI — continuation handoff
 
+## Research room interface refinement — 11 October 2026
+
+Added `room-compass.js` and `room-experience.css`. All nine rooms now share an optical charcoal/silver surface system, clearer task headings, current recorded-work counts and previous/next navigation. A collapsible room atlas groups destinations into gather/inspect, connect/explain and develop/review, with descriptions on pointer/focus, current-room indication, keyboard Escape dismissal and focus-mode access. Counts are records, not a completion/quality score. The atlas uses a small perspective hover response on desktop and a stacked mobile layout; this is a navigation/interface refinement, not a full 3D redesign of every research tool.
+
+Older navy panels, tables, coding chips and readiness surfaces were brought into the existing visual identity. Long-title typography, focus treatment, selection/caret colors and scrollable previews are refined. Removed repeated section/rail entrance motion; only the room heading has a brief optical transition. Forms no longer translate during disclosure motion, and motion pause/reduced-motion settings remain respected. No project records, schema or storage mechanism changed.
+
+Validation: eight existing workflow suites passed, changed JavaScript syntax and diff whitespace checks passed. In-app browser with the fictional fixture navigated all nine rooms at 1440px and 390px: no document overflow or duplicate compass, current room and atlas links correct. Keyboard Escape returns focus, atlas remains usable with project navigation hidden, next-room navigation works, and motion pause/resume was checked. Saved synthesis and objective text remained intact. Inspected-route error logs were empty. Screenshots are in the current chat outputs. Hardware touch, Firefox/Safari, screen readers, large collections and formal accessibility/performance audits remain unverified.
+
+Next: user review of this visual direction and targeted real-device/accessibility verification; continue richer map/reader interactions if requested. Preserve local research, full backups and the no-account/no-cloud constraint.
+
 ## Connected Design → Proposal → Review — 11 October 2026
 
 Added `dist/design-flow.js` before app startup. Design and Proposal now offer objective selection, explicit method-text preview and append-to-proposal. Empty selection is rejected, missing fields remain “Not recorded”, exact repeated transfers do not duplicate the plan, and the proposal length limit is enforced. Failed transfer saves roll back proposal text. Existing proposal wording, synthesis and copied plan text remain untouched by later objective edits. Design saves now roll back objective changes on persistence failure and clear the successful form draft.
