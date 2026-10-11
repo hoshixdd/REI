@@ -83,3 +83,9 @@ The local Research Studio now includes:
 - A supervisor review packet export containing the question, actions, source audit, method alignment, synthesis themes, comparisons, claims, evidence, reflection, and bibliography.
 
 These additions remain local-first and researcher-authored. They provide prompts and organization; they do not score scientific quality or replace supervisor review.
+
+## Graphics and motion refinement — 11 October 2026
+
+Nine original silver/glass instruments now connect page headings, lessons, roadmap phases, toolkit resources, research rooms and the navigation gallery. Reflective surfaces and fast navigation/selection feedback extend the quiet laboratory identity. Reading and writing remain stable, with motion pause, keyboard access and reduced-motion guards. Models use the included local Three.js library and share an existing renderer; no network art assets, paid API or account is needed. Quiet instruments render only when visible and changing.
+
+Nine focused workflow suites passed. Representative route layouts were checked in Chromium at desktop and phone widths, including all nine research rooms. Physical device, Firefox/Safari, screen-reader and formal performance testing remain pending. Keep exporting complete project backups for a second copy of research and PDFs.

@@ -12,7 +12,7 @@
   const link=event.target.closest('a[href]');if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target==='_blank')return;
   const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname!==location.pathname||!url.hash||url.hash===location.hash||url.hash==='#main')return;
   const rect=link.getBoundingClientRect();const card=link.closest('.pathway-tile,.lesson-card,.resource-card,.project-row,.workspace-mosaic>a,.academy-list>a,.roadmap-step');
-  pending={hash:url.hash,element:card||null,x:event.detail?event.clientX:rect.left+rect.width/2,y:event.detail?event.clientY:rect.top+rect.height/2,time:performance.now()};
+  pending={hash:url.hash,keyboard:event.detail===0,element:card||null,x:event.detail?event.clientX:rect.left+rect.width/2,y:event.detail?event.clientY:rect.top+rect.height/2,time:performance.now()};
  },true);
  window.rrhNavigate=render=>{
   const ticket=++serial;active?.skipTransition?.();fallbackAnimation?.cancel();clearNames();veil.getAnimations().forEach(a=>a.cancel());
@@ -33,13 +33,13 @@
    else if(clicked?.element){const target=document.querySelector('.lesson-title,.page-heading,.research-project-heading,.research-heading');name(target,'research-surface');name(titleOf(target),'research-title');if(clicked.element.querySelector('.phase-art'))name(target?.querySelector('.sculpture'),'research-field')}}
    document.querySelector('#main').focus({preventScroll:true});
   };
-  if(reduced()){update();delete root.dataset.transit;return}
+  if(reduced()||clicked?.keyboard||root.dataset.input==='keyboard'){update();delete root.dataset.transit;return}
   if(isStep){name(document.querySelector('.lesson-title,.research-project-heading'),'research-heading');name(document.querySelector('.lesson-flow,.research-tabs'),'research-chapters')}
   else if(clicked?.element?.isConnected){name(clicked.element,'research-surface');name(titleOf(clicked.element),'research-title');name(clicked.element.querySelector('.phase-art'),'research-field')}
   if(document.startViewTransition){
    active=document.startViewTransition(update);active.ready.catch(()=>{});active.updateCallbackDone.catch(()=>{});active.finished.catch(()=>{}).finally(()=>{if(ticket===serial){active=null;clearNames();delete root.dataset.transit}});
   }else{
-   update().then(()=>{if(ticket!==serial||reduced())return;fallbackAnimation=document.querySelector('#main').animate([{opacity:0,transform:isStep?`translateX(${direction*32}px)`:'translateY(22px) scale(.99)'},{opacity:1,transform:'none'}],{duration:isStep?220:300,easing:'cubic-bezier(.16,1,.3,1)'});fallbackAnimation.finished.catch(()=>{}).finally(()=>{if(ticket===serial){clearNames();delete root.dataset.transit}})});
+   update().then(()=>{if(ticket!==serial||reduced())return;fallbackAnimation=document.querySelector('#main').animate([{opacity:0,transform:isStep?`translateX(${direction*16}px)`:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:isStep?180:240,easing:'cubic-bezier(.16,1,.3,1)'});fallbackAnimation.finished.catch(()=>{}).finally(()=>{if(ticket===serial){clearNames();delete root.dataset.transit}})});
   }
   if(!isStep)veil.animate([{opacity:0,transform:'scale(.9)'},{opacity:.45,offset:.35},{opacity:0,transform:'scale(1.15)'}],{duration:320,easing:'cubic-bezier(.16,1,.3,1)'});
  };
