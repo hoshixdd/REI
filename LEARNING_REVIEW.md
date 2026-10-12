@@ -24,6 +24,10 @@ All teaching cases and practice wording are original. Instructional choices draw
 
 Method links point to [Penn State’s collection/design guidance](https://online.stat.psu.edu/stat200/Lesson01), [sampling and design guidance](https://online.stat.psu.edu/stat100/Lesson02), [OpenStax on gathering data](https://openstax.org/books/contemporary-mathematics/pages/8-1-gathering-and-organizing-data) and [Braun and Clarke’s reflexive thematic analysis guidance](https://www.thematicanalysis.net/doing-reflexive-ta/). Direct fetching of some methods pages timed out; their primary-source search records were available. The guides remain concise orientation rather than a complete methods curriculum. Follow disciplinary and institutional requirements.
 
+## Release
+
+Feature commit 2b1224e was pushed to master. After an initial hosting delay, the production root and six changed/new learning assets returned HTTP 200 and matched this release after CRLF normalization. The download ZIP includes the three new learning files and refreshed README.
+
 ## Validation
 
 - New learning suite exercises the actual app startup, normalization and saving: original drafts/completions survive new writes; new attempts round-trip through the import sanitizer; old backups start with empty practice; malformed answers are filtered; saving failure retains the exportable session response. All 18 sandbox combinations distinguish fit from mismatch. Eighteen worked stages and 27 sets of alternative-specific feedback are present.
