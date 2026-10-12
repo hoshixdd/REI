@@ -13,7 +13,7 @@
  let selectSerial=0,openSelect=null;const enhanced=new WeakMap();
  function closeSelect(focus=false){if(!openSelect)return;const {list,trigger}=openSelect;list.remove();trigger.setAttribute('aria-expanded','false');trigger.removeAttribute('aria-controls');if(focus&&trigger.isConnected)trigger.focus();openSelect=null}
  function enhanceSelect(select){
-  if(enhanced.has(select)||select.multiple||select.size>1)return;
+  if(select.closest('.learning-lab')||enhanced.has(select)||select.multiple||select.size>1)return;
   const wrap=document.createElement('div');wrap.className='dream-select';select.before(wrap);wrap.append(select);select.classList.add('dream-native-select');select.tabIndex=-1;select.setAttribute('aria-hidden','true');
   const trigger=document.createElement('button');trigger.type='button';trigger.className='dream-select-trigger';trigger.setAttribute('aria-haspopup','listbox');trigger.setAttribute('aria-expanded','false');wrap.append(trigger);
   const label=select.labels?.[0];const labelText=label?Array.from(label.childNodes).filter(n=>n.nodeType===3).map(n=>n.textContent).join(' ').trim():select.getAttribute('aria-label')||'Select option';

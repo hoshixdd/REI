@@ -4,7 +4,7 @@ A self-contained, responsive research learning site with nine lessons and a loca
 
 ## Open the site
 
-Extract the ZIP, then serve its folder with a static web server. If Python is installed, run `python -m http.server 4173` from the extracted folder and open `http://localhost:4173` in a browser. No package installation or build step is required.
+Extract the ZIP, then serve the extracted dist folder with a static web server. If Python is installed, run `python -m http.server 4173` from the extracted folder and open `http://localhost:4173` in a browser. No package installation or build step is required.
 
 The workspace saves to the browser's local storage. Keep the same browser and site address to return to your work. Changing the hostname or port creates a different storage location. Use **My workspace → Backup** before moving to another device or address; use **Restore backup** at the new address.
 
@@ -13,6 +13,11 @@ The workspace saves to the browser's local storage. Keep the same browser and si
 - An original cinematic research atlas with up to 26,000 GPU particles morphing between a flowing sphere, spiral field, and helix. Phase controls update the scene and next-step destination; pointer and scroll movement influence the field.
 - A nine-milestone research roadmap with local progress tracking.
 - Nine lessons split into 36 focused pages: Learn, Example, Write, and Check.
+- Two fictional teaching projects connected across all nine stages, with assembled proposal examples.
+- Guidance that gradually decreases, with manual guided/hints/independent choices.
+- Twenty-seven scenario questions with explanatory feedback and nine saved written reasoning exercises.
+- Six deeper methods guides and an interactive question/evidence/method/claim sandbox, also available in the research Design room.
+- Practice responses and learning preferences included in learning notebook JSON backups; older backups remain supported.
 - Auto-saved lesson writing assembled into a proposal draft.
 - Six downloadable resources with individual resource guides and search.
 - An idea notebook with search, editing, unfinished-draft recovery, deletion, and undo.
@@ -24,7 +29,7 @@ The workspace saves to the browser's local storage. Keep the same browser and si
 
 ## Scope
 
-This version does not include user accounts, cloud synchronization, an AI service, community features, or real seminar recordings. No recordings were supplied. Workshop materials are original self-guided activities, not recordings of past events. Academic examples are illustrative, not findings from real studies. Follow institutional and supervisor requirements.
+This version does not include user accounts, cloud synchronization, an AI service, community features, or real seminar recordings. No recordings were supplied. Workshop materials are original self-guided activities, not recordings of past events. Academic examples are illustrative, not findings from real studies. Follow institutional and supervisor requirements. Milestone completion records activity, not scientific validity or mastery. The educational impact of REI has not yet been evaluated with students.
 
 Work is stored locally, without account authentication or automatic cloud backup. Do not use the notebook for identifiable research-participant records. Anyone with access to the browser profile may be able to access saved work.
 
