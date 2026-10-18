@@ -83,6 +83,6 @@ Fifteen focused suites and targeted phone/desktop browser checks passed. See HAN
 
 ## Learning after the writeshop
 
-The new landing offers equal entry to learning and project work. Follow #learn through the research mindset and five phases, try eight activities in #practice, and review/export your personal #workbook. No seminar attendance is required. Published research and the limits of REI's adaptations are listed at #learning-evidence. The original optical homepage remains at #explore, and all detailed lessons and research tools remain available from the menu.
+The welcome page introduces REI and leads into the optical homepage at #home, where learning and project work have equal entry. Follow #learn through the research mindset and five phases, try eight activities in #practice, and review/export your personal #workbook. No seminar attendance is required. Published research and the limits of REI's adaptations are listed at #learning-evidence. The homepage directly includes the six-step roadmap, practice activities and workbook access; #explore remains an alias. Detailed lessons and research tools remain available from the menu.
 
 Guided notes and practice are included in learning JSON and complete workspace backups; readable Markdown is not a restore format. Full-lesson drafts and research projects remain separate. See LEARNING_PATH_REVIEW.md for the content map, studies and actual verification. Student learning outcomes have not yet been evaluated.

@@ -112,3 +112,5 @@ The Observatory uses normal page scrolling when its full composition cannot fit 
 The new landing offers equal entry to learning and project work. Follow #learn through the research mindset and five phases, try eight activities in #practice, and review/export your personal #workbook. No seminar attendance is required. Published research and the limits of REI's adaptations are listed at #learning-evidence. The original optical homepage remains at #explore, and all detailed lessons and research tools remain available from the menu.
 
 Guided notes and practice are included in learning JSON and complete workspace backups; readable Markdown is not a restore format. Full-lesson drafts and research projects remain separate. See LEARNING_PATH_REVIEW.md for the content map, studies and actual verification. Student learning outcomes have not yet been evaluated.
+
+The welcome page leads into #home. The optical homepage now includes starting choices, six workshop-aligned steps, practice and workbook access. Learning pages link back to it.

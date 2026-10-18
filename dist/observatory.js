@@ -5,10 +5,10 @@
  const moving=()=>!reduced.matches&&document.documentElement.dataset.motion!=='off';
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const chapters=[
-  ['DEFINE','A good question changes what you see.','Turn a broad interest into a question with a clear subject, context, and purpose.','Find your starting point','#lesson/0'],
-  ['GATHER','Different perspectives. A clearer picture.','Build a source library you can trace. Keep authors, methods, and context attached to every perspective.','Open your source library','#research'],
-  ['EXAMINE','Look closer. Keep the distinction.','Separate an exact passage from your interpretation. Compare findings without losing the source behind them.','Explore evidence tools','#toolkit'],
-  ['CONNECT','An argument, with something behind it.','Bring the evidence into your writing. Make the reasoning visible, including its limits and unanswered questions.','Enter the research studio','#research']
+  ['DEFINE','A good question changes what you see.','Turn a broad interest into a question with a clear subject, context, and purpose.','Shape your research question','#learn/1'],
+  ['GATHER','Different perspectives. A clearer picture.','Build a source library you can trace. Keep authors, methods, and context attached to every perspective.','Practice searching and checking sources','#learn/2'],
+  ['EXAMINE','Look closer. Keep the distinction.','Separate an exact passage from your interpretation. Compare findings without losing the source behind them.','Compare and connect findings','#learn/3'],
+  ['CONNECT','An argument, with something behind it.','Bring the evidence into your writing. Make the reasoning visible, including its limits and unanswered questions.','Connect your research blueprint','#learn/4']
  ];
  let stage=0,manualScroll=null,captionAnimation,cleanup=()=>{},ticket=0,storyResize;
  function setStage(n,focus=false){

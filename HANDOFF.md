@@ -1,3 +1,14 @@
+## Homepage learning integration - 2026-10-18
+
+The user clarified that the guides and activities belong in the actual REI homepage, with unnecessary old promotional sections replaced. The welcome is now a short introduction with one Enter REI action. #home keeps the magnifying-glass scene and optical chapter experience and now contains:
+- Learning and project starting choices, saved-step continuation, workbook/practice/backup access.
+- Six linked workshop steps replacing the generic manifesto and overlapping connected-space rows.
+- Featured research practice, all-eight activity access and published evidence/limits.
+- Deeper resources behind a disclosure and a workbook-focused closing section.
+Optical chapters now link to question, sources, synthesis and blueprint guides. Learning/practice/workbook pages provide an explicit REI homepage return link. No storage format or project-record changes.
+
+Validation: 18 focused suites passed including new home-learning-navigation integration coverage, modified-script syntax and asset build. Desktop 1440 and phone 390 had no horizontal overflow. Browser checked home-to-practice, home-to-question guide, return-home and optical chapter destinations. Original scene and four chapters are present. Actual touch hardware and other browser engines not tested. Runnable archive refreshed.
+
 ## Homepage hierarchy correction - 2026-10-18
 
 The bare URL opens a separate welcome landing with an Enter REI button. #home restores the original optical homepage. #explore remains a compatible alias. Learning and project tools remain available. No storage changes.
