@@ -1,3 +1,20 @@
+## Workshop aligned independent learning release — 18 October 2026
+
+The user requested seminar-content alignment, clearer navigation and starting guidance, and additional research-supported skill practice. Their clarification: mainly independent use after the seminar; equal entry for learners and active researchers; no event dates/logistics. Source: C:/Users/admin/Downloads/seminarrrr.docx, read without editing or publishing it. Read LEARNING_PATH_REVIEW.md for the detailed phase map, references and evidence limits.
+
+- #home is a concise dual-entry landing. #learn is the learning home; #learn/0–5 follow the research mindset and five phases. There are 21 prompts across the sequence and a single assembled workbook at #workbook.
+- #practice includes eight original activities: recall, question repair, source verification, synthesis/gap reasoning, claim boundaries, method alignment, feedback/revision and spaced revisiting. Open responses are not automatically graded. Two scenarios give choice-specific guidance; learners compare and revise their own reasoning. Six published sources and adaptation limits are visible at #learning-evidence and beside relevant practice.
+- Existing detailed lessons, workshops, toolkit, project Library/Reader/Evidence/Claims/Synthesis/Design/Map/Proposal/Review remain. The entire former homepage and optical scenes are at #explore. The menu uses four clear destinations and a deeper-tools disclosure. Search includes guided workbook notes and practice responses. Full lessons/resources provide return navigation, and full-lesson drafts remain separate and explicitly linked.
+- Optional learningPath state in rrh-v2 includes guided fields and practice. Existing learningLab, drafts, notes and IndexedDB project/PDF records remain. Normalization, legacy restore and backup validation include the new optional field; combined JSON backups include it. Failed saves keep session text exportable. Markdown workbook download is readable; JSON is the restorable format. Project proposals are not modified automatically.
+- New files: dist/learning-path-core.js, dist/learning-path.js, dist/learning-path.css, tests/learning-path.cjs. assets.json adds the two deferred scripts before app startup and the scoped CSS as the final layer. Rebuild with node scripts/build-assets.cjs; the served stylesheet remains one request, now containing 20 source layers.
+- Seventeen focused suites passed; changed scripts, deterministic build and whitespace checks passed. Browser checked 19 new routes at phone/desktop widths without document overflow or sub-16px textarea text. Verified note/revision persistence, blank/choice-specific feedback, workbook export, complete populated learning backup/restore, search, menu, keyboard start and original lesson/optical access. Real research was not edited. Fictional QA responses were confined to localhost:4218.
+- Proof: rei-learning-checks.json, rei-learning-landing.png and rei-learning-mobile.png in C:/Users/admin/Documents/Codex/2026-10-18/co/outputs. Local preview port remains 4218. Source document and extracted logos stay out of the repository and release archive.
+- Physical touch, Safari/Firefox, screen readers, instructor/student evaluation and measured learning gains remain unverified. Published studies inform mechanisms; none validates REI or these adapted tasks. No account, paid service, backend or automatic sharing was added.
+
+Commit/push and production verification are recorded after the release checks.
+
+---
+
 ## Observatory scrolling repair — 18 October 2026
 
 The user reported jumping/uneven scrolling in the homepage's four-chapter Observatory. Reproduced a pinned composition about 800px tall in a 650px-high window, leaving controls/captions below the viewport. Also found manual chapter selection was immediately discarded on the next wheel event, switching back to the unrelated scroll-position chapter.

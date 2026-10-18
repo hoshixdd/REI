@@ -4,7 +4,7 @@
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(hover:hover) and (pointer:fine)');
  const moving=()=>!reduced.matches&&document.documentElement.dataset.motion!=='off';
  const directory=document.querySelector('#space-navigator');
- const menu=document.createElement('button');menu.type='button';menu.className='dream-menu-trigger';menu.innerHTML='<span>Explore</span><i aria-hidden="true"></i>';menu.setAttribute('aria-haspopup','dialog');menu.setAttribute('aria-controls','space-navigator');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Explore REI');document.querySelector('.site-header').append(menu);
+ const menu=document.createElement('button');menu.type='button';menu.className='dream-menu-trigger';menu.innerHTML='<span>Menu</span><i aria-hidden="true"></i>';menu.setAttribute('aria-haspopup','dialog');menu.setAttribute('aria-controls','space-navigator');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open REI menu');document.querySelector('.site-header').append(menu);
  menu.addEventListener('click',()=>{if(!directory.open)directory.showModal()});
  new MutationObserver(()=>menu.setAttribute('aria-expanded',String(directory.open))).observe(directory,{attributes:true,attributeFilter:['open']});
  directory.addEventListener('close',()=>{if(document.activeElement===document.body)menu.focus()});

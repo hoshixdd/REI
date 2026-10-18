@@ -105,3 +105,10 @@ Original editable styles remain in dist. After CSS edits, run `node scripts/buil
 Fifteen focused suites and targeted phone/desktop browser checks passed. See HANDOFF.md for exact evidence and remaining real-device, accessibility, large-file and storage-failure coverage. No measured speed or educational-impact claim is made.
 
 The Observatory uses normal page scrolling when its full composition cannot fit the window. Taller windows retain the pinned story. Selecting a chapter no longer snaps back on the next small scroll.
+
+
+## Learning after the writeshop
+
+The new landing offers equal entry to learning and project work. Follow #learn through the research mindset and five phases, try eight activities in #practice, and review/export your personal #workbook. No seminar attendance is required. Published research and the limits of REI's adaptations are listed at #learning-evidence. The original optical homepage remains at #explore, and all detailed lessons and research tools remain available from the menu.
+
+Guided notes and practice are included in learning JSON and complete workspace backups; readable Markdown is not a restore format. Full-lesson drafts and research projects remain separate. See LEARNING_PATH_REVIEW.md for the content map, studies and actual verification. Student learning outcomes have not yet been evaluated.

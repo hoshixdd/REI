@@ -38,7 +38,7 @@ const app=fs.readFileSync(path.join(root,'dist/app.js'),'utf8');
 const boundary=app.indexOf('function nextLesson()');assert.ok(boundary>0);
 const initial={version:2,notes:[],completed:[0],drafts:{0:'Keep my real draft'},quiz:{0:1},checks:[],learningLab:{case:'quantitative',support:'hints',attempts:{3:{choices:[1,2,0],submitted:[1,2,0],reflection:'Compare the measurements.',compared:true}}}};
 let stored=JSON.stringify(initial),reject=false;
-const context=vm.createContext({window:{REILearningLab:C},localStorage:{getItem:k=>k==='rrh-v2'?stored:null,setItem:(k,v)=>{if(reject)throw Error('quota');stored=v}},crypto:{randomUUID:()=> 'test-id'},document:{querySelector:()=>null},setTimeout,clearTimeout});
+const context=vm.createContext({window:{REILearningLab:C,REILearningPathCore:require('../dist/learning-path-core.js')},localStorage:{getItem:k=>k==='rrh-v2'?stored:null,setItem:(k,v)=>{if(reject)throw Error('quota');stored=v}},crypto:{randomUUID:()=> 'test-id'},document:{querySelector:()=>null},setTimeout,clearTimeout});
 vm.runInContext(app.slice(0,boundary),context);
 assert.equal(context.window.REILearningStore.read().case,'quantitative');
 assert.equal(context.window.REILearningStore.read().attempts[3].reflection,'Compare the measurements.');

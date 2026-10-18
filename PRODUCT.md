@@ -36,3 +36,10 @@ The evidence chain stays visible and local: question, claim, evidence note, pass
 - Data stays in localStorage and IndexedDB.
 - Production: https://rei-pink.vercel.app/
 - Repository: https://github.com/hoshixdd/REI
+
+
+## Continued learning experience
+
+The product primarily supports independent work after the writeshop, while giving new independent learners and active research-project users equal entry. The six-step learning path reflects the seminar's opening and five phases without event logistics or dates. Eight research-informed practice activities complement the existing nine lessons. A personal workbook connects the guided prompts and revisions. Learning evidence and transfer limits are visible; the product has no measured educational-impact claim.
+
+The former optical homepage remains at #explore. #home is now a concise entry; #learn is the learning dashboard. Keep existing project records, lesson drafts, local backups and the established optical identity intact. Guided workbook text does not silently overwrite project proposals or lesson originals.
