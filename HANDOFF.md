@@ -11,7 +11,7 @@ The user requested seminar-content alignment, clearer navigation and starting gu
 - Proof: rei-learning-checks.json, rei-learning-landing.png and rei-learning-mobile.png in C:/Users/admin/Documents/Codex/2026-10-18/co/outputs. Local preview port remains 4218. Source document and extracted logos stay out of the repository and release archive.
 - Physical touch, Safari/Firefox, screen readers, instructor/student evaluation and measured learning gains remain unverified. Published studies inform mechanisms; none validates REI or these adapted tasks. No account, paid service, backend or automatic sharing was added.
 
-Commit/push and production verification are recorded after the release checks.
+Feature commit 08519dc was pushed to GitHub master. The production root and all ten changed/new script/style assets returned HTTP 200 and matched the release after newline normalization. The live landing was also opened in the browser and displayed both starting choices. Evidence: rei-learning-production-checks.json and rei-learning-live.png in the current chat outputs.
 
 ---
 
