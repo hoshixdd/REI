@@ -1,0 +1,15 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync(require.resolve('../dist/observatory.js'),'utf8');
+const start=source.indexOf(' function chapterAt('),end=source.indexOf(' function follow()',start);
+let height=800;const root={dataset:{},querySelector:selector=>selector==='.observatory-sticky'?{get scrollHeight(){return height}}:{textContent:''}};
+const context={document:{querySelector:()=>root},innerWidth:1100,innerHeight:650};vm.createContext(context);vm.runInContext(source.slice(start,end),context);
+context.fitStory();assert.equal(root.dataset.scrollMode,'flow','An oversized composition must scroll normally');
+context.innerHeight=1000;context.fitStory();assert.equal(root.dataset.scrollMode,'pinned','Pin only when the complete composition fits');
+context.innerWidth=390;context.fitStory();assert.equal(root.dataset.scrollMode,'flow');
+const chapter=context.chapterAt;
+assert.equal(chapter(-800,1200,1000,{stage:0,y:1000}),0,'Selecting Question near the end must not jump to Argument');
+assert.equal(chapter(-810,1200,1010,{stage:0,y:1000}),0,'A small scroll preserves a selected chapter');
+assert.equal(chapter(-1100,1200,1300,{stage:0,y:1000}),1,'Continue from the selected chapter one step at a time');
+assert.equal(chapter(0,1200,0,null),0);assert.equal(chapter(-1200,1200,0,null),3);
+assert.equal(chapter(0,1200,0,{stage:3,y:1000}),0,'Reverse scrolling stays bounded');
+console.log('PASS: short-window flow, tall-window pin, phone fallback and manual-to-scroll chapter continuity.');

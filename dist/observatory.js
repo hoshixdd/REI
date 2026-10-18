@@ -10,7 +10,7 @@
   ['EXAMINE','Look closer. Keep the distinction.','Separate an exact passage from your interpretation. Compare findings without losing the source behind them.','Explore evidence tools','#toolkit'],
   ['CONNECT','An argument, with something behind it.','Bring the evidence into your writing. Make the reasoning visible, including its limits and unanswered questions.','Enter the research studio','#research']
  ];
- let stage=0,manualScroll=null,captionAnimation,cleanup=()=>{},ticket=0;
+ let stage=0,manualScroll=null,captionAnimation,cleanup=()=>{},ticket=0,storyResize;
  function setStage(n,focus=false){
   const root=document.querySelector('.observatory-story');if(!root)return;
   n=Math.max(0,Math.min(3,n));if(n===stage&&root.dataset.stage===String(n)&&!focus)return;const changed=n!==stage;stage=n;root.dataset.stage=n;
@@ -23,11 +23,24 @@
   root.querySelector('.observatory-meter i').style.transform=`scaleX(${(n+1)/4})`;
   if(changed){captionAnimation?.cancel();if(moving()&&document.documentElement.dataset.input!=='keyboard')captionAnimation=panel.animate([{opacity:.45,transform:'translateY(5px)'},{opacity:1,transform:'none'}],{duration:200,easing:'cubic-bezier(.22,1,.36,1)'})}
  }
- document.addEventListener('click',e=>{const b=e.target.closest('[data-observe-stage]');if(b){manualScroll=scrollY;setStage(Number(b.dataset.observeStage));return}const skip=e.target.closest('[data-observe-skip]');if(skip){e.preventDefault();const next=document.querySelector('#dream-manifesto');next?.scrollIntoView({behavior:moving()?'smooth':'instant',block:'start'});next?.querySelector('h2')?.setAttribute('tabindex','-1');next?.querySelector('h2')?.focus({preventScroll:true})}});
- document.addEventListener('keydown',e=>{const b=e.target.closest('[data-observe-stage]');if(!b||!['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();manualScroll=scrollY;setStage(e.key==='Home'?0:e.key==='End'?3:(Number(b.dataset.observeStage)+(['ArrowRight','ArrowDown'].includes(e.key)?1:3))%4,true)});
+ document.addEventListener('click',e=>{const b=e.target.closest('[data-observe-stage]');if(b){manualScroll={y:scrollY,stage:Number(b.dataset.observeStage)};setStage(manualScroll.stage);return}const skip=e.target.closest('[data-observe-skip]');if(skip){e.preventDefault();const next=document.querySelector('#dream-manifesto');next?.scrollIntoView({behavior:moving()?'smooth':'instant',block:'start'});next?.querySelector('h2')?.setAttribute('tabindex','-1');next?.querySelector('h2')?.focus({preventScroll:true})}});
+ document.addEventListener('keydown',e=>{const b=e.target.closest('[data-observe-stage]');if(!b||!['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?3:(Number(b.dataset.observeStage)+(['ArrowRight','ArrowDown'].includes(e.key)?1:3))%4;manualScroll={y:scrollY,stage:next};setStage(next,true)});
  let scrollFrame=0;
- function follow(){scrollFrame=0;const root=document.querySelector('.observatory-story');if(!root||innerWidth<=900||!moving())return;if(manualScroll!==null)return;const r=root.getBoundingClientRect(),range=root.offsetHeight-innerHeight+74;if(r.top<100&&r.bottom>innerHeight*.5)setStage(Math.min(3,Math.floor(Math.max(0,(74-r.top)/Math.max(1,range))*4)))}
- addEventListener('wheel',()=>manualScroll=null,{passive:true});addEventListener('touchmove',()=>manualScroll=null,{passive:true});addEventListener('keydown',e=>{if(['PageDown','PageUp',' '].includes(e.key)&&!e.target.closest('input,textarea,button'))manualScroll=null});
+ function chapterAt(top,range,y,manual){
+  const value=manual?manual.stage+Math.trunc((y-manual.y)/Math.max(1,range/4)):Math.floor(Math.max(0,(74-top)/Math.max(1,range))*4);
+  return Math.max(0,Math.min(3,value));
+ }
+ function fitStory(){
+  const root=document.querySelector('.observatory-story'),sticky=root?.querySelector('.observatory-sticky');if(!sticky)return;
+  const top=74,flow=innerWidth<=900||sticky.scrollHeight>innerHeight-top+1;
+  root.dataset.scrollMode=flow?'flow':'pinned';
+  const hint=root.querySelector('.observatory-bottom>span');if(hint)hint.textContent=flow?'SELECT A CHAPTER TO EXPLORE':'SCROLL TO FOLLOW / SELECT TO EXPLORE';
+ }
+ function follow(){scrollFrame=0;const root=document.querySelector('.observatory-story');if(!root||root.dataset.scrollMode!=='pinned'||!moving())return;const r=root.getBoundingClientRect(),range=root.offsetHeight-innerHeight+74;
+  if(r.bottom<=74||r.top>=innerHeight){manualScroll=null;return}
+  if(r.top<100&&r.bottom>innerHeight*.5)setStage(chapterAt(r.top,range,scrollY,manualScroll));
+ }
+ addEventListener('resize',fitStory,{passive:true});
  addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(follow)},{passive:true});
  async function makeScene(host,routeTicket){
   let T;try{T=await import('./vendor/three.module.js')}catch{return}if(routeTicket!==ticket||!host.isConnected)return;
@@ -72,7 +85,7 @@
   cleanup=()=>{cancelAnimationFrame(frame);ro.disconnect();io.disconnect();mo.disconnect();host.removeEventListener('pointermove',pointer);host.removeEventListener('pointerleave',leave);removeEventListener('rrh:motion',change);reduced.removeEventListener('change',change);const geometries=new Set(),materials=new Set();scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>materials.add(m))});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());labelTextures.forEach(t=>t.dispose());env.dispose();renderer.dispose();renderer.forceContextLoss()};
  }
  let lazy;
- function home(){ticket++;cleanup();cleanup=()=>{};lazy?.disconnect();captionAnimation?.cancel();stage=0;manualScroll=null;const host=document.querySelector('.observatory-model');if(!host)return;setStage(0);const currentTicket=ticket;lazy=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){lazy.disconnect();makeScene(host,currentTicket)}},{rootMargin:'250px'});lazy.observe(host)}
+ function home(){ticket++;cleanup();cleanup=()=>{};storyResize?.disconnect();lazy?.disconnect();captionAnimation?.cancel();stage=0;manualScroll=null;const host=document.querySelector('.observatory-model');if(!host)return;setStage(0);fitStory();storyResize=new ResizeObserver(fitStory);storyResize.observe(host.closest('.observatory-sticky'));document.fonts?.ready.then(fitStory);const currentTicket=ticket;lazy=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){lazy.disconnect();makeScene(host,currentTicket)}},{rootMargin:'250px'});lazy.observe(host)}
  /* Preserve existing forms/handlers by moving the current DOM, rather than cloning it. */
  let deskOpen=false,deskDispose=()=>{};
  function evidenceMarkup(p){if(!p.evidence.length)return '<p class="observatory-empty">Your evidence will appear here once you capture a passage or add a finding. Each note keeps its original source.</p><a href="#research/'+esc(p.id)+'/evidence">Add your first evidence note ↗</a>';return p.evidence.map((n,i)=>{const s=p.papers.find(s=>s.id===n.paperId);return `<article class="observatory-evidence"><span>E${String(i+1).padStart(2,'0')} / ${esc(n.locator||'Location not recorded')}</span><h4>${esc(s?.title||'Source not found')}</h4>${n.quote?`<blockquote>${esc(n.quote)}</blockquote>`:''}<p>${esc(n.findings)}</p>${n.limitations?`<p><strong>Limitations:</strong> ${esc(n.limitations)}</p>`:''}<button type="button" data-observe-insert="${esc(n.id)}">Append finding with source ↗</button></article>`}).join('')}

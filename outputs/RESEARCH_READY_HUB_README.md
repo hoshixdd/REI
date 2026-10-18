@@ -103,3 +103,5 @@ Open **Backup and recovery** from the footer, My workspace or project actions. A
 Original editable styles remain in dist. After CSS edits, run `node scripts/build-assets.cjs`; commit the generated dist/rei-bundle.css and index.html. assets.json preserves cascade order. No install or framework build is required to serve the checked-in dist folder. Scripts remain separate and deferred.
 
 Fifteen focused suites and targeted phone/desktop browser checks passed. See HANDOFF.md for exact evidence and remaining real-device, accessibility, large-file and storage-failure coverage. No measured speed or educational-impact claim is made.
+
+The Observatory uses normal page scrolling when its full composition cannot fit the window. Taller windows retain the pinned story. Selecting a chapter no longer snaps back on the next small scroll.

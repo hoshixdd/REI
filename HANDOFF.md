@@ -1,3 +1,16 @@
+## Observatory scrolling repair — 18 October 2026
+
+The user reported jumping/uneven scrolling in the homepage's four-chapter Observatory. Reproduced a pinned composition about 800px tall in a 650px-high window, leaving controls/captions below the viewport. Also found manual chapter selection was immediately discarded on the next wheel event, switching back to the unrelated scroll-position chapter.
+
+- The story now measures its composition after layout/fonts and on resize. It pins only when the whole composition fits below the header; short windows use normal document scrolling and explicit chapter controls. Mobile remains a normal-flow composition. Models, lighting and geometry are unchanged.
+- Manual chapter choice anchors subsequent chapter progression to that selection, with a complete chapter's worth of movement before advancing. A small scroll no longer snaps Question directly back to Argument. Leaving the story clears the manual anchor.
+- A reserved caption height and exclusion from scroll anchoring reduce geometry changes as chapter wording changes. Short-window guidance now says to select a chapter.
+- New tests/observatory-scroll.cjs passes: short/tall/mobile layout selection and bounded manual/scroll continuity. observatory.js syntax, deterministic stylesheet build and git whitespace checks pass.
+- Browser verified at 1100×650 (normal flow), 1440×1100 (full composition pinned; small scroll retains manually selected Question) and 390×844 (normal flow, no horizontal overflow). Keyboard Home/ArrowRight works; Skip the exploration moves focus to the next section. Inspected error/warning logs empty. Physical-device smoothness and other browser engines remain unverified.
+- Updated the stylesheet bundle, cache tokens and runnable ZIP. Proof screenshot: C:/Users/admin/Documents/Codex/2026-10-18/co/outputs/rei-scroll-fixed.png. Publishing status is recorded after checking live assets.
+
+---
+
 ## Verified reliability and recovery increment — 18 October 2026
 
 This section supersedes the provisional checkpoint immediately below. Continued the existing uncommitted changes from 6a2f9a4, after fetching origin and confirming master matched origin/master. Feature commit 5efd19e was pushed to GitHub master. Production at https://rei-pink.vercel.app was then verified: the root and all eight changed/new JavaScript/CSS assets returned HTTP 200 and exactly matched this release after CRLF normalization. Verification evidence: rei-production-checks.json in the current chat outputs. No manual hosting change or account setup was required.
