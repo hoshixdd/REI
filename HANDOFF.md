@@ -1,3 +1,7 @@
+## Homepage hierarchy correction - 2026-10-18
+
+The bare URL opens a separate welcome landing with an Enter REI button. #home restores the original optical homepage. #explore remains a compatible alias. Learning and project tools remain available. No storage changes.
+
 ## Workshop aligned independent learning release — 18 October 2026
 
 The user requested seminar-content alignment, clearer navigation and starting guidance, and additional research-supported skill practice. Their clarification: mainly independent use after the seminar; equal entry for learners and active researchers; no event dates/logistics. Source: C:/Users/admin/Downloads/seminarrrr.docx, read without editing or publishing it. Read LEARNING_PATH_REVIEW.md for the detailed phase map, references and evidence limits.

@@ -12,3 +12,5 @@
 @media(min-width:901px){.path-landing .path-welcome{padding-block:24px 30px}.path-landing .path-welcome h1{font-size:clamp(2.8rem,4.3vw,4.2rem);max-width:none;letter-spacing:-.04em}.path-identity>.sculpture{height:250px}.path-entry article{padding-block:28px}.path-entry h2{font-size:clamp(1.5rem,2.1vw,1.9rem)}.path-entry-type{margin-bottom:14px}}
 
 @media(min-width:901px) and (max-height:850px){.path-landing .path-welcome h1{font-size:clamp(2.5rem,3.8vw,3.5rem)}.path-landing .path-welcome{padding-block:10px 24px}.path-identity>.sculpture{height:210px;min-height:180px}.path-landing .path-intro{font-size:18px}.path-entry article{padding-block:24px}.path-entry h2{font-size:27px}.path-entry article>p{font-size:15px}}
+
+.path-welcome-action{margin-block:28px 16px}.path-welcome-action .path-button{min-width:210px}
