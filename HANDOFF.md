@@ -1,6 +1,6 @@
 ## Verified reliability and recovery increment — 18 October 2026
 
-This section supersedes the provisional checkpoint immediately below. Continued the existing uncommitted changes from 6a2f9a4, after fetching origin and confirming master matched origin/master. Release commit/push and production status are recorded separately; do not infer deployment from these local checks.
+This section supersedes the provisional checkpoint immediately below. Continued the existing uncommitted changes from 6a2f9a4, after fetching origin and confirming master matched origin/master. Feature commit 5efd19e was pushed to GitHub master. Production at https://rei-pink.vercel.app was then verified: the root and all eight changed/new JavaScript/CSS assets returned HTTP 200 and exactly matched this release after CRLF normalization. Verification evidence: rei-production-checks.json in the current chat outputs. No manual hosting change or account setup was required.
 
 ### Implemented
 
