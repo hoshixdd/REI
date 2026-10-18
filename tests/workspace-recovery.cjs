@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const context={window:{REILearningStore:{validate:raw=>({...raw,notes:raw.notes.filter(n=>typeof n.title==='string')})},REIResearch:{validate:raw=>{if(!raw.project?.papers)throw Error('Invalid project');return raw.project}},REIWorkbench:{stageAttachments:p=>{if(p.badPDF)throw Error('Invalid PDF')}}},document:{addEventListener(){}},addEventListener(){},Blob,structuredClone};
+vm.runInNewContext(fs.readFileSync(require.resolve('../dist/recovery.js'),'utf8'),context);
+const validate=context.window.REIRecovery.validate;
+const bundle={kind:'rei-workspace',version:1,learning:{version:2,notes:[{title:'Fictional note'}],completed:[],drafts:{}},projects:[]};
+assert.equal(validate(bundle),bundle);bundle.projects=[{project:{papers:[]}}];assert.equal(validate(bundle),bundle);
+const malformed=structuredClone(bundle);malformed.learning.notes.push({title:123});assert.throws(()=>validate(malformed),/invalid or unsupported/);
+const badPDF=structuredClone(bundle);badPDF.projects[0].project.badPDF=true;assert.throws(()=>validate(badPDF),/Invalid PDF/);
+assert.throws(()=>validate({...bundle,version:2}));assert.throws(()=>validate({...bundle,projects:Array(6).fill({})}));
+assert.throws(()=>validate({...bundle,learning:{...bundle.learning,version:1}}));
+assert.throws(()=>validate({...bundle,learning:{...bundle.learning,extra:'x'.repeat(5000000)}}),/5 MB/);
+assert.equal(bundle.learning.notes.length,1);console.log('PASS: empty/multiple-part envelope checks, malformed learning/PDF/version/size rejection, no writes.');

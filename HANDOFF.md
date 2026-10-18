@@ -1,3 +1,79 @@
+## Verified reliability and recovery increment — 18 October 2026
+
+This section supersedes the provisional checkpoint immediately below. Continued the existing uncommitted changes from 6a2f9a4, after fetching origin and confirming master matched origin/master. Release commit/push and production status are recorded separately; do not infer deployment from these local checks.
+
+### Implemented
+
+- Backup and recovery at #backup, linked from the footer, notebook and project actions. One versioned JSON envelope includes learning notes/drafts/practice plus all saved projects and attached PDFs. Research projects restore individually through existing explicit previews as separate copies; learning replacement opens its existing preview. Selecting a file never writes data. The file must be selected again after returning to the center to preview another part.
+- Learning records in combined backups must survive the existing sanitizer without filtering/truncation. Invalid persisted learning data blocks combined export rather than silently producing a validated reduced backup. Version, five-project, 100 MB envelope, 5 MB learning payload and existing project/attachment checks apply. PDF header/data validation is not a guarantee that every complex PDF renders.
+- Core create/edit/add, reading status, workbench forms/actions and optional OpenAlex saves have submission guards and/or rollback/retry handling. A failed create restores the prior current-project reference. Field-aware rollback preserves unrelated concurrent proposal/source edits. Failed reference imports keep their preview/selection. Claim/record deletion failures restore the project records. Source/project PDF cleanup follows successful record removal, preventing a failed project write from deleting the attachment first.
+- Proposal and reading-note autosaves retain failed changes in this session across research-room navigation; an explicit retry is available in the failure status. Workspace export overlays session-retained project state. Unsubmitted research forms remain excluded. Session retention is not durable recovery after closing/reloading the browser. No multi-tab write-conflict resolution is claimed.
+- Nine original weak/revised reasoning examples, explanation, transfer question and discipline/ethics limits. Clinics appear beside all nine Write editors and in relevant research rooms. Fixed pale text on the light Write surface. Existing examples, graphics, models, motion detail and storage formats remain.
+- Jump to working area focuses the research content using keyboard/native button behavior, with visible focus.
+- assets.json and scripts/build-assets.cjs provide deterministic stylesheet ownership/order. The build creates dist/rei-bundle.css alongside the original stylesheets, preserving relative font/image URLs and all 19 stylesheet layers in order. Scripts remain separate, classic/deferred and in their existing order; vendor/dynamic loading is unchanged. This reduces stylesheet requests from 19 to 1 (18 fewer); no measured startup-speed or GPU-performance improvement is claimed. Run the build after CSS edits and commit the generated bundle.
+- OpenAlex mounts after asynchronous research rendering, discloses query transmission, has timeout/failure feedback and saves to the captured project. It remains optional; local imports need no network/account. Provider availability/account policy is not guaranteed by this release.
+
+### Verification actually completed
+
+- All ten baseline suites passed after the final functional changes: learning-lab, workbench-core, research-flow-save, lesson-transfer, local-search, method-flow, synthesis-depth, research-depth, reader-regression and project-navigation.
+- Five new suites passed: save-policy, workspace-recovery, research-save-failure, workbench-save-failure and discovery-save-failure. These cover malformed/filtered learning values, invalid PDF payload rejection, sizes/versions, failed create/edit/add and claim/search/action saves, retry, failed deletion, destination capture and unrelated concurrent edits. Failure injection was performed in isolated Node fixtures, not against real user browser data.
+- Changed scripts passed syntax checks; git diff --check passed. Bundled runtime used because the system Node sandbox entrypoint cannot resolve the user path.
+- Browser: empty combined export; nonempty download/file validation; separate project restore; multi-project envelope with a saved PDF and evidence; restored PDF rendering and original passage/source link. Learning replacement preview opened correctly and was cancelled. No real notebook replacement was performed. Three explicitly fictional QA projects remain on the isolated localhost:4218 origin. Real research databases were not cleared or edited.
+- Browser: all nine Write clinics and all nine research rooms at 390 and 1440 viewport widths, no document content wider than the viewport; one clinic per intended surface. Keyboard Enter on Jump to working area focused .research-content. Inspected-route error/warning logs were empty. Contrast repair received its bounded visual confirmation.
+- Proof files are in C:/Users/admin/Documents/Codex/2026-10-18/co/outputs: rei-browser-checks.json, rei-reasoning-desktop.png, rei-recovery-mobile.png and rei-recovery-desktop.png. Local preview serves dist on port 4218.
+
+### Remaining limits / next useful work
+
+- Run a real-device Safari/Firefox, touch and screen-reader review. Large/complex/encrypted PDF performance, actual browser quota failures, cross-tab races and full interrupted import recovery still need dedicated browser coverage. The targeted fixtures do not establish an exhaustive save-error audit or formal accessibility/performance certification.
+- Learning replacement under storage failure is implemented to preserve the original in-memory notebook, but a complete populated learning-notebook/practice restore and blocked-storage browser walkthrough remain useful follow-up coverage. Expert review and student evaluation of teaching additions remain unperformed; no grading, mastery or learning-impact claim is made.
+- Existing read-only completeness checks organize records, not scientific validity. No required paid dependency, account, cloud synchronization or backend was added.
+
+---
+
+## Active continuation checkpoint — 18 October 2026
+
+This section supersedes older status statements below. The user requested this documentation checkpoint before further implementation. Work on the current reliability/content improvements is IN PROGRESS, uncommitted, unpushed and unverified. Do not describe it as released or complete.
+
+### Repository and verified baseline
+
+- Actual REI checkout: C:/Users/admin/Documents/Codex/2026-09-19/lets. The chat workspace C:/Users/admin/Documents/Codex/2026-10-10/lets contains outputs/work, not the application repository.
+- Remote: https://github.com/hoshixdd/REI.git; branch master. Last committed release: 6a2f9a4 (Confirm connected learning release is live).
+- Production: https://rei-pink.vercel.app. During the 17 October review, the production index and learning-lab.js, learning-lab-core.js, learning-lab.css and workbench-core.js returned HTTP 200 and matched the committed baseline after newline normalization. This does not verify any pending changes.
+- BEFORE the pending edits, ten focused suites passed: learning-lab, workbench-core, research-flow-save, lesson-transfer, local-search, method-flow, synthesis-depth, research-depth, reader-regression and project-navigation. No post-edit suite or browser verification has been completed.
+- Windows sandbox Node entrypoint resolution previously failed with EPERM. Read-only tests succeeded outside the sandbox. Git may need command-scoped -c safe.directory=C:/Users/admin/Documents/Codex/2026-09-19/lets. Do not modify global Git configuration.
+
+### User-authorized scope and visual constraint
+
+Address review weaknesses 1 (backup/recovery), 2 (consistent failed saves), 5 (deeper teaching), and 6 (implementation complexity). Also improve weakness 4 (working speed) ONLY while preserving the existing graphics, models, visual elements and their detail. Do not simplify the art direction. Preserve account-free/local-first operation, existing storage and backup compatibility; no paid dependency or backend is required.
+
+### Changes started, not yet validated
+
+- dist/recovery.js (new): Backup and recovery route with an inventory, single JSON workspace envelope containing the learning notebook plus complete project/PDF backups, 100 MB envelope limit, file validation and per-part restore through existing preview/confirmation flows. No automatic bulk replacement. Download status accurately says requested, not confirmed saved. Unsubmitted research forms are explicitly excluded.
+- dist/app.js: Added #backup route and exposed learning snapshot/validation through REILearningStore. Existing learning restore sanitizer remains authoritative.
+- dist/workbench.js: Added optional returnOnly to backup() so complete project/PDF payloads can be assembled without triggering individual downloads.
+- dist/research.js: Exposed project validation and saved-project inventory, substituting active in-memory state for the matching saved project. Began snapshot rollback for core forms, submission guards, clearing form drafts only after persistence, and restoring reading status on failed save. This is not yet a comprehensive save-policy fix.
+- dist/discovery.js: Began OpenAlex timeout, repeat-search/submission guards, 200-source limit, failed-save rollback and retry. Added disclosure that search terms go to OpenAlex.
+- dist/reasoning.js (new): Nine original annotated weak/revised examples, explanation, transfer question and project guidance. Relevant research rooms receive expandable reasoning clinics. Project heading receives a keyboard-focusable Jump to working area action; existing graphics are not removed.
+- dist/index.html: Loads the two new scripts before app.js; footer links to #backup. dist/learning-lab.css adds scoped recovery styling and a working-area focus style.
+- No script/style consolidation has been implemented. No generated bundle, dependency manifest, new automated tests, refreshed ZIP, commit, push or deployment exists for this increment.
+
+### Required continuation, in order
+
+1. Inspect the current diff and relevant AGENTS.md instructions. Treat every item above as provisional. Check all replacements and JavaScript syntax before further UI work.
+2. Complete the persistence policy. Test failed edits, create, reading-status changes and OpenAlex saves for rollback, retained form text and retry. Audit autosave, deletion and attachment paths separately. Investigate concurrency: whole-project snapshot rollback can overwrite concurrent in-memory edits; a failed new-project create can leave current pointing to an unsaved record. Fix these rather than assuming the initial patch is sufficient. Ensure draft clearing never precedes a successful save on remaining paths.
+3. Finish and harden workspace recovery. Test empty/nonempty workspaces, multiple projects, saved PDFs, active unsaved text, notebook practice, invalid envelopes, malformed PDFs, oversized files, blocked storage and old backups. Verify all inputs before writes. Confirm the existing learning import control selector, research mount timing, File/DataTransfer handoff, route focus and modal confirmation actually work. Projects must restore as separate copies; notebook replacement needs its existing explicit preview. A failed export/import must preserve originals. Ensure corrupt learning data cannot silently be represented as a fully validated backup after sanitizer filtering. Verify preview state across navigation and repeat restores.
+4. Review the nine teaching additions for accuracy, accessibility, placement and duplication. Confirm Write-step clinics appear beside the appropriate editor. Include disagreement, sampling justification, analysis fit, claim boundaries and discipline-specific limits without implying automatic grading, approval or demonstrated learning impact. Obtain instructor/student review later; it has not happened.
+5. Address implementation complexity through a small deterministic asset manifest/build step or another justified bounded refactor. Preserve exact stylesheet cascade order, script execution order, global scope, defer behavior and dynamic/vendor loading. Keep editable sources. Do not blindly concatenate scripts: check parse boundaries, shared globals, currentScript assumptions, route timing and CSS relative paths. Measure and report request reduction separately from proven speed improvements.
+6. Verify Jump to working area with keyboard and narrow layouts. Keep all optical models, hero graphics, motion preferences, detail and existing interactions intact. Add a discoverable backup entry in relevant workspaces if the footer alone is insufficient.
+7. Add meaningful targeted recovery and failed-save regression tests, then run the ten baseline suites, changed-script syntax checks and git diff --check. Perform one batched desktop/mobile browser pass, fix concrete defects, and confirm fixes. Use fictional disposable fixtures only; do not alter real research or clear browser databases.
+8. Refresh outputs/research-ready-hub.zip and its README after successful verification. Update this handoff with actual outcomes and remaining limits. User previously authorized repository saving/pushing; only commit/push a coherent verified increment and report deployment separately. Do not claim the new release is live without checking production assets.
+
+### Still outside verified coverage
+
+Physical touch, Safari/Firefox, screen readers, formal accessibility/performance audits, large real collections, expert curriculum review and student outcome evaluation remain open. The product can be evaluated in a supervised pilot; no measured educational impact or mastery claim is supported yet.
+
+---
+
 ## Current connected learning checkpoint — 12 October 2026
 
 Implemented all five agreed educational improvements: two explicitly fictional qualitative/quantitative projects across nine stages, fading/overrideable writing guidance, 27 scenarios with alternative-specific explanations and nine written self-review exercises, six deeper methodology guides, and an interactive question/evidence/analysis/claim diagram in lessons and research Design. Final examples include assembled teaching proposals. Preserve the existing quiet laboratory, real draft editors and project records. New teaching controls use native selects for accessible direct keyboard interaction.

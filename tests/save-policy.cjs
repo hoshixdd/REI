@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const context={window:{},structuredClone};vm.runInNewContext(fs.readFileSync(require.resolve('../dist/save-policy.js'),'utf8'),context);
+const rollback=context.window.REISavePolicy.rollback;
+const before={title:'Original',proposal:'Draft',papers:[{id:'a',title:'Source',notes:'Old note'}]};
+const attempted=structuredClone(before);attempted.title='Failed title';attempted.papers[0].title='Failed source';attempted.papers.push({id:'b',title:'Failed addition'});
+const live=structuredClone(attempted);live.proposal='Typed during save';live.papers[0].notes='New note';live.papers.push({id:'c',title:'Concurrent source'});
+rollback(live,before,attempted);
+assert.equal(live.title,'Original');assert.equal(live.proposal,'Typed during save');assert.equal(live.papers[0].title,'Source');assert.equal(live.papers[0].notes,'New note');assert.deepEqual(live.papers.map(p=>p.id),['a','c']);
+const newer=structuredClone(attempted);newer.title='Newer title';rollback(newer,before,attempted);assert.equal(newer.title,'Newer title');
+const removed=structuredClone(before);removed.papers=[];const latest=structuredClone(removed);latest.papers.push({id:'c',title:'Concurrent'});rollback(latest,before,removed);assert.deepEqual(latest.papers.map(p=>p.id),['a','c']);
+console.log('PASS: rollback preserves concurrent fields, source edits and additions; restores failed deletions.');

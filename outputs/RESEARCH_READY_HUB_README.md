@@ -74,7 +74,7 @@ Use **Explore hub** or **Ctrl/Cmd + K** to search lessons, resources, workshops,
 ## Research studio
 Open `#research` to create local research projects, save paper details, record citation links, compare evidence, and write source-linked proposals. Research projects use IndexedDB and have their own JSON backup/restore; the existing lesson workspace uses its original local storage and backup format. Export both when moving browsers or site addresses.
 
-Live paper search, accounts, and cloud synchronization are not connected. See FREE_SETUP.md for the prepared free-service setup and remaining integration work. RELEASE_NOTES.md lists this release's visual changes, working features, tests, and limitations.
+Optional OpenAlex paper search is available; accounts and cloud synchronization are not connected. See FREE_SETUP.md for the prepared free-service setup and remaining integration work. RELEASE_NOTES.md lists this release's visual changes, working features, tests, and limitations.
 
 ## Research depth tools
 
@@ -94,3 +94,12 @@ These additions remain local-first and researcher-authored. They provide prompts
 Nine original silver/glass instruments now connect page headings, lessons, roadmap phases, toolkit resources, research rooms and the navigation gallery. Reflective surfaces and fast navigation/selection feedback extend the quiet laboratory identity. Reading and writing remain stable, with motion pause, keyboard access and reduced-motion guards. Models use the included local Three.js library and share an existing renderer; no network art assets, paid API or account is needed. Quiet instruments render only when visible and changing.
 
 Nine focused workflow suites passed. Representative route layouts were checked in Chromium at desktop and phone widths, including all nine research rooms. Physical device, Firefox/Safari, screen-reader and formal performance testing remain pending. Keep exporting complete project backups for a second copy of research and PDFs.
+
+
+## Backup and reliability update — 18 October 2026
+
+Open **Backup and recovery** from the footer, My workspace or project actions. A combined JSON backup includes the learning notebook, practice, projects and saved PDFs. Projects restore as separate copies; learning replacement requires its explicit preview. Unsubmitted forms are excluded. Keep an external copy of the downloaded file.
+
+Original editable styles remain in dist. After CSS edits, run `node scripts/build-assets.cjs`; commit the generated dist/rei-bundle.css and index.html. assets.json preserves cascade order. No install or framework build is required to serve the checked-in dist folder. Scripts remain separate and deferred.
+
+Fifteen focused suites and targeted phone/desktop browser checks passed. See HANDOFF.md for exact evidence and remaining real-device, accessibility, large-file and storage-failure coverage. No measured speed or educational-impact claim is made.
