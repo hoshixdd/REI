@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),C=require('../dist/research-library-core.js'),W=require('../dist/workbench-core.js');
 assert.equal(C.lessons.length,6);assert.equal(new Set(C.lessons.map(x=>x.id)).size,6);
 for(const x of C.lessons){assert.ok(x.example.length>=3);assert.equal(x.why.length,x.options.length);assert.ok(x.best<x.options.length);for(const source of x.source)assert.ok(C.sources[source]);}
-assert.equal(new Set(C.lessons.map(x=>x.best)).size,2,'Correct choices must not always occupy the same position');
+assert.equal(new Set(C.lessons.map(x=>x.best)).size,3,'Correct choices must not always occupy the same position');
 for(const lesson of C.lessons){const t=C.teaching[lesson.id];assert.ok(t.outcome.length>50);assert.equal(t.visual.cells.length,4);assert.ok(t.transfer.prompt.length>60);assert.equal(t.transfer.options.length,t.transfer.why.length);assert.ok(t.transfer.best<t.transfer.options.length);}
 assert.throws(()=>C.plan({topic:'Only a topic'}));
 for(const aim of Object.keys(C.aims)){const r=C.plan({topic:'study app use',group:'students',setting:'one campus',aim});assert.equal(r.questions.length,2);assert.ok(r.needs.length>60);assert.ok(r.limit.length>60);assert.ok(r.questions[0].includes('one campus'));}

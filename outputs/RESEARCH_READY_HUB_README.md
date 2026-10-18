@@ -8,6 +8,10 @@ Extract the ZIP, then serve the extracted dist folder with a static web server. 
 
 The workspace saves to the browser's local storage. Keep the same browser and site address to return to your work. Changing the hostname or port creates a different storage location. Use **My workspace → Backup** before moving to another device or address; use **Restore backup** at the new address.
 
+## Current Learn and Create workflow
+
+The homepage opens six short example-first lessons and practical Create tools. Questions, methods, planned searches and selected Crossref records connect directly to a chosen project. Tool drafts, source selections and lesson choices save in this browser and are included in learning/workspace JSON backups. Source-linked PDF reading supports question, method, finding and limitation passages. Existing detailed lessons and all project rooms remain available. Planner suggestions are rule-based starting points, with access and design limits explained.
+
 ## Included
 
 - An original cinematic research atlas with up to 26,000 GPU particles morphing between a flowing sphere, spiral field, and helix. Phase controls update the scene and next-step destination; pointer and scroll movement influence the field.
