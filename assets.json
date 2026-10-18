@@ -20,7 +20,8 @@
     "optical-system.css",
     "learning-lab.css",
     "learning-path.css",
-    "research-library.css"
+    "research-library.css",
+    "research-support.css"
   ],
   "scripts": [
     "data.js",
@@ -45,6 +46,9 @@
     "learning-path.js",
     "research-library-core.js",
     "research-library.js",
+    "study-library.js",
+    "research-support-core.js",
+    "research-support.js",
     "app.js",
     "motion.js",
     "universe.js",

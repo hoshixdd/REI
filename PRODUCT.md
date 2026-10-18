@@ -18,7 +18,7 @@ A person learning how to turn a question into a research proposal. They work in 
 
 ## Product Purpose
 
-REI teaches a nine-lesson method and keeps the work that comes out of it: notes, lesson drafts, sources, evidence, claims, and a proposal. Success is a clearer argument the person can keep editing, not a score.
+REI offers short research lessons, annotated real papers, a complete teaching project and practical research tools. It keeps the resulting notes, sources, evidence, claims, methods and proposals. Success is a clearer argument the person can keep editing, not a score.
 
 ## Positioning
 
@@ -50,7 +50,16 @@ Navigation uses Learn, Practice and Apply. Home offers one primary learning acti
 
 ## Current main experience: Learn and Create
 
-The user replaced the writing-first default with short example-first research challenges and practical assistance. #learn is the searchable six-topic library; #create contains transparent question/method templates, a search builder and Crossref paper metadata lookup/RIS export. The old guided pathway is optional at #guided, with saved step routes intact. Keep optical graphics and storage intact. New session-only tools do not claim to be AI, validate novelty, grade research or retrieve full text.
+The user replaced the writing-first default with short example-first research challenges and practical assistance. #learn is the searchable six-topic library; #create contains transparent question/method templates, a search builder and Crossref paper metadata lookup/RIS export. The old guided pathway is optional at #guided, with saved step routes intact. Keep optical graphics and storage intact. Tool drafts and practice choices save locally and are included in learning/workspace backups. Tools do not claim to be AI, validate novelty or grade scientific quality.
 
 
 Interior priority: show the decision goal, keep example annotations and organizers together, provide specific feedback and a different-context application. Create tools pair input/output without adding destinations. Design rationale and research boundaries are in LEARNING_INTERIOR_REVIEW.md.
+
+
+## Expanded independent-learning pilot candidate
+
+Learn retains six short lessons and adds a six-paper CC BY collection with original PDFs, source-anchored practice and a worked project. Create adds bounded local CSV exploration with reproducible descriptive reports. Project pages provide an explicit next action, comparison of recorded evidence, rule-based alignment feedback and contextual method explanations. No new top-level rooms or replacement graphics were introduced.
+
+The user explicitly chose private, account-free portable handoffs. A complete project JSON can carry PDFs, saved analyses, a version/origin identifier and a next-step note into a separate copy on another device. No automatic synchronization or merge is implied. Browser/device/address storage boundaries remain explicit.
+
+Analysis is introductory and descriptive. Coaching detects named mismatches and wording patterns, without a scientific-validity score or automatic grading of free responses. The local model proposal is illustrative and reports no collected local results. Educational effectiveness requires a real student evaluation; a provisional pilot kit supports that next human step without claiming validation.

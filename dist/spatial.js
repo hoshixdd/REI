@@ -33,7 +33,7 @@
    else if(clicked?.element){const target=document.querySelector('.lesson-title,.page-heading,.research-project-heading,.research-heading');name(target,'research-surface');name(titleOf(target),'research-title');if(clicked.element.querySelector('.phase-art'))name(target?.querySelector('.sculpture'),'research-field')}}
    document.querySelector('#main').focus({preventScroll:true});
   };
-  if(/^#(?:library|create|guided|welcome|home|learn|practice|workbook|learning-evidence)(?:\/|$)/.test(nextHash)||reduced()||clicked?.keyboard||root.dataset.input==='keyboard'){update();delete root.dataset.transit;return}
+  if(/^#(?:library|create|guided|welcome|home|learn|practice|workbook|learning-evidence)(?:\/|$)/.test(nextHash)||projectStep||reduced()||clicked?.keyboard||root.dataset.input==='keyboard'){update();delete root.dataset.transit;return}
   if(isStep){name(document.querySelector('.lesson-title,.research-project-heading'),'research-heading');name(document.querySelector('.lesson-flow,.research-tabs'),'research-chapters')}
   else if(clicked?.element?.isConnected){name(clicked.element,'research-surface');name(titleOf(clicked.element),'research-title');name(clicked.element.querySelector('.phase-art'),'research-field')}
   if(document.startViewTransition){

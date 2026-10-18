@@ -5,12 +5,12 @@
  const uid=()=>crypto.randomUUID();
  const doi=x=>text(x).trim().replace(/^https?:\/\/(?:dx\.)?doi\.org\//i,'').replace(/^doi:\s*/i,'').toLowerCase();
  const titleKey=x=>text(x).normalize('NFKC').toLowerCase().replace(/\s+/g,' ').trim();
- function csvRows(source){
-  const rows=[];let row=[],cell='',quoted=false;
+ function csvRows(source,keepEmptyRecords=false){
+  const rows=[];let row=[],cell='',quoted=false,recordStarted=false;
   source=source.replace(/^\uFEFF/,'');
-  for(let i=0;i<source.length;i++){const c=source[i];if(c==='"'){if(quoted&&source[i+1]==='"'){cell+='"';i++}else if(quoted||!cell)quoted=!quoted;else cell+=c}
-   else if(c===','&&!quoted){row.push(cell);cell=''}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&source[i+1]==='\n')i++;row.push(cell);if(row.some(v=>v.trim()))rows.push(row);row=[];cell=''}else cell+=c}
-  if(quoted)throw Error('An imported CSV field has an unclosed quote.');row.push(cell);if(row.some(v=>v.trim()))rows.push(row);return rows;
+  for(let i=0;i<source.length;i++){const c=source[i];if(c==='"'){recordStarted=true;if(quoted&&source[i+1]==='"'){cell+='"';i++}else if(quoted||!cell)quoted=!quoted;else cell+=c}
+   else if(c===','&&!quoted){recordStarted=true;row.push(cell);cell=''}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&source[i+1]==='\n')i++;row.push(cell);if(keepEmptyRecords||row.some(v=>v.trim()))rows.push(row);row=[];cell='';recordStarted=false}else{cell+=c;recordStarted=true}}
+  if(quoted)throw Error('An imported CSV field has an unclosed quote.');row.push(cell);if((keepEmptyRecords&&recordStarted)||row.some(v=>v.trim()))rows.push(row);return rows;
  }
  function bibRecords(source){
   const records=[];let i=0;

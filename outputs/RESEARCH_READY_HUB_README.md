@@ -12,6 +12,10 @@ The workspace saves to the browser's local storage. Keep the same browser and si
 
 The homepage opens six short example-first lessons and practical Create tools. Questions, methods, planned searches and selected Crossref records connect directly to a chosen project. Tool drafts, source selections and lesson choices save in this browser and are included in learning/workspace JSON backups. Source-linked PDF reading supports question, method, finding and limitation passages. Existing detailed lessons and all project rooms remain available. Planner suggestions are rule-based starting points, with access and design limits explained.
 
+## Authentic examples, analysis and handoffs
+
+Learn now includes six annotated real open-access studies with their unmodified, attributed CC BY PDFs and a complete source-linked teaching project. Create supports local CSV inspection, descriptive summaries, optional group summaries and a scatterplot/correlation with explicit missing-data handling. Project Design supplies rule-based alignment review and contextual explanations; Synthesis compares recorded notes. Review can export a complete private project handoff with PDFs, analyses and a next-step note. Handoffs restore as separate copies and do not synchronize. Pilot guidance and a blank observation sheet are included as pilot-guide.md and pilot-observations.csv. These are provisional; REI has no measured learning-effect claim.
+
 ## Included
 
 - An original cinematic research atlas with up to 26,000 GPU particles morphing between a flowing sphere, spiral field, and helix. Phase controls update the scene and next-step destination; pointer and scroll movement influence the field.

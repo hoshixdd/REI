@@ -1,0 +1,56 @@
+[
+  {
+    "id": "retrieval",
+    "file": "studies/retrieval.pdf",
+    "doi": "10.3389/fpsyg.2016.00350",
+    "source": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.00350/full",
+    "license": "Creative Commons Attribution (CC BY), as stated in the original article",
+    "sha256": "43717b184f19d7d2f1b02c7589b2641c69e01cddbffcf4116fde7c79e7237b8d",
+    "pages": 9
+  },
+  {
+    "id": "social",
+    "file": "studies/social.pdf",
+    "doi": "10.3389/feduc.2022.834391",
+    "source": "https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2022.834391/full",
+    "license": "Creative Commons Attribution (CC BY), as stated in the original article",
+    "sha256": "019ebecba3b90f0152371fbadc71f3b38ccc9f0a36b356806b533d017b25c2e7",
+    "pages": 8
+  },
+  {
+    "id": "remote",
+    "file": "studies/remote.pdf",
+    "doi": "10.3389/fmed.2022.834228",
+    "source": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.834228/full",
+    "license": "Creative Commons Attribution (CC BY), as stated in the original article",
+    "sha256": "61d378c21998886d1f66985f78967abd20020a0e90985b34b8839f31d85cb1a4",
+    "pages": 11
+  },
+  {
+    "id": "engagement",
+    "file": "studies/engagement.pdf",
+    "doi": "10.1371/journal.pone.0225770",
+    "source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0225770",
+    "license": "Creative Commons Attribution (CC BY), as stated in the original article",
+    "sha256": "776e8a3c0a0338692b3864b7b89bf698c15b203ae3df2430247ff998cad4a814",
+    "pages": 20
+  },
+  {
+    "id": "sleep",
+    "file": "studies/sleep.pdf",
+    "doi": "10.1371/journal.pgph.0000012",
+    "source": "https://journals.plos.org/globalpublichealth/article?id=10.1371/journal.pgph.0000012",
+    "license": "Creative Commons Attribution (CC BY), as stated in the original article",
+    "sha256": "b553a5f4c4d662d9aa8455cdecce7083f1336e6fe23f9acdcd0d6c1125e1798c",
+    "pages": 13
+  },
+  {
+    "id": "science",
+    "file": "studies/science.pdf",
+    "doi": "10.3389/feduc.2022.960346",
+    "source": "https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2022.960346/full",
+    "license": "Creative Commons Attribution (CC BY), as stated in the original article",
+    "sha256": "c3c56b7fd82b87f7f368739aa62d80ef02f2b830bd8084b7d21fec30f0ae40a0",
+    "pages": 13
+  }
+]
