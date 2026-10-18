@@ -91,3 +91,6 @@ Guided notes and practice are included in learning JSON and complete workspace b
 ## Current Learn/Create entry
 
 The homepage now leads into #learn (six short, example-first challenges) and #create (question/method planning, Boolean search building and Crossref journal metadata lookup with selected RIS export). The tools use transparent templates, not a paid AI service. Crossref queries require a network connection; examples and planning/search construction work locally after assets load. Tool drafts and challenge choices are session-only; export useful results. Previous guided writing remains at #guided and #learn/0–5, with existing workbook/projects unchanged.
+
+
+The learning interiors now pair explicit outcomes with annotated examples, visual organizers and a second scenario. Create tools compare inputs/results on desktop and stack on phones; paper selection/export stays close to results. See LEARNING_INTERIOR_REVIEW.md for the research-led placement decisions and evidence limits.

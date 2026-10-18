@@ -51,3 +51,6 @@ Navigation uses Learn, Practice and Apply. Home offers one primary learning acti
 ## Current main experience: Learn and Create
 
 The user replaced the writing-first default with short example-first research challenges and practical assistance. #learn is the searchable six-topic library; #create contains transparent question/method templates, a search builder and Crossref paper metadata lookup/RIS export. The old guided pathway is optional at #guided, with saved step routes intact. Keep optical graphics and storage intact. New session-only tools do not claim to be AI, validate novelty, grade research or retrieve full text.
+
+
+Interior priority: show the decision goal, keep example annotations and organizers together, provide specific feedback and a different-context application. Create tools pair input/output without adding destinations. Design rationale and research boundaries are in LEARNING_INTERIOR_REVIEW.md.

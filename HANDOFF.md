@@ -1,3 +1,14 @@
+## Research-led interior refinement - 2026-10-18
+
+The user requested visual and learning improvements inside existing pages, supported by substantial research, with no new rooms. Read LEARNING_INTERIOR_REVIEW.md for ten-source evidence-to-placement rationale, source types and adaptation limits.
+
+- Existing six lesson pages now have an explicit outcome, a compact rule, a desktop orientation rail/mobile section controls, annotated example steps and a labeled four-part visual organizer. Six additional different-context questions provide separate answer-specific feedback. Correct answer positions vary. No timers, scores, gates or new routes. Both kinds of answer remain session-only.
+- Existing Create index explains inputs/outputs and next use for each tool. Existing tool pages pair input and result panels on desktop and stack in reading order on phone. Empty results preview the expected output. Generation focuses the result so it is discoverable.
+- Existing paper results have a nearby sticky selection/export bar and a live selection count. Reference selection persists during in-session navigation. New searches clear stale candidates; failures explain that no new records loaded. RIS export still uses real selected metadata.
+- Optical hero/story graphics, original project/storage functions and saved workbook are unchanged. Evidence rationale is linked through the existing learning-evidence page; no paid service or account was added.
+
+Verification: six focused suites passed (research-library, homepage navigation, learning-path, workbench-core, local-search, observatory-scroll), modified-script syntax and asset build passed. Browser: 11 routes x 2 sizes (1440 and 390) without horizontal overflow or under-16px main text inputs. Tested independent example/transfer feedback, section focus, output positioning, live Crossref results, selection count, selection retention and actual RIS download/import DOI fidelity. Light-panel heading contrast was corrected during the bounded review. Physical touch, assistive technology, other browsers and learning outcomes remain unverified. No changes were made to real project records.
+
 ## Learn/Create product revision - 2026-10-18
 
 The user found long writing-first exercises unhelpful and requested equal help with finding/understanding papers and developing questions/methods, easier game-like learning, and practical creation tools. This supersedes the earlier Learn/Practice/Apply default.

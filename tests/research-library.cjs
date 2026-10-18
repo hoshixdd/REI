@@ -1,6 +1,8 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),C=require('../dist/research-library-core.js'),W=require('../dist/workbench-core.js');
 assert.equal(C.lessons.length,6);assert.equal(new Set(C.lessons.map(x=>x.id)).size,6);
 for(const x of C.lessons){assert.ok(x.example.length>=3);assert.equal(x.why.length,x.options.length);assert.ok(x.best<x.options.length);for(const source of x.source)assert.ok(C.sources[source]);}
+assert.equal(new Set(C.lessons.map(x=>x.best)).size,2,'Correct choices must not always occupy the same position');
+for(const lesson of C.lessons){const t=C.teaching[lesson.id];assert.ok(t.outcome.length>50);assert.equal(t.visual.cells.length,4);assert.ok(t.transfer.prompt.length>60);assert.equal(t.transfer.options.length,t.transfer.why.length);assert.ok(t.transfer.best<t.transfer.options.length);}
 assert.throws(()=>C.plan({topic:'Only a topic'}));
 for(const aim of Object.keys(C.aims)){const r=C.plan({topic:'study app use',group:'students',setting:'one campus',aim});assert.equal(r.questions.length,2);assert.ok(r.needs.length>60);assert.ok(r.limit.length>60);assert.ok(r.questions[0].includes('one campus'));}
 const relationship=C.plan({topic:'sleep',group:'students',setting:'one campus',aim:'association'});assert.match(relationship.questions[0],/second measurable construct/);assert.match(relationship.limit,/does not establish causation/);
@@ -8,5 +10,6 @@ const q=C.search({one:'commuter, commuting,commuter',two:'student, undergraduate
 assert.equal(C.records({}).length,0);assert.equal(C.records({message:{items:[null,{}]}}).length,1);
 const items=C.records({message:{items:[{title:['Real metadata title\nTI  - injected'],author:[null,{given:'A',family:'Researcher'}],DOI:'10.123/example','container-title':['Journal'],type:'journal-article',published:{'date-parts':[[2025]]}}]}});assert.equal(items[0].title.includes('\n'),false);const imported=W.parseImport(C.ris(items),'ris');assert.equal(imported.length,1);assert.equal(imported[0].doi,'10.123/example');assert.equal(imported[0].authors,'A Researcher');
 const ctx={window:{REILibraryCore:C},document:{addEventListener:()=>{}},addEventListener:()=>{},setTimeout,clearTimeout};vm.createContext(ctx);vm.runInContext(fs.readFileSync(require.resolve('../dist/research-library.js'),'utf8'),ctx);assert.match(ctx.window.REILibrary.home(),/Six short lessons/);for(const x of C.lessons)assert.ok(ctx.window.REILibrary.render(['library',x.id]).includes('data-library-choice'));
+for(const x of C.lessons){const page=ctx.window.REILibrary.render(['library',x.id]);assert.match(page,/lesson-organizer/);assert.match(page,/data-challenge-kind="transfer"/);assert.ok(page.includes(C.teaching[x.id].outcome));}
 for(const id of ['question','search','papers'])assert.ok(ctx.window.REILibrary.render(['create',id]).includes('data-library-form="'+id+'"'));
 console.log('PASS: six example-first lessons, aim-specific question plans, Boolean queries, malformed metadata, safe RIS roundtrip and tool routes.');
