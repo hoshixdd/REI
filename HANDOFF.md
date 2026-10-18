@@ -7,7 +7,7 @@ The user reported jumping/uneven scrolling in the homepage's four-chapter Observ
 - A reserved caption height and exclusion from scroll anchoring reduce geometry changes as chapter wording changes. Short-window guidance now says to select a chapter.
 - New tests/observatory-scroll.cjs passes: short/tall/mobile layout selection and bounded manual/scroll continuity. observatory.js syntax, deterministic stylesheet build and git whitespace checks pass.
 - Browser verified at 1100×650 (normal flow), 1440×1100 (full composition pinned; small scroll retains manually selected Question) and 390×844 (normal flow, no horizontal overflow). Keyboard Home/ArrowRight works; Skip the exploration moves focus to the next section. Inspected error/warning logs empty. Physical-device smoothness and other browser engines remain unverified.
-- Updated the stylesheet bundle, cache tokens and runnable ZIP. Proof screenshot: C:/Users/admin/Documents/Codex/2026-10-18/co/outputs/rei-scroll-fixed.png. Publishing status is recorded after checking live assets.
+- Updated the stylesheet bundle, cache tokens and runnable ZIP. Proof screenshot: C:/Users/admin/Documents/Codex/2026-10-18/co/outputs/rei-scroll-fixed.png. Published as eb1b973 on GitHub master. Production root, observatory.js, rei-bundle.css and optical-observatory.css returned HTTP 200 and matched the release after CRLF normalization. Evidence: rei-scroll-production-checks.json in the current chat outputs.
 
 ---
 
