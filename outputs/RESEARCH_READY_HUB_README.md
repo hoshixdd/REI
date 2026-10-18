@@ -114,3 +114,5 @@ The new landing offers equal entry to learning and project work. Follow #learn t
 Guided notes and practice are included in learning JSON and complete workspace backups; readable Markdown is not a restore format. Full-lesson drafts and research projects remain separate. See LEARNING_PATH_REVIEW.md for the content map, studies and actual verification. Student learning outcomes have not yet been evaluated.
 
 The welcome page leads into #home. The optical homepage now includes starting choices, six workshop-aligned steps, practice and workbook access. Learning pages link back to it.
+
+The current entry is Learn/Create: short worked-example challenges and practical planning/search/reference tools. Previous guided writing remains available at #guided. New tool outputs are session-only; download them before closing. Crossref search requires network access.

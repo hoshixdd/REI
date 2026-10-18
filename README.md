@@ -86,3 +86,8 @@ Fifteen focused suites and targeted phone/desktop browser checks passed. See HAN
 The welcome page introduces REI and leads into the optical homepage at #home, where learning and project work have equal entry. Follow #learn through the research mindset and five phases, try eight activities in #practice, and review/export your personal #workbook. No seminar attendance is required. Published research and the limits of REI's adaptations are listed at #learning-evidence. The homepage directly includes the six-step roadmap, practice activities and workbook access; #explore remains an alias. Detailed lessons and research tools remain available from the menu.
 
 Guided notes and practice are included in learning JSON and complete workspace backups; readable Markdown is not a restore format. Full-lesson drafts and research projects remain separate. See LEARNING_PATH_REVIEW.md for the content map, studies and actual verification. Student learning outcomes have not yet been evaluated.
+
+
+## Current Learn/Create entry
+
+The homepage now leads into #learn (six short, example-first challenges) and #create (question/method planning, Boolean search building and Crossref journal metadata lookup with selected RIS export). The tools use transparent templates, not a paid AI service. Crossref queries require a network connection; examples and planning/search construction work locally after assets load. Tool drafts and challenge choices are session-only; export useful results. Previous guided writing remains at #guided and #learn/0–5, with existing workbook/projects unchanged.

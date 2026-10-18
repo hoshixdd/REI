@@ -1,3 +1,18 @@
+## Learn/Create product revision - 2026-10-18
+
+The user found long writing-first exercises unhelpful and requested equal help with finding/understanding papers and developing questions/methods, easier game-like learning, and practical creation tools. This supersedes the earlier Learn/Practice/Apply default.
+
+- #learn now opens an original six-lesson learning library, searchable and filterable by Plan/Find/Read/Write. #library/question, search, read, synthesis, method and claim present a short explanation, an annotated fictional example, a two-option decision with immediate answer-specific reasoning, a tool link and the next lesson. No typing gate, mastery score or points economy. Choices last in the current session.
+- #create opens question/method planning, Boolean search building, a live Crossref metadata finder and the existing project workspace. #create/question uses four explicit aim-based templates and explains evidence needs/limits. #create/search builds quoted concept groups (OR within, AND across) and an alternate broader query, database links and Markdown download. Suggestions are rule-based, not an AI or novelty check.
+- #create/papers queries Crossref explicitly, default journal-article filter, up to eight candidate records. Users select references and download RIS for the existing project Library import preview. It does not retrieve full text, establish source quality or summarize findings. External queries are disclosed; local project/workbook text is not sent. Requests abort on navigation, time out and expose retry feedback.
+- Main homepage and menu now emphasize Learn and Create; optical scenes/models/controls remain, story links point to matching short lessons. Header opens My projects. Global search indexes short lessons and tools.
+- Previous learning records/formats are unchanged: #guided opens the earlier dashboard, #learn/0–5 still open saved guided steps; #workbook, #practice and nine detailed lessons remain available. Nothing was deleted or migrated. New tool inputs/results and challenge choices are session-only and explicitly downloadable, not silently added to durable backups.
+- New files: research-library-core.js, research-library.js, research-library.css and tests/research-library.cjs. assets.json loads core/UI before app.js; stylesheet build now includes 21 layers.
+
+Learning basis: IES practice guide recommends alternating worked examples and problems; Cornell library guidance informs source investigation, Purdue OWL informs synthesis, PubMed docs inform Boolean search, Crossref docs describe metadata. UI exposes source links and adaptation limits. No educational impact claim is made for REI.
+
+Validation: 19 focused suites passed, including new aim/query/metadata/RIS tests and modified homepage integration. Browser verified short-lesson search and answer-specific feedback; example question/search generation; live Crossref results, journal filtering, empty-selection feedback and selected RIS download. Actual downloaded RIS roundtripped through existing importer with expected DOI. Fourteen routes at 1440 and 390 widths had no horizontal overflow or under-16px text inputs. Physical devices, other browser engines, educational outcomes and offline install behavior remain untested. Runnable archive refreshed. Production is checked after publication.
+
 ## Categorized learning flow - 2026-10-18
 
 The user requested fewer competing buttons, categories and a guided flow while preserving graphics. Home now has one primary learning entry plus Learn, Practice and Apply editorial categories. The six-step preview is informational and collapsed. Extra resources and saved work are grouped in a disclosure. The hero lens, optical chapters, canvases and controls are unchanged.
