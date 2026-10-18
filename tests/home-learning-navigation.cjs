@@ -6,11 +6,15 @@ for(const file of ['dream-home.js','atelier-home.js'])vm.runInContext(fs.readFil
 let html=ctx.window.REIDreamHome();
 assert.equal((html.match(/id="observatory"/g)||[]).length,1,'The optical story must survive homepage integration');
 assert.match(html,/data-dream-scene/);assert.match(html,/href="#learn\/0">Start learning/);
-for(let i=0;i<6;i++)assert.ok(html.includes('href="#learn/'+i+'"'),'Every workshop step must be reachable from home');
-for(const route of ['#practice','#practice/question','#practice/verify','#practice/alignment','#research','#workbook'])assert.ok(html.includes('href="'+route+'"'),'Missing home destination '+route);
+for(const step of C.steps)assert.ok(html.includes('<h3>'+step.short+'</h3>'),'Every workshop step remains in the preview');
+for(const route of ['#practice','#research','#workbook'])assert.ok(html.includes('href="'+route+'"'),'Missing category destination '+route);
+const visible=html.replace(/<details[\s\S]*?<\/details>/g,'');assert.equal((visible.match(/href="#learn\//g)||[]).length,2,'Only hero learning entry and optical question link remain visible');
+assert.doesNotMatch(visible,/href="#(?:workbook|backup|academy|toolkit|seminars|notebook)/,'Supporting tools belong in grouped resources');
 saved=C.normalize({last:4,fields:{interest:'Saved observation'}});html=ctx.window.REIDreamHome();assert.match(html,/href="#learn\/4">Continue my learning/);
 ctx.document={addEventListener:()=>{}};ctx.addEventListener=()=>{};
 vm.runInContext(fs.readFileSync(require.resolve('../dist/learning-path.js'),'utf8'),ctx);
 const welcome=ctx.window.REILearningPath.landing();assert.match(welcome,/href="#home">Enter REI/);assert.doesNotMatch(welcome,/href="#(?:learn|practice|research|workbook)/,'Welcome must lead into the homepage, not act as a second tool hub');
 assert.match(ctx.window.REILearningPath.practiceHome(),/href="#home"/,'Activities must provide a direct return to the homepage');
+for(let i=0;i<6;i++){const step=C.steps[i];assert.ok(ctx.window.REILearningPath.stepView(i).includes('href="#practice/'+step.practice+'"'));assert.ok(ctx.window.REILearningPath.activityView(step.practice).includes('href="'+(i===5?'#workbook':'#learn/'+(i+1))+'"'),'Practice must lead into the next step');}
+const library=ctx.window.REILearningPath.practiceHome();for(const activity of C.activities)assert.equal((library.match(new RegExp('href="#practice/'+activity.id+'"','g'))||[]).length,1,'Each activity has one entry');
 console.log('PASS: original optical scene, six workshop steps, practice/project/workbook access and saved-step continuation.');

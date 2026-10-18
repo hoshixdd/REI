@@ -1,3 +1,11 @@
+## Categorized learning flow - 2026-10-18
+
+The user requested fewer competing buttons, categories and a guided flow while preserving graphics. Home now has one primary learning entry plus Learn, Practice and Apply editorial categories. The six-step preview is informational and collapsed. Extra resources and saved work are grouped in a disclosure. The hero lens, optical chapters, canvases and controls are unchanged.
+
+The learning dashboard explains Understand -> Write -> Practice -> Continue, with optional step switching and resources collapsed. Each guide recommends its matching activity; each matching activity points to the next guide or workbook. Skipping practice remains possible. Step selection is a disclosure, not a permanent wall of links. Practice is grouped into Shape and investigate, Connect and justify, and Review and revisit; each activity has one entry instead of duplicate links. Main menu follows Learn/Practice/Apply and keeps workbook access.
+
+Validation: focused home navigation, learning-path, learning-lab and observatory-scroll suites passed; modified-script syntax, asset build and diff whitespace passed. Earlier browser checks in this work verified desktop/phone layouts and step1 -> recall -> step2. Local browser connection became unavailable on continuation; final deployment is checked separately. No storage changes. Archive refreshed against shipped assets.
+
 ## Homepage learning integration - 2026-10-18
 
 The user clarified that the guides and activities belong in the actual REI homepage, with unnecessary old promotional sections replaced. The welcome is now a short introduction with one Enter REI action. #home keeps the magnifying-glass scene and optical chapter experience and now contains:

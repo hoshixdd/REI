@@ -43,3 +43,8 @@ Seventeen focused suites passed, including the new learning-path suite and exist
 Browser checks cover all 19 new routes at 390 and 1440 viewport widths: no content wider than the viewport and textarea font sizes at least 16px. Targeted flows verified notes/revision reload, blank-answer feedback, a poor choice's explanation, Markdown export, populated workbook/practice JSON backup and restore, workbook-note search, simple menu and keyboard navigation, and links back from full lessons. The original optical route retains its hero canvas and four chapters. Inspected error/warning logs were empty. Only explicitly fictional localhost QA text was entered; real research was not edited.
 
 These are targeted checks, not formal accessibility certification, actual touch-device testing, all-browser testing, large-scale performance measurement or demonstrated educational impact. Evidence files are in the current chat outputs.
+
+
+## Organization refinement
+
+Home groups content into Learn, Practice and Apply with a single primary learning entry. The six-step preview is noninteractive; optional resources and saved writing are grouped behind disclosure. Guided steps recommend matching practice, and those activities link to the next step. The practice library groups its eight activities into three skill categories. No educational outcome claim is inferred from this navigation change.
