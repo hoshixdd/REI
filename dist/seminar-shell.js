@@ -32,6 +32,7 @@
    const target=hash.split('/')[1],id=target==='journey'?'flow-journey':target==='resources'?'flow-resources':S.flow.some(s=>s.id===target)?'flow-'+target:null;
    if(target==='resources'){const refs=main.querySelector('.home-reference-summary');if(refs)refs.open=true;}if(id)requestAnimationFrame(()=>{const el=document.getElementById(id);if(el?.isConnected){el.scrollIntoView({block:'start',behavior:'instant'});el.tabIndex=-1;el.focus({preventScroll:true})}});
   }else if(stage||work||hash==='#research'){try{localStorage.setItem('rei-last-study-route',hash)}catch{}}
+  if(stage&&hash===stage.lesson)window.REILessonDepth?.mount(stage.id);
  }
  addEventListener('rrh:route',setup);addEventListener('rei:flow-location',()=>{setup();if(location.hash==='#home'||location.hash==='#home/')window.scrollTo({top:0,behavior:'instant'})});setup();
 })();

@@ -81,5 +81,40 @@
   document.addEventListener('input',e=>{if(e.target.matches('[data-depth-field]'))save(e.target)});
   document.addEventListener('click',e=>{if(e.target.closest('[data-depth-retry]')){const editor=document.querySelector('[data-depth-field]');if(editor)save(editor)}});
  }
- return {lessons,concept,worked,application,persist};
+ const topicSpecs=id=>id==='ethics'?[
+  ['lesson-citation','Cite sources','Learn how paraphrases and quotations credit a source.','Cite the idea; mark the exact words'],
+  ['lesson-plagiarism','Avoid plagiarism','Distinguish your contribution from borrowed wording and ideas.','Plagiarism is more than copying a paragraph'],
+  ['lesson-consent','Plan consent','Check voluntary participation, privacy and recording choices.','Consent comes before participation'],
+  ['lesson-ai','Use AI honestly','Check permission, verification and disclosure before using a tool.','Use AI with permission and a record'],
+  ['lesson-understand','Follow the case','Trace the ethical decisions before, during and after collection.'],
+  ['lesson-decision','Check a decision','Choose a response and inspect the explanation.','Check your decision'],
+  ['lesson-apply','Write your plan','Apply these safeguards to your actual study and save your thinking.']
+ ]:[
+  ['lesson-understand','Understand','Start with the explanation. Identify the rule and the boundary it protects.'],
+  ['lesson-example','Follow the example','Read each reasoning step and notice why the weaker approach changes.'],
+  ['lesson-decision','Make a decision','Choose an answer, read its feedback and explain the better-fitting choice.'],
+  ['lesson-transfer','Try a new situation','Use the same rule in a different context before checking the feedback.'],
+  ['lesson-apply','Apply to my study','Write your own response, then use the self-review to revise it.']
+ ];
+ function guide(id,hasDraft=false){const first=topicSpecs(id)[0][0];return `<section class="lesson-start-guide" aria-labelledby="lesson-start-title"><h2 id="lesson-start-title">${hasDraft?'Pick up your thinking.':'A simple way through this lesson.'}</h2><p>${hasDraft?'You have writing in this lesson’s workbook entry. Continue it, or revisit the explanation before you revise.':'First time here? Begin with the explanation. You do not need a finished topic or a perfect answer.'}</p><ol><li><strong>Understand</strong><span>Read the idea and follow the example.</span></li><li><strong>Practise</strong><span>Make a decision and inspect the feedback.</span></li><li><strong>Apply</strong><span>Write for your own study and review it.</span></li></ol><div class="lesson-start-actions"><button type="button" data-library-jump="${hasDraft?'lesson-apply':first}">${hasDraft?'Continue my writing':'Start with the explanation'}</button><button type="button" data-library-jump="${hasDraft?first:'lesson-apply'}">${hasDraft?'Revisit the explanation':'I’m ready to write'}</button></div><p class="lesson-start-note">Work at your own pace. A saved response is not a grade; choose the next lesson when you are ready.</p></section>`}
+ let navigationObserver=null;
+ function unmount(){navigationObserver?.disconnect();navigationObserver=null}
+ function mount(id){
+  unmount();if(!lessons[id]||typeof document==='undefined')return;
+  const article=document.querySelector(id==='ethics'?'.seminar-reading':'.library-lesson');if(!article||article.dataset.depthNavigation)return;article.dataset.depthNavigation=id;
+  const specs=topicSpecs(id),topics=[];
+  for(const [target,label,hint,headingText] of specs){let section=document.getElementById(target);if(!section&&headingText){section=[...article.querySelectorAll('section')].find(s=>s.querySelector(':scope>h2')?.textContent===headingText);if(section)section.id=target}const heading=section?.querySelector('h2');if(!heading)continue;const number=topics.length+1;heading.classList.add('lesson-topic-heading');heading.tabIndex=-1;heading.insertAdjacentHTML('afterbegin',`<span class="lesson-topic-number" aria-hidden="true">${String(number).padStart(2,'0')}</span>`);section.classList.add('lesson-topic');section.dataset.lessonTopic=target;heading.insertAdjacentHTML('afterend',`<p class="lesson-topic-purpose">${esc(hint)}</p>`);const oldNumber=section.querySelector('.lesson-section-heading>span');if(oldNumber)oldNumber.remove();topics.push({target,label,section,number});}
+  if(!topics.length)return;
+  let hasDraft=false;try{hasDraft=!!window.REILearningStore.readPath().fields[lessons[id].field]?.trim()}catch{}
+  const header=article.querySelector(':scope>header');if(header)header.insertAdjacentHTML('afterend',guide(id,hasDraft));else article.insertAdjacentHTML('afterbegin',guide(id,hasDraft));
+  const compass=document.querySelector('.lesson-compass nav');if(compass){compass.setAttribute('aria-label','Topics in this lesson');compass.innerHTML=topics.map(t=>`<button type="button" data-library-jump="${t.target}"><span class="lesson-nav-number" aria-hidden="true">${t.number}</span><span>${esc(t.label)}</span></button>`).join('');}
+  article.insertAdjacentHTML('beforebegin',`<nav class="lesson-topic-picker" aria-label="Jump between lesson topics"><label for="lesson-topic-select">In this lesson</label><select id="lesson-topic-select" data-depth-section-select>${topics.map(t=>`<option value="${t.target}">${t.number}. ${esc(t.label)}</option>`).join('')}</select></nav>`);
+  const select=document.querySelector('[data-depth-section-select]');
+  const activate=target=>{select.value=target;document.querySelectorAll('.lesson-compass [data-library-jump]').forEach(b=>{if(b.dataset.libraryJump===target)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')})};
+  select.addEventListener('change',()=>{const target=document.getElementById(select.value);target?.scrollIntoView({behavior:'auto',block:'start'});target?.querySelector('h2')?.focus({preventScroll:true});activate(select.value)});
+  activate(topics[0].target);
+  if(typeof IntersectionObserver!=='undefined'){navigationObserver=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>Math.abs(a.boundingClientRect.top-120)-Math.abs(b.boundingClientRect.top-120));if(visible[0])activate(visible[0].target.dataset.lessonTopic)},{rootMargin:'-100px 0px -55% 0px',threshold:0});topics.forEach(t=>navigationObserver.observe(t.section));}
+ }
+ if(typeof addEventListener==='function')addEventListener('rrh:route',unmount);
+ return {lessons,concept,worked,application,persist,topicSpecs,guide,mount,unmount};
 });

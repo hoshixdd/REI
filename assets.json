@@ -24,7 +24,8 @@
     "research-support.css",
     "seminar.css",
     "journey-flow.css",
-    "lesson-depth.css"
+    "lesson-depth.css",
+    "lesson-guidance.css"
   ],
   "scripts": [
     "data.js",

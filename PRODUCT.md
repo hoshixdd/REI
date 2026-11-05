@@ -2,6 +2,8 @@
 
 ## Latest priority: lesson depth, short homepage
 
+Lesson hierarchy must be easy to scan: explicit topic numbering, strong subheadings, current-topic navigation and a native topic selector on small screens. Give first-time learners a short Understand → Practise → Apply routine and an explanation starting point; show a continuation action when their existing workbook entry has writing. Keep this guidance brief and keep the homepage compact.
+
 The homepage is an entry, not the course document: original 3D hero, Continue, concise seven-lesson selector. The longer optical research story and reference links are available on demand, initially closed. Main content depth lives inside seven core lessons, with explanations, annotated reasoning, pitfalls, answer-specific practice and application to the existing workbook. Remove duplicate read-only indexes from the main path and search; retain historical writing editors and user data. This supersedes the long seven-stage homepage described below. Preserve the actual 3D art, established materials and rendering quality.
 
 ## Current direction: one fused optical journey
