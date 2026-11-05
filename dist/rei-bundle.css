@@ -957,6 +957,9 @@ body:has(.seminar-page) .ambient-field{opacity:.25}
 @media(max-width:700px){.compact-home-start{padding:32px 0 20px}.compact-lessons{grid-template-columns:1fr;gap:0}.compact-lessons a{min-height:56px;padding:12px 0}.compact-lessons strong{font-size:19px}.compact-journey>header p{font-size:17px}.compact-reference-links{grid-template-columns:1fr;gap:0}.home-optical-details,.home-reference-summary{padding:16px 0}.lesson-depth{padding:24px 0;margin:20px 0}.depth-reasoning>li{grid-template-columns:24px 1fr;gap:10px}.depth-application textarea{min-height:240px}.lesson-compass nav{flex-wrap:wrap}.lesson-depth p{line-height:1.8}}
 @media print{.home-optical-details,.home-reference-summary{display:none}.lesson-depth p,.depth-self-review li{color:#111!important}.depth-application textarea{color:#111!important;background:#fff!important}.depth-application button{display:none}}
 
+/* Explicit button colors avoid low-contrast native browser defaults. */
+.depth-application button.path-link{background:#172b3b;color:#e3f2ff;border:1px solid #8daac0;border-radius:6px;padding:10px 16px;cursor:pointer;touch-action:manipulation}.depth-application button.path-link:focus-visible{outline:3px solid #b9dff9;outline-offset:4px}.depth-application [data-depth-save]:empty{display:none}
+
 
 /* lesson-guidance.css */
 /* Strong topic signposts and a small, honest guide through the learning sequence. */
