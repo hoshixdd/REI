@@ -22,7 +22,8 @@
     "learning-path.css",
     "research-library.css",
     "research-support.css",
-    "seminar.css"
+    "seminar.css",
+    "journey-flow.css"
   ],
   "scripts": [
     "data.js",

@@ -2,12 +2,12 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const C=require('../dist/learning-path-core.js');
 let saved=C.normalize(null);
 const ctx={window:{REILearningPathCore:C,REILearningStore:{readPath:()=>saved}}};vm.createContext(ctx);
-for(const file of ['dream-home.js','atelier-home.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+file),'utf8'),ctx);
+ctx.document={addEventListener:()=>{}};for(const file of ['seminar.js','dream-home.js','atelier-home.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+file),'utf8'),ctx);
 let html=ctx.window.REIDreamHome();
 assert.equal((html.match(/id="observatory"/g)||[]).length,1,'The optical story must survive homepage integration');
-assert.match(html,/data-dream-scene/);assert.match(html,/href="#learn">Explore the learning library/);
-for(const route of ['#tools','#research','#workbook','#guided'])assert.ok(html.includes('href="'+route+'"'),'Missing destination '+route);
-const visible=html.replace(/<details[\s\S]*?<\/details>/g,'');assert.doesNotMatch(visible,/href="#(?:workbook|backup|academy|toolkit|seminars|notebook)/,'Supporting tools belong in grouped resources');
+assert.match(html,/data-dream-scene/);assert.match(html,/href="#library\/question">Begin with a question/);
+for(const route of ['#library/question','#research','#workbook','#guided','#chapters','#tools/templates'])assert.ok(html.includes('href="'+route+'"'),'Missing destination '+route);
+assert.equal((html.match(/data-flow-stage=/g)||[]).length,7,'All seven stages belong in the original optical homepage');assert.doesNotMatch(html,/href="#recap"/,'There must be no separate recap hub');
 ctx.document={addEventListener:()=>{}};ctx.addEventListener=()=>{};
 vm.runInContext(fs.readFileSync(require.resolve('../dist/learning-path.js'),'utf8'),ctx);
 const welcome=ctx.window.REILearningPath.landing();assert.match(welcome,/href="#home">Enter REI/);assert.doesNotMatch(welcome,/href="#(?:learn|practice|research|workbook)/,'Welcome must lead into the homepage, not act as a second tool hub');

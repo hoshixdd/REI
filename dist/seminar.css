@@ -1,8 +1,8 @@
 /* Quiet, readable reference surfaces within REI's silver optical identity. */
-:root{--seminar-paper:#f6f7f8;--seminar-ink:#18212c;--seminar-muted:#465363}
+:root{--seminar-paper:#0d121a;--seminar-ink:#eef3f8;--seminar-muted:#bdc9d6}
 .seminar-page{width:min(1080px,calc(100% - 48px));margin:0 auto;padding:32px 0 100px;color:var(--seminar-ink);font-size:18px;line-height:1.7}
 body:has(.seminar-page){background:var(--seminar-paper)}
-body:has(.seminar-page) .ambient-field{display:none}
+body:has(.seminar-page) .ambient-field{opacity:.25}
 .seminar-page header{padding:42px 0 32px;border-bottom:1px solid #bbc4cc}
 .seminar-page h1{font-size:clamp(2.4rem,5vw,4.6rem);line-height:1.08;letter-spacing:-.035em;color:var(--seminar-ink);max-width:19ch;text-wrap:balance}
 .seminar-page h2{font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.3;color:var(--seminar-ink);margin:0 0 16px}

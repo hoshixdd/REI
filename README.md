@@ -1,8 +1,8 @@
 # Research Ready Hub
 
-A local-first research seminar companion organized into Recap, Lessons, My Workbook and Tools. The main sequence has seven short lessons, including ethics, APA citation, plagiarism, consent and honest AI use. Nine older detailed guides remain optional; their drafts are preserved.
+A local-first research companion with one continuous journey through the original optical homepage: Question → Search → Read → Connect → Plan → Write → Review. Each stop combines a reminder, a local example, a short lesson and the next practical action. Seven short lessons include ethics, APA citation, plagiarism, consent and honest AI use. Nine older detailed guides remain optional; their drafts are preserved.
 
-The seminar recap, Chapters 1–4 map, fictional Isabel/Leyte examples, quick self-checks, peer-review checklist and three-minute pitch are available from the four-section menu. **My Workbook → Download my workbook** creates a complete editable JSON backup, including saved projects and PDFs. Clearing browser data can remove local work; keep a separate downloaded copy. Source files are maintained separately; run `node scripts/build-assets.cjs` after editing to regenerate the two ordered JavaScript bundles and CSS bundle. No package installation is required.
+Reminders are woven into the journey. Chapters 1–4, fictional Isabel/Leyte examples, quick self-checks, peer-review and pitch templates are linked where useful and in the homepage references. **My work → Download my workbook** creates a complete editable JSON backup, including saved projects and PDFs. Clearing browser data can remove local work; keep a separate downloaded copy. Source files are maintained separately; run `node scripts/build-assets.cjs` after editing to regenerate the two ordered JavaScript bundles and CSS bundle. No package installation is required.
 
 ## Open the site
 
