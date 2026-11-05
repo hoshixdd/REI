@@ -23,7 +23,7 @@
   root.querySelector('.observatory-meter i').style.transform=`scaleX(${(n+1)/4})`;
   if(changed){captionAnimation?.cancel();if(moving()&&document.documentElement.dataset.input!=='keyboard')captionAnimation=panel.animate([{opacity:.45,transform:'translateY(5px)'},{opacity:1,transform:'none'}],{duration:200,easing:'cubic-bezier(.22,1,.36,1)'})}
  }
- document.addEventListener('click',e=>{const b=e.target.closest('[data-observe-stage]');if(b){manualScroll={y:scrollY,stage:Number(b.dataset.observeStage)};setStage(manualScroll.stage);return}const skip=e.target.closest('[data-observe-skip]');if(skip){e.preventDefault();const next=document.querySelector('#dream-manifesto');next?.scrollIntoView({behavior:moving()?'smooth':'instant',block:'start'});next?.querySelector('h2')?.setAttribute('tabindex','-1');next?.querySelector('h2')?.focus({preventScroll:true})}});
+ document.addEventListener('click',e=>{const b=e.target.closest('[data-observe-stage]');if(b){manualScroll={y:scrollY,stage:Number(b.dataset.observeStage)};setStage(manualScroll.stage);return}const skip=e.target.closest('[data-observe-skip]');if(skip){e.preventDefault();const optional=skip.closest('.home-optical-details');if(optional){optional.open=false;optional.querySelector('summary')?.focus();return}const next=document.querySelector('#dream-manifesto');next?.scrollIntoView({behavior:moving()?'smooth':'instant',block:'start'});next?.querySelector('h2')?.setAttribute('tabindex','-1');next?.querySelector('h2')?.focus({preventScroll:true})}});
  document.addEventListener('keydown',e=>{const b=e.target.closest('[data-observe-stage]');if(!b||!['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?3:(Number(b.dataset.observeStage)+(['ArrowRight','ArrowDown'].includes(e.key)?1:3))%4;manualScroll={y:scrollY,stage:next};setStage(next,true)});
  let scrollFrame=0;
  function chapterAt(top,range,y,manual){
@@ -32,7 +32,7 @@
  }
  function fitStory(){
   const root=document.querySelector('.observatory-story'),sticky=root?.querySelector('.observatory-sticky');if(!sticky)return;
-  const top=74,flow=innerWidth<=900||sticky.scrollHeight>innerHeight-top+1;
+  const top=74,flow=!!root.closest?.('.home-optical-details')||innerWidth<=900||sticky.scrollHeight>innerHeight-top+1;
   root.dataset.scrollMode=flow?'flow':'pinned';
   const hint=root.querySelector('.observatory-bottom>span');if(hint)hint.textContent=flow?'SELECT A CHAPTER TO EXPLORE':'SCROLL TO FOLLOW / SELECT TO EXPLORE';
  }

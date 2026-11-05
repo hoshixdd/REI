@@ -15,14 +15,14 @@
   }
   if(stage&&/^#(?:library|lesson)\//.test(hash)){
    const use=main.querySelector('.lesson-use');if(use)use.innerHTML=`<h2>Make the next move.</h2><p>${esc(stage.action)}</p><div class="flow-actions"><a class="path-button" href="${stage.tool}">${esc(stage.toolLabel)}</a><a href="${stage.write}">Write it into my study ↗</a></div>`;
-   if(!main.querySelector('.flow-local-recall')){const heading=main.querySelector('.library-lesson>header,.lesson-main>.lesson-title');if(heading)heading.insertAdjacentHTML('afterend',`<details class="flow-local-recall"><summary>Remember the idea in a local setting</summary><p>${esc(stage.idea)}</p><p><strong>Fictional example:</strong> ${esc(stage.example)}</p></details>`);}
+   if(!window.REILessonDepth&&!main.querySelector('.flow-local-recall')){const heading=main.querySelector('.library-lesson>header,.lesson-main>.lesson-title');if(heading)heading.insertAdjacentHTML('afterend',`<details class="flow-local-recall"><summary>Remember the idea in a local setting</summary><p>${esc(stage.idea)}</p><p><strong>Fictional example:</strong> ${esc(stage.example)}</p></details>`);}
   }
   document.querySelectorAll('a[href="#learn"]').forEach(a=>{a.href='#home/journey';if(/All short lessons|Learning library/.test(a.textContent))a.textContent='Return to the journey'});
   main?.querySelectorAll('a[href="#create"]').forEach(a=>{a.href='#home/resources';a.textContent='References and tools ↗'});
   if(/^#learn\//.test(hash)&&stage){const marker=main.querySelector('.path-current-step');if(marker)marker.textContent='Your '+stage.short.toLowerCase()+' notes';const trail=main.querySelector('.path-breadcrumb');if(trail)trail.innerHTML='<a href="#home/'+stage.id+'">'+esc(stage.short)+'</a><span>Your study notes</span>';const chooser=main.querySelector('.path-step-selector summary');if(chooser)chooser.textContent='Choose another writing prompt';}
   const dialog=document.querySelector('#space-navigator');if(dialog){
    const heading=dialog.querySelector('#space-title');heading.textContent='Where is your study taking you?';
-   dialog.querySelector('.path-menu-primary').innerHTML='<section class="flow-menu-journey"><h3>The journey</h3>'+S.flow.map((s,i)=>`<a href="#home/${s.id}"><span>${i+1}</span><strong>${esc(s.short)}</strong></a>`).join('')+'</section><section><h3>Keep working</h3><a href="'+continuation()+'"><strong>Continue where you left off</strong></a><a href="#workbook"><strong>My work and downloads</strong></a><a href="#home/resources"><strong>References and research tools</strong></a></section>';
+   dialog.querySelector('.path-menu-primary').innerHTML='<section class="flow-menu-journey"><h3>The journey</h3>'+S.flow.map((s,i)=>`<a href="${s.lesson}"><span>${i+1}</span><strong>${esc(s.short)}</strong></a>`).join('')+'</section><section><h3>Keep working</h3><a href="'+continuation()+'"><strong>Continue where you left off</strong></a><a href="#workbook"><strong>My work and downloads</strong></a><a href="#research"><strong>Research projects</strong></a><a href="#chapters"><strong>Chapters 1–4</strong></a></section>';
    dialog.querySelectorAll('.path-menu-tools').forEach(x=>x.hidden=true);dialog.querySelector('.space-grid').innerHTML='';
   }
   if(home){
@@ -30,7 +30,7 @@
    const intro=main.querySelector('.dream-intro');if(intro&&!intro.querySelector('.home-backup'))intro.insertAdjacentHTML('beforeend','<p class="home-backup"><a href="#home/journey">See the whole journey</a> · <a href="#backup">Download my work</a><br>Clearing browser data can remove your work. Keep a downloaded copy.</p>');
    const guides=main.querySelector('[data-flow-guides]');if(guides&&typeof course!=='undefined')guides.innerHTML=course.map((c,i)=>`<p><a href="#lesson/${i}">${esc(c.title)}</a></p>`).join('');
    const target=hash.split('/')[1],id=target==='journey'?'flow-journey':target==='resources'?'flow-resources':S.flow.some(s=>s.id===target)?'flow-'+target:null;
-   if(id)requestAnimationFrame(()=>{const el=document.getElementById(id);if(el?.isConnected){el.scrollIntoView({block:'start',behavior:'instant'});el.tabIndex=-1;el.focus({preventScroll:true})}});
+   if(target==='resources'){const refs=main.querySelector('.home-reference-summary');if(refs)refs.open=true;}if(id)requestAnimationFrame(()=>{const el=document.getElementById(id);if(el?.isConnected){el.scrollIntoView({block:'start',behavior:'instant'});el.tabIndex=-1;el.focus({preventScroll:true})}});
   }else if(stage||work||hash==='#research'){try{localStorage.setItem('rei-last-study-route',hash)}catch{}}
  }
  addEventListener('rrh:route',setup);addEventListener('rei:flow-location',()=>{setup();if(location.hash==='#home'||location.hash==='#home/')window.scrollTo({top:0,behavior:'instant'})});setup();

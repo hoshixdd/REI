@@ -23,7 +23,8 @@
     "research-library.css",
     "research-support.css",
     "seminar.css",
-    "journey-flow.css"
+    "journey-flow.css",
+    "lesson-depth.css"
   ],
   "scripts": [
     "data.js",
@@ -47,6 +48,7 @@
     "learning-path-core.js",
     "learning-path.js",
     "research-library-core.js",
+    "lesson-depth.js",
     "research-library.js",
     "study-library.js",
     "research-support-core.js",

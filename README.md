@@ -1,8 +1,8 @@
 # Research Ready Hub
 
-A local-first research companion with one continuous journey through the original optical homepage: Question → Search → Read → Connect → Plan → Write → Review. Each stop combines a reminder, a local example, a short lesson and the next practical action. Seven short lessons include ethics, APA citation, plagiarism, consent and honest AI use. Nine older detailed guides remain optional; their drafts are preserved.
+A local-first research companion with a compact optical homepage and seven core lessons: Question → Search → Read → Connect → Plan → Write → Review. Each lesson contains fuller explanations, annotated reasoning, common mistakes, decision practice and an application that saves into My work. The original 3D hero remains; the longer research story is available on demand. Earlier lesson-writing editors and saved drafts are preserved.
 
-Reminders are woven into the journey. Chapters 1–4, fictional Isabel/Leyte examples, quick self-checks, peer-review and pitch templates are linked where useful and in the homepage references. **My work → Download my workbook** creates a complete editable JSON backup, including saved projects and PDFs. Clearing browser data can remove local work; keep a separate downloaded copy. Source files are maintained separately; run `node scripts/build-assets.cjs` after editing to regenerate the two ordered JavaScript bundles and CSS bundle. No package installation is required.
+Chapters 1–4, fictional Isabel/Leyte examples, quick self-checks, peer-review and pitch templates are linked where useful. Application writing inside a lesson edits its clearly labeled existing workbook entry and is included in workbook exports. **My work → Download my workbook** creates a complete editable JSON backup, including saved projects and PDFs. Clearing browser data can remove local work; keep a separate downloaded copy. Source files are maintained separately; run `node scripts/build-assets.cjs` after editing to regenerate the two ordered JavaScript bundles and CSS bundle. No package installation is required.
 
 ## Open the site
 

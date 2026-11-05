@@ -1,5 +1,9 @@
 # Product
 
+## Latest priority: lesson depth, short homepage
+
+The homepage is an entry, not the course document: original 3D hero, Continue, concise seven-lesson selector. The longer optical research story and reference links are available on demand, initially closed. Main content depth lives inside seven core lessons, with explanations, annotated reasoning, pitfalls, answer-specific practice and application to the existing workbook. Remove duplicate read-only indexes from the main path and search; retain historical writing editors and user data. This supersedes the long seven-stage homepage described below. Preserve the actual 3D art, established materials and rendering quality.
+
 ## Current direction: one fused optical journey
 
 The latest user correction replaces separate Recap/Lessons/Workbook/Tools hubs with one connected flow on the existing optical homepage. Preserve all optical artwork, models, controls and 3D renderers. Seven stops combine reminder → local example → short lesson → tool → own writing, with contextual next actions and a return to the same stage. My work collects existing writing without moving or replacing records. References stay within reach on the homepage; old index URLs resolve into that journey. Same-home jumps must scroll without restarting the scene. Dark/silver reference styling belongs to the original world; light writing/example surfaces remain purposeful. This direction supersedes the older navigation descriptions below.
