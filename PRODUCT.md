@@ -1,5 +1,11 @@
 # Product
 
+## Current student companion — 5 November 2026
+
+This brief supersedes the older Learn/Create navigation descriptions below. Primary sections are Recap, Lessons, My Workbook and Tools. Seven short lessons are the main sequence; nine detailed guides are optional references with preserved drafts. Six guided writing steps are workbook prompts, not additional lesson counts. Existing route aliases remain usable. Recap summarizes the existing workshop sequence without claiming access to an event recording or transcript. All new Isabel/Leyte examples are explicitly fictional.
+
+Reading reference pages use a light, high-contrast surface; REI's optical homepage artwork remains. My Workbook groups existing editors and makes complete JSON backup visible. Sound remains off by default on every device and requires a deliberate click. The build creates two ordered classic JavaScript bundles while keeping individual source modules maintainable. No new storage schema, account, paid API or cloud service is introduced.
+
 <!-- impeccable:product-schema 1 -->
 
 Inferred from the repository and the user's briefs. Not a fresh interview.

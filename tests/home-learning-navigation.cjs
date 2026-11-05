@@ -6,7 +6,7 @@ for(const file of ['dream-home.js','atelier-home.js'])vm.runInContext(fs.readFil
 let html=ctx.window.REIDreamHome();
 assert.equal((html.match(/id="observatory"/g)||[]).length,1,'The optical story must survive homepage integration');
 assert.match(html,/data-dream-scene/);assert.match(html,/href="#learn">Explore the learning library/);
-for(const route of ['#create','#research','#workbook','#guided'])assert.ok(html.includes('href="'+route+'"'),'Missing destination '+route);
+for(const route of ['#tools','#research','#workbook','#guided'])assert.ok(html.includes('href="'+route+'"'),'Missing destination '+route);
 const visible=html.replace(/<details[\s\S]*?<\/details>/g,'');assert.doesNotMatch(visible,/href="#(?:workbook|backup|academy|toolkit|seminars|notebook)/,'Supporting tools belong in grouped resources');
 ctx.document={addEventListener:()=>{}};ctx.addEventListener=()=>{};
 vm.runInContext(fs.readFileSync(require.resolve('../dist/learning-path.js'),'utf8'),ctx);

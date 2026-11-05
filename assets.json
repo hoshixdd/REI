@@ -21,7 +21,8 @@
     "learning-lab.css",
     "learning-path.css",
     "research-library.css",
-    "research-support.css"
+    "research-support.css",
+    "seminar.css"
   ],
   "scripts": [
     "data.js",
@@ -49,6 +50,7 @@
     "study-library.js",
     "research-support-core.js",
     "research-support.js",
+    "seminar.js",
     "app.js",
     "motion.js",
     "universe.js",
@@ -68,6 +70,7 @@
     "observatory.js",
     "visual-finish.js",
     "optical-system.js",
-    "learning-lab.js"
+    "learning-lab.js",
+    "seminar-shell.js"
   ]
 }

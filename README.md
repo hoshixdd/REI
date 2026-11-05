@@ -1,6 +1,8 @@
 # Research Ready Hub
 
-A self-contained, responsive research learning site with nine lessons and a local research workspace.
+A local-first research seminar companion organized into Recap, Lessons, My Workbook and Tools. The main sequence has seven short lessons, including ethics, APA citation, plagiarism, consent and honest AI use. Nine older detailed guides remain optional; their drafts are preserved.
+
+The seminar recap, Chapters 1–4 map, fictional Isabel/Leyte examples, quick self-checks, peer-review checklist and three-minute pitch are available from the four-section menu. **My Workbook → Download my workbook** creates a complete editable JSON backup, including saved projects and PDFs. Clearing browser data can remove local work; keep a separate downloaded copy. Source files are maintained separately; run `node scripts/build-assets.cjs` after editing to regenerate the two ordered JavaScript bundles and CSS bundle. No package installation is required.
 
 ## Open the site
 
@@ -12,7 +14,7 @@ The workspace saves to the browser's local storage. Keep the same browser and si
 
 - An original cinematic research atlas with up to 26,000 GPU particles morphing between a flowing sphere, spiral field, and helix. Phase controls update the scene and next-step destination; pointer and scroll movement influence the field.
 - A nine-milestone research roadmap with local progress tracking.
-- Nine lessons split into 36 focused pages: Learn, Example, Write, and Check.
+- Seven main short lessons, plus nine optional detailed guides split into 36 focused pages: Learn, Example, Write, and Check.
 - Auto-saved lesson writing assembled into a proposal draft.
 - Six downloadable resources with individual resource guides and search.
 - An idea notebook with search, editing, unfinished-draft recovery, deletion, and undo.
